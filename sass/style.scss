@@ -1,0 +1,188 @@
+@import "variables.scss";
+.navbar-default {
+    background-color: $primary-color;
+}
+
+body {
+    background-position: 50% 10%;
+    background-color: rgba(59, 2, 66, 0.03);
+    color: black;
+}
+
+footer {
+    background-color: $primary-color;
+    margin-top: 30px;
+    padding: 0 0 0 0;
+}
+
+footer a {
+    color: white;
+}
+
+.sm-font {
+    font-size: 8pt;
+}
+
+.md-font {
+    font-size: 12pt;
+}
+
+.lg-font {
+    font-size: 24pt;
+}
+
+.navbar-text {
+    margin-top: 11px;
+    margin-bottom: 0px;
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+    font-size: 38pt;
+    font-weight: 900;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: white;
+}
+
+.btn-default {
+    color: $primary-color;
+    border: 1px solid $primary-color;
+}
+
+.btn-default:hover,
+.btn-default:active,
+.btn-default.active,
+.btn:active,
+.btn.active:focus {
+    background-color: $primary-color;
+    border: 1px solid #FFFFFF;
+}
+
+a {
+    color: $primary-color;
+}
+
+.nav-tabs > li > a:hover {
+    color: $primary-color !important;
+}
+
+.navbar-default .navbar-text {
+    color: #FFF;
+}
+
+.btn-default:active:focus {
+    background-color: $primary-color;
+}
+
+.btn-search {
+    background-color: white;
+    color: $primary-color;
+}
+
+.btn-search:hover {
+    color: white;
+}
+
+.panel {
+    background-color: #F5F5F5;
+    //opacity: 0.84;
+}
+
+#searchPanel {
+    margin: 100px 10px 10px 10px;
+}
+
+.topPageTitle {
+    margin-top: 60px;
+    margin-bottom: 10px;
+}
+
+#blackText {
+    color: #000000;
+}
+
+.input-group {
+    margin: 5px 0px 5px 0px;
+}
+
+.noti_bubble {
+    position: absolute;
+    /* This breaks the div from the normal HTML document. */
+    top: 7px;
+    right: 19px;
+    padding: 1px 2px 1px 2px;
+    background-color: red;
+    /* you could use a background image if you'd like as well */
+    color: white !important;
+    font-weight: bold;
+    font-size: 0.79em;
+    /* The following is CSS3, but isn't crucial for this technique to work. */
+    /* Keep in mind that if a browser doesn't support CSS3, it's fine! They just won't have rounded borders and won't have a box shadow effect. */
+    /* You can always use a background image to produce the same effect if you want to, and you can use both together so browsers without CSS3 still have the rounded/shadow look. */
+    border-radius: 30px;
+    box-shadow: 1px 1px 1px gray;
+}
+
+//Navbar loging 
+#login-dp {
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, .8);
+}
+
+#login-dp .help-block {
+    font-size: 12px
+}
+
+#login-dp .bottom {
+    background-color: rgba(255, 255, 255, .8);
+    border-top: 1px solid #ddd;
+    clear: both;
+    padding: 14px;
+}
+
+#login-dp .social-buttons {
+    margin: 12px 0
+}
+
+#login-dp .social-buttons a {
+    width: 49%;
+}
+
+#login-dp .form-group {
+    margin-bottom: 10px;
+}
+
+.btn-fb {
+    color: #fff;
+    background-color: #3b5998;
+}
+
+.btn-fb:hover {
+    color: #fff;
+    background-color: #496ebc
+}
+
+.btn-tw {
+    color: #fff;
+    background-color: #55acee;
+}
+
+.btn-tw:hover {
+    color: #fff;
+    background-color: #59b5fa;
+}
+
+@media(max-width:768px) {
+    #login-dp {
+        background-color: inherit;
+        color: #fff;
+    }
+    #login-dp .bottom {
+        background-color: inherit;
+        border-top: 0 none;
+    }
+}

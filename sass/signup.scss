@@ -1,0 +1,19 @@
+@import "variables.scss";
+.submitBtn {
+    background-color: $primary-color;
+}
+
+legend {
+    color: $primary-color;
+}
+
+legend h1 {
+    margin: 0 0 0 0;
+}
+
+fieldset {}
+
+.signupWrapper {
+    width: 300;
+    height: 600;
+}

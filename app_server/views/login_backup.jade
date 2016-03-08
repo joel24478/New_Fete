@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  #banner.page-header
+    .row
+      .col-lg-6
+       h1.topPageTitle #{title}
+         p
+           h3 #{pageTitle}
+  .container(style='background-color:#000000; opacity:0.7; text-align:center;')
+    form(class='form-horizontal',action='/login',method='POST',id='loginForm')  
+      div.form-group
+        fieldset
+          legend #{legend}
+          input(type='text',id='username',name='username',placeholder='Username') 
+          p OR BY
+          input(type='email',id='email',name='email',placeholder='name@example.com')
+          p 
+          input(type='password',id='password',name='password',placeholder='Password') 
+          p
+          input(class='submitBtn',type='submit', value="Login")

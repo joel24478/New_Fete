@@ -1,0 +1,30 @@
+extends layout
+
+block append head 
+  link(rel='stylesheet', href='/stylesheets/followers.css')
+  link(rel='stylesheet', href='/stylesheets/profile.css')
+  script(src='/javascripts/postHandler.js')
+block content
+  .container(style='margin-top:100px;')
+    .row 
+      h1#blackText #{title}
+      #followerTemplete
+        .col-sm-4
+          a.thumb(href='/profile')
+            img.img-circle.pull-left(href='/profile', src='#{profilePicture}', alt='#{username}')
+            span#profileTarget
+              //placeholder
+      .col-sm-4
+        img.img-circle.pull-left(src='#{profilePicture7}', alt='#{username}')
+      .col-sm-4
+        img.img-circle.pull-left(src='#{profilePicture2}', alt='#{username}')
+    .row
+      .col-sm-4
+        img.img-circle.pull-left(src='#{profilePicture3}', alt='#{username}')
+      .col-sm-4
+        img.img-circle.pull-left(src='#{profilePicture4}', alt='#{username}')
+      .col-sm-4
+        img.img-circle.pull-left(src='#{profilePicture5}', alt='#{username}')
+    .row
+      .col-sm-4
+        img.img-circle.pull-left(src='#{profilePicture6}', alt='#{username}')

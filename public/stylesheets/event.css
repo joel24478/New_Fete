@@ -1,0 +1,19 @@
+.flyer img {
+  width: 550px;
+  height: 650px; }
+
+h5 {
+  margin-bottom: 0px; }
+
+.details {
+  margin: 0px 0px 0px 0px; }
+
+.panel-body {
+  background-color: white;
+  color: black; }
+
+.comments-list {
+  margin: 10px 0px 0px 0px; }
+
+.comments-list .media {
+  border-bottom: 1px dotted #ccc; }

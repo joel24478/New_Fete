@@ -1,0 +1,35 @@
+extends layout
+block append head 
+  link(rel='stylesheet', href='/stylesheets/signup.css')
+block content
+  #banner.page-header
+  .container
+    #loginbox.mainbox.col-md-6.col-md-offset-3.col-sm-6.col-sm-offset-3
+      .panel.panel-default
+        .panel-heading
+          .panel-title.text-center #{panelTitle}
+        .panel-body
+          form#form.form-horizontal(name='form', enctype='multipart/form-data', method='POST')
+            .input-group
+              span.input-group-addon
+                i.glyphicon.glyphicon-user
+              input#user.form-control(type='text', name='user', value='', placeholder='UserNane')
+            .input-group
+              span.input-group-addon
+                i.glyphicon.glyphicon-envelope
+              input#email.form-control(type='email', name='email', placeholder='name@example.com')
+            .input-group
+              span.input-group-addon
+                i.glyphicon.glyphicon-lock
+              input#password.form-control(type='password', name='comfirmPassword', placeholder='Confirm Password')
+            .input-group
+              span.input-group-addon
+                i.glyphicon.glyphicon-lock
+              input#password.form-control(type='password', name='password', placeholder='Password')
+            .form-group
+              .col-md-8.controls
+                button.btn.btn-primary.pull-right(type='submit', href='#')
+                  i.glyphicon.glyphicon-log-in
+                  |  SignUp
+              .col-md-8
+                a(href='/login') Or Login

@@ -1,0 +1,21 @@
+.img-circle {
+  width: 150px;
+  height: 150px;
+  border: 2px solid #660BAB;
+  margin-right: 10px; }
+
+.row {
+  margin: 0px 0px 40px 30px; }
+
+.thumb span {
+  position: absolute;
+  visibility: hidden;
+  padding: 10px 70px 0px 10px; }
+
+.thumb:hover,
+.thumb:hover span {
+  visibility: visible;
+  top: 0px;
+  left: 100px;
+  z-index: 1;
+  background-color: #660BAB; }

@@ -1,0 +1,72 @@
+.img-circle {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #660BAB;
+  margin-right: 10px; }
+
+/*This is our main wrapping element, it's made 100vh high to ensure 
+it is always the correct size and then moved into place and padded 
+with negative margin and padding*/
+#post {
+  display: flex;
+  overflow: hidden;
+  height: 100vh;
+  position: relative;
+  width: 100%;
+  backface-visibility: hidden;
+  will-change: overflow; }
+
+.postPanel {
+  position: absolute;
+  left: 0px;
+  top: 0px; }
+
+.panel-textarea textarea {
+  width: 100%;
+  height: 115px;
+  color: black; }
+
+@media (max-width: 767px) {
+  .panel-textarea textarea {
+    max-width: 280px;
+    max-height: 115px; } }
+
+.panel-body {
+  background: white; }
+
+@media (max-width: 767px) {
+  #map {
+    max-width: 0px;
+    max-height: 0px; } }
+
+#map {
+  margin: 0px 0px 0px 0px; }
+
+p {
+  color: black; }
+
+.row {
+  margin: 0px 0px 0px 0px; }
+
+/*This just stops me getting horizontal scrolling if anything overflows the width*/
+body {
+  overflow-x: hidden; }
+
+.panel {
+  margin-bottom: 0px; }
+
+.scrollPanelLeft {
+  position: absolute;
+  left: 0px;
+  top: 240px;
+  bottom: 0px;
+  overflow-y: scroll; }
+
+.scrollPanelRight {
+  position: absolute;
+  right: 0px;
+  overflow-y: scroll; }
+
+.scrollPanelLeft::-webkit-scrollbar,
+.scrollPanelRight::-webkit-scrollbar {
+  display: none; }
