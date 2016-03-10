@@ -47,7 +47,7 @@ module.exports.profile = function(req, res) {
         twitter: '@' + 'COOLESOCOOL',
         followerCount: '2,784',
         followingCount: '456',
-        attendedCount: '4,901'
+        attendedCount: '400,901'
     });
 };
 /* GET event page */

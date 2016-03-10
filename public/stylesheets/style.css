@@ -59,6 +59,9 @@ a {
 .btn-default:active:focus {
   background-color: #660BAB; }
 
+.search-bar {
+  width: 400px !important; }
+
 .btn-search {
   background-color: white;
   color: #660BAB; }
