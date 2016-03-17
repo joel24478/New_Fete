@@ -26,10 +26,24 @@ if (req.params && req.params.Userid) {
             sendJsonResponse(res, 400, err);
             return;
           }
+		   var response = { 
+				user: { 
+					name: user.name,
+					//profilePicture: user.profilepic,
+					followerCount: user.Followers,
+					followingCount: user.Following,
+					//attendedCount: user.Attendedcount,
+					About: user.About
+				},
+				events:[]
+		    }
+			//response.events.push bla bla ?? 
           if (user.Events && user.Events.length > 0) {
-		  var response = []; 
+		  //var response = []; 
 			  user.Events.forEach( function(doc){
-			  response.push({//json array object will be returned
+			  response.events.push({//json array object will be returned
+			      userid: req.params.Userid,
+				  user: user.name,
 				  description: doc.Description,
                   location: doc.Location,
                   pictures: doc.Pictures, 
