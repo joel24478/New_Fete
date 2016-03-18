@@ -63,7 +63,9 @@ var doAddEvent = function(req, res, user) {
 module.exports.getEvent = function (req, res) { 
 // get user, then find the event
 if (req.params && req.params.Userid && req.params.Eventid) {
-    Loc
+    var OneUser = Loc.findById(req.params.Userid)
+	//consoler.log( OnerUser.name); 
+	Loc
       .findById(req.params.Userid)
       .select('Events')
       .exec(
@@ -80,7 +82,7 @@ if (req.params && req.params.Userid && req.params.Eventid) {
             return;
           }
           if (user.Events && user.Events.length > 0) {
-		    console.log( user.Events); 
+		    //console.log( user.Events); 
             event = user.Events.id(req.params.Eventid);
             if (!event) {
               sendJsonResponse(res, 404, {

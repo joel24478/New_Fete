@@ -10,9 +10,10 @@ res.json(content);
 module.exports.getMyEvents = function (req, res) { 
 // get user, then find the event
 if (req.params && req.params.Userid) {
+
     Loc
       .findById(req.params.Userid)
-      .select('Events')
+      .select('name About Following Followers Events')
       .exec(
         function(err, user) {
           //console.log(user);
@@ -26,6 +27,7 @@ if (req.params && req.params.Userid) {
             sendJsonResponse(res, 400, err);
             return;
           }
+		  //console.log( Loc.findById(req.params.Userid) ); 
 		   var response = { 
 				user: { 
 					name: user.name,
@@ -36,14 +38,13 @@ if (req.params && req.params.Userid) {
 					About: user.About
 				},
 				events:[]
-		    }
-			//response.events.push bla bla ?? 
+		    } 
+			//console.log( Loc.name); 
           if (user.Events && user.Events.length > 0) {
-		  //var response = []; 
 			  user.Events.forEach( function(doc){
 			  response.events.push({//json array object will be returned
 			      userid: req.params.Userid,
-				  user: user.name,
+				  user: "",
 				  description: doc.Description,
                   location: doc.Location,
                   pictures: doc.Pictures, 

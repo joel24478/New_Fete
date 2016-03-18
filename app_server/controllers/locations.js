@@ -1,8 +1,9 @@
-/* Get home page */
-/*var request = require('request'); 
+
+var request = require('request'); 
 var apiOptions = {
 server : "http://localhost:3000"
 };
+/*
 if (process.env.NODE_ENV === 'production') {
 apiOptions.server = "https://Fete.herokuapp.com";
 }*/
@@ -26,7 +27,7 @@ var _showError = function (req, res, status) {
   });
 };
 
-var renderHomepage = function(req, res, responseBody){
+var renderProflepage = function(req, res, responseBody){
   var message;
   if (!(responseBody instanceof Array)) {
     message = "API lookup error";
@@ -36,38 +37,47 @@ var renderHomepage = function(req, res, responseBody){
       message = "No Events posted";
     }
   }
+  //console.log( message + " error message" );
   res.render('profile', {
     events: responseBody.events,
     message: message,
 	title: 'Profile',
-    username: responseBody.user.name,
+    username: responseBody.name,
     profilePicture: 'https://farm7.staticflickr.com/6163/6195546981_200e87ddaf_b.jpg',
     location: 'SAN ANTONIO, TX',
     twitter: '@' + 'COOLESOCOOL',
-    followerCount: responseBody.user.follower,
-    followingCount: 'responseBody.user.following,
+    followerCount: responseBody.follower,
+    followingCount: responseBody.following,
     attendedCount: '4,901'
   });
 };
 
 // GET 'Profile' page 
-module.exports.homelist = function(req, res){
+module.exports.profile = function(req, res){
   var requestOptions, path;
-  path = '/api/profile';
+  //console.log( req.params.Useriid); 
+  path = '/profile'; //+ req.params.Useriid ;
+  
+  console.log("testing"); 
   requestOptions = {
     url : apiOptions.server + path,
     method : "GET",
-    json : {}
+    json : {}, 
+	userid: '56dcb3e90e36ea380c82bac7' 
   };
+  console.log( requestOptions ); 
   request(
     requestOptions,
     function(err, response, body) {
       var i, data;
       data = body;
-      renderHomepage(req, res, data);
+	  //console.log( body + ' body' ); 
+      renderProfilepage(req, res, data);
     }
   );
 };
+
+
 // event detail page ? 
 var getLocationInfo = function (req, res, callback) {
   var requestOptions, path;
@@ -150,20 +160,7 @@ module.exports.search = function(req, res) {
         subTitle: 'for the Party YOU want'
     });
 };
-/
-/* GET profile page */
-/*module.exports.profile = function(req, res) {
-    res.render('profile', {
-        title: 'Profile',
-        username: 'Jessica',
-        profilePicture: 'https://farm7.staticflickr.com/6163/6195546981_200e87ddaf_b.jpg',
-        location: 'SAN ANTONIO, TX',
-        twitter: '@' + 'COOLESOCOOL',
-        followerCount: '2,784',
-        followingCount: '456',
-        attendedCount: '4,901'
-    });
-};*/
+
 /* GET event page */
 module.exports.event = function(req, res) {
     res.render('event', {

@@ -23,7 +23,7 @@ if (req.params && req.params.Userid) {
         }
 		console.log( " hello world");
        // console.log(location);
-        sendJsonResponse(res, 200, location);
+        sendJsonResponse(res, 200, Profile);
       });
   } else {
   //console.log(location); 

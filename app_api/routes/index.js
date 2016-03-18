@@ -30,7 +30,7 @@ router.get('/login', ctrlSignup.getUser);
 //Event Detail 
 
 //Profile
-router.get('/profile/:Userid/Event/:Eventid',ctrlProfile.getMyEvent);
+router.get('/profile/:Userid/Event/:Eventid',ctrlHome.getEvent);
 router.get('/profile/:Userid',ctrlProfile.getMyEvents);
 router.post('/profile/:Userid',ctrlHome.createEvent); 
 router.put('/profile/:Userid/Event/:Eventid',ctrlHome.updateEvent);
