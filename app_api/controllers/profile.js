@@ -46,7 +46,7 @@ var Uid = req.query.userid;
 			  user.Events.forEach( function(doc){
 			  response.events.push({//json array object will be returned
 			      userid: req.params.Userid,
-				  user: "",
+				  user: user.name,
 				  description: doc.Description,
                   location: doc.Location,
                   pictures: doc.Pictures, 
@@ -55,10 +55,10 @@ var Uid = req.query.userid;
                   date: doc.Date, 
                   public: doc.Public, 
                   coords: doc.coords,
-                  id: req.params.Eventid
+                  id: doc._id
 				});
               });
-			  console.log( response); 
+			  //console.log( response); 
               sendJsonResponse(res, 200, response); 
           } else {
             sendJsonResponse(res, 404, {

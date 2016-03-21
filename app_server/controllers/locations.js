@@ -23,8 +23,14 @@ var _showError = function (req, res, status) {
 };
 //renderProfilepage
 var renderProfilepage = function(req, res, responseBody){
+var message;
   console.log( responseBody);
-  var message;
+  var name = responseBody.user.name;
+  //var about = responseBody.user.about;
+  //var profilepic = responseBody.user.profilePicture; 
+  //var attended =  responseBody.user.attendedCount 
+  var followers = responseBody.user.followerCount;
+  var following = responseBody.user.followingCount;
   if (!(responseBody instanceof Array)) {
     message = "API lookup error";
     responseBody = [];
@@ -37,12 +43,12 @@ var renderProfilepage = function(req, res, responseBody){
     events: responseBody.events,
     message: message,
 	title: 'Profile',
-    username: responseBody.name,
+    username: name,
     profilePicture: 'https://farm7.staticflickr.com/6163/6195546981_200e87ddaf_b.jpg',
     location: 'SAN ANTONIO, TX',
     twitter: '@' + 'COOLESOCOOL',
-    followerCount: responseBody.followerCount,
-    followingCount: responseBody.followingCount,
+    followerCount: followers,
+    followingCount: following,
     attendedCount: '4,901'
   });
 };
@@ -50,21 +56,20 @@ var getProfileInfo = function( req, res, callback ) {
 var requestOptions, path;
 
   path = '/api/profile/' + req.params.Userid; 
-  
-  console.log("testing"); 
+  //console.log("testing"); 
   requestOptions = {
     url: apiOptions.server + path,
     method: "GET",
     json: {} 
 	//userid: "56dcb3e90e36ea380c82bac7" 
   };
-  console.log( requestOptions ); 
+  //console.log( requestOptions ); 
   request(
     requestOptions,
     function(err, response, body) {
       var i, data;
       data = body;
-	  console.log( body + ' body' ); 
+	  //console.log( body + ' body' ); 
       callback(req, res, data);
 	  //renderProfilepage(req, res, data);
     }
@@ -72,7 +77,7 @@ var requestOptions, path;
 } 
 // GET 'Profile' page 
 module.exports.profile = function(req, res){
-  console.log("exports profile" ); 
+  console.log(" running exports profile" ); 
   getProfileInfo( req, res, function( req, res,responseData) { 
 	renderProfilepage( req, res, responseData);
   });
@@ -127,18 +132,30 @@ var getLocationInfo = function (req, res, callback) {
 //detail page
 var renderDetailPage = function (req, res, locDetail) {
   res.render('event', {
-    title: locDetail.name,
-    pageHeader: {title: locDetail.name},
-    /*sidebar: {
-      context: 'is on Loc8r because it has accessible wifi and space to sit down with your laptop and get some work done.',
-      callToAction: 'If you\'ve been and you like it - or if you don\'t - please leave a review to help other people just like you.'
-    },*/
-    location: locDetail
+    title: 'Event Detial',
+    username: locDetail.name,
+	pageHeader: {title: locDetail.name},
+	profilePicture: 'https://farm7.staticflickr.com/6163/6195546981_200e87ddaf_b.jpg',
+	location: locDetail.location,
+	eventTime: '11:00 PM',
+	eventDate: locDetail.data,
+	details: 'Come if you want, but bring a bottle',
+	flyer: '/images/august20lawrence.jpg'
   });
+	/*res.render('event', {
+        title: 'Event Details',
+        username: 'Jessica',
+        profilePicture: 'https://farm7.staticflickr.com/6163/6195546981_200e87ddaf_b.jpg',
+        location: 'SAN ANTONIO, TX',
+        eventTime: '11:00 PM',
+        eventDate: '4/20/2016',
+        details: 'Come if you want, but bring a bottle',
+        flyer: '/images/august20lawrence.jpg'
+    });*/
 };
 
 // GET 'Location info' page get the event info..
-module.exports.locationInfo = function(req, res){
+module.exports.event = function(req, res){
   getLocationInfo(req, res, function(req, res, responseData) {
     renderDetailPage(req, res, responseData);
   });
@@ -180,20 +197,6 @@ module.exports.search = function(req, res) {
         title: 'Search',
         subTitle: 'for the Party YOU want'
     });
-};
-
-/* GET event page */
-module.exports.event = function(req, res) {
-    /*res.render('event', {
-        title: 'Event Details',
-        username: 'Jessica',
-        profilePicture: 'https://farm7.staticflickr.com/6163/6195546981_200e87ddaf_b.jpg',
-        location: 'SAN ANTONIO, TX',
-        eventTime: '11:00 PM',
-        eventDate: '4/20/2016',
-        details: 'Come if you want, but bring a bottle',
-        flyer: '/images/august20lawrence.jpg'
-    });*/
 };
 
 /* GET Followers page */
