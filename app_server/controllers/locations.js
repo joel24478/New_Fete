@@ -23,14 +23,16 @@ var _showError = function (req, res, status) {
 };
 //renderProfilepage
 var renderProfilepage = function(req, res, responseBody){
-var message;
-  console.log( responseBody);
+  var message = ""; 
   var name = responseBody.user.name;
-  //var about = responseBody.user.about;
-  //var profilepic = responseBody.user.profilePicture; 
-  //var attended =  responseBody.user.attendedCount 
+  var about = responseBody.user.About;
+  var profilepic = responseBody.user.profilePicture; 
+  var attended =  responseBody.user.Attended;  
   var followers = responseBody.user.followerCount;
   var following = responseBody.user.followingCount;
+  var Events =  responseBody.events;
+  console.log( Events); 
+ 
   if (!(responseBody instanceof Array)) {
     message = "API lookup error";
     responseBody = [];
@@ -40,23 +42,23 @@ var message;
     }
   }
   res.render('profile', {
-    events: responseBody.events,
+    events: Events,
     message: message,
 	title: 'Profile',
     username: name,
-    profilePicture: 'https://farm7.staticflickr.com/6163/6195546981_200e87ddaf_b.jpg',
-    location: 'SAN ANTONIO, TX',
-    twitter: '@' + 'COOLESOCOOL',
+    profilePicture: profilepic,
+    location: 'SAN ANTONIO, TX',  //this will be in the about me section
+    twitter: '@' + 'COOLESOCOOL', //this will be in the about me section
     followerCount: followers,
     followingCount: following,
-    attendedCount: '4,901'
+    attendedCount: attended
   });
 };
 var getProfileInfo = function( req, res, callback ) { 
-var requestOptions, path;
-
+  
+  var requestOptions, path;
   path = '/api/profile/' + req.params.Userid; 
-  //console.log("testing"); 
+  
   requestOptions = {
     url: apiOptions.server + path,
     method: "GET",
@@ -71,7 +73,6 @@ var requestOptions, path;
       data = body;
 	  //console.log( body + ' body' ); 
       callback(req, res, data);
-	  //renderProfilepage(req, res, data);
     }
   );
 } 
@@ -81,29 +82,7 @@ module.exports.profile = function(req, res){
   getProfileInfo( req, res, function( req, res,responseData) { 
 	renderProfilepage( req, res, responseData);
   });
-  
-  /*
-  var requestOptions, path;
-  path = '/api/profile/' + req.params.Userid; 
-  console.log("testing"); 
-  requestOptions = {
-    url: apiOptions.server + path,
-    method: "GET",
-    json: {} 
-	//userid: "56dcb3e90e36ea380c82bac7" 
-  };
-  console.log( requestOptions ); 
-  request(
-    requestOptions,
-    function(err, response, body) {
-      var i, data;
-      data = body;
-	  //console.log( body + ' body' ); 
-      renderProfilepage(req, res, data);
-    }
-  );*/
 };
-
 // event detail page ? 
 var getLocationInfo = function (req, res, callback) {
   var requestOptions, path;
@@ -118,10 +97,6 @@ var getLocationInfo = function (req, res, callback) {
     function(err, response, body) {
       var data = body;
       if (response.statusCode === 200) {
-        /*data.coords = {
-          lng : body.coords[0],
-          lat : body.coords[1]
-        };*/
         callback(req, res, data);
       } else {
         _showError(req, res, response.statusCode);
@@ -142,16 +117,6 @@ var renderDetailPage = function (req, res, locDetail) {
 	details: 'Come if you want, but bring a bottle',
 	flyer: '/images/august20lawrence.jpg'
   });
-	/*res.render('event', {
-        title: 'Event Details',
-        username: 'Jessica',
-        profilePicture: 'https://farm7.staticflickr.com/6163/6195546981_200e87ddaf_b.jpg',
-        location: 'SAN ANTONIO, TX',
-        eventTime: '11:00 PM',
-        eventDate: '4/20/2016',
-        details: 'Come if you want, but bring a bottle',
-        flyer: '/images/august20lawrence.jpg'
-    });*/
 };
 
 // GET 'Location info' page get the event info..

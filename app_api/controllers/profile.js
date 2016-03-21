@@ -9,14 +9,12 @@ res.json(content);
 //Get all user's events 
 module.exports.getMyEvents = function (req, res) { 
 // get user, then find the event
-//console.log( req.query.userid); 
-//if (req.params){
+
 if (req.params && req.params.Userid) {
-var Uid = req.query.userid; 
+//.select('name About Following Followers followersID followingID totalAttended profilepic Events')
     Loc
       .findById(req.params.Userid)
-      .select('name About Following Followers Events')
-      .exec(
+        .exec(
         function(err, user) {
           //console.log(user);
           var response, event;
@@ -30,14 +28,17 @@ var Uid = req.query.userid;
             return;
           }
 		  //console.log( Loc.findById(req.params.Userid) ); 
+		  console.log( user.name); 
 		   var response = { 
 				user: { 
 					name: user.name,
-					//profilePicture: user.profilepic,
+					profilePicture: user.profilepic,
 					followerCount: user.Followers,
+					followersID: user.followersID, 
 					followingCount: user.Following,
-					//attendedCount: user.Attendedcount,
-					//About: user.About
+					followingID: user.followingID,
+					Attended: user.totalAttended,
+					About: user.About
 				},
 				events:[]
 		    } 

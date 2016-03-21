@@ -2,7 +2,7 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema; 
 
 //need the name of the event
-//need the start and end time of the event; 
+
 var eventSchema = new Schema({
 Name: {type: String, required: true}, 
 Description:  {type: String, required: true},
@@ -18,8 +18,7 @@ Public: {type: Boolean, required: true},
 coords: { type: [Number], index: '2dsphere'}
 });
 
-//add profile_pic, total attended, array of follower ids to the user schema
-//need current position
+//time of creation 
 var usersSchema = new Schema({ 
 name: {type: String, required: true}, 
 email: {type: String, required: true},
