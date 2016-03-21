@@ -3,13 +3,17 @@ var Schema = mongoose.Schema;
 
 //need the name of the event
 //need the start and end time of the event; 
-var eventSchema = new Schema({ 
+var eventSchema = new Schema({
+Name: {type: String, required: true}, 
 Description:  {type: String, required: true},
 Location:  {type: String, required: true}, 
-Pictures: [String], 
+EventPicture: String,
+Pictures: [String],
 Going: Number, 
 Attended: Number,
-Date: { type: Date, required: true}, 
+Date: { type: Date, required: true},
+StartTime: String, 
+EndTime: String,  
 Public: {type: Boolean, required: true},
 coords: { type: [Number], index: '2dsphere'}
 });
@@ -23,6 +27,11 @@ pw: {type: String, required: true},
 About: String,
 Followers: Number,
 Following: Number,
+followersID: [String], 
+followingID: [String],
+totalAttended: Number,
+profilepic: String, 
+currentposition: { type: [Number], index: '2dsphere'},
 Events: [eventSchema]
 }) ;
 
