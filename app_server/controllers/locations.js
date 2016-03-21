@@ -1,12 +1,7 @@
-
-var request = require('request'); 
+var request = require("request"); 
 var apiOptions = {
 server : "http://localhost:3000"
 };
-/*
-if (process.env.NODE_ENV === 'production') {
-apiOptions.server = "https://Fete.herokuapp.com";
-}*/
 
 var _showError = function (req, res, status) {
   var title, content;
@@ -26,8 +21,9 @@ var _showError = function (req, res, status) {
     content : content
   });
 };
-
-var renderProflepage = function(req, res, responseBody){
+//renderProfilepage
+var renderProfilepage = function(req, res, responseBody){
+  console.log( responseBody);
   var message;
   if (!(responseBody instanceof Array)) {
     message = "API lookup error";
@@ -37,7 +33,6 @@ var renderProflepage = function(req, res, responseBody){
       message = "No Events posted";
     }
   }
-  //console.log( message + " error message" );
   res.render('profile', {
     events: responseBody.events,
     message: message,
@@ -46,24 +41,51 @@ var renderProflepage = function(req, res, responseBody){
     profilePicture: 'https://farm7.staticflickr.com/6163/6195546981_200e87ddaf_b.jpg',
     location: 'SAN ANTONIO, TX',
     twitter: '@' + 'COOLESOCOOL',
-    followerCount: responseBody.follower,
-    followingCount: responseBody.following,
+    followerCount: responseBody.followerCount,
+    followingCount: responseBody.followingCount,
     attendedCount: '4,901'
   });
 };
+var getProfileInfo = function( req, res, callback ) { 
+var requestOptions, path;
 
-// GET 'Profile' page 
-module.exports.profile = function(req, res){
-  var requestOptions, path;
-  //console.log( req.params.Useriid); 
-  path = '/profile'; //+ req.params.Useriid ;
+  path = '/api/profile/' + req.params.Userid; 
   
   console.log("testing"); 
   requestOptions = {
-    url : apiOptions.server + path,
-    method : "GET",
-    json : {}, 
-	userid: '56dcb3e90e36ea380c82bac7' 
+    url: apiOptions.server + path,
+    method: "GET",
+    json: {} 
+	//userid: "56dcb3e90e36ea380c82bac7" 
+  };
+  console.log( requestOptions ); 
+  request(
+    requestOptions,
+    function(err, response, body) {
+      var i, data;
+      data = body;
+	  console.log( body + ' body' ); 
+      callback(req, res, data);
+	  //renderProfilepage(req, res, data);
+    }
+  );
+} 
+// GET 'Profile' page 
+module.exports.profile = function(req, res){
+  console.log("exports profile" ); 
+  getProfileInfo( req, res, function( req, res,responseData) { 
+	renderProfilepage( req, res, responseData);
+  });
+  
+  /*
+  var requestOptions, path;
+  path = '/api/profile/' + req.params.Userid; 
+  console.log("testing"); 
+  requestOptions = {
+    url: apiOptions.server + path,
+    method: "GET",
+    json: {} 
+	//userid: "56dcb3e90e36ea380c82bac7" 
   };
   console.log( requestOptions ); 
   request(
@@ -74,9 +96,8 @@ module.exports.profile = function(req, res){
 	  //console.log( body + ' body' ); 
       renderProfilepage(req, res, data);
     }
-  );
+  );*/
 };
-
 
 // event detail page ? 
 var getLocationInfo = function (req, res, callback) {
@@ -105,7 +126,7 @@ var getLocationInfo = function (req, res, callback) {
 };
 //detail page
 var renderDetailPage = function (req, res, locDetail) {
-  res.render('event-info', {
+  res.render('event', {
     title: locDetail.name,
     pageHeader: {title: locDetail.name},
     /*sidebar: {
@@ -163,7 +184,7 @@ module.exports.search = function(req, res) {
 
 /* GET event page */
 module.exports.event = function(req, res) {
-    res.render('event', {
+    /*res.render('event', {
         title: 'Event Details',
         username: 'Jessica',
         profilePicture: 'https://farm7.staticflickr.com/6163/6195546981_200e87ddaf_b.jpg',
@@ -172,7 +193,7 @@ module.exports.event = function(req, res) {
         eventDate: '4/20/2016',
         details: 'Come if you want, but bring a bottle',
         flyer: '/images/august20lawrence.jpg'
-    });
+    });*/
 };
 
 /* GET Followers page */

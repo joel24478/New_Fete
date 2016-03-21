@@ -9,8 +9,10 @@ res.json(content);
 //Get all user's events 
 module.exports.getMyEvents = function (req, res) { 
 // get user, then find the event
+//console.log( req.query.userid); 
+//if (req.params){
 if (req.params && req.params.Userid) {
-
+var Uid = req.query.userid; 
     Loc
       .findById(req.params.Userid)
       .select('name About Following Followers Events')
@@ -35,7 +37,7 @@ if (req.params && req.params.Userid) {
 					followerCount: user.Followers,
 					followingCount: user.Following,
 					//attendedCount: user.Attendedcount,
-					About: user.About
+					//About: user.About
 				},
 				events:[]
 		    } 
@@ -56,7 +58,8 @@ if (req.params && req.params.Userid) {
                   id: req.params.Eventid
 				});
               });
-              sendJsonResponse(res, 200, response);
+			  console.log( response); 
+              sendJsonResponse(res, 200, response); 
           } else {
             sendJsonResponse(res, 404, {
               "message": "No Events found"
