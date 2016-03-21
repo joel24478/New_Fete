@@ -37,12 +37,17 @@ var doAddEvent = function(req, res, user) {
     sendJsonResponse(res, 404, "Userid not found");
   } else {
     user.Events.push({
+	  Name: req.body.name,
 	  Description: req.body.description,
 	  Location: req.body.location,
-	  Pictures: req.body.pictues,
+	  EventPicture:  req.body.picture, 
+	  Pictures: req.body.pictures,
 	  Going: 0, 
-	  Attended: 0, 
+	  Attended: 0,
+	  PostDate: new Date(),
 	  Date: req.body.date, 
+	  StartTime: String, 
+	  EndTime: String, 
 	  Public: req.body.public, 
 	  coords: req.body.coords 
     });
@@ -91,12 +96,17 @@ if (req.params && req.params.Userid && req.params.Eventid) {
             } else {
               response = {//json object that will be returned
                 event: {
+				  name: event.Name,
 				  description: event.Description,
                   location: event.Location,
-                  pictures: event.Pictures, 
+				  eventPicture: event.Picture,
+                  pictures: event.Pictures,				  
                   going: event.Going, 
-                  attended: event.Attended, 
-                  date: event.Date, 
+                  attended: event.Attended,
+				  postDate: event.PostDate,
+                  date: event.Date,
+				  startTime: event.startTime,
+				  EndTIme: event.EndTIme,
                   public: event.Public, 
                   coords: event.coords,
                   id: req.params.Eventid

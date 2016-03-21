@@ -27,8 +27,6 @@ if (req.params && req.params.Userid) {
             sendJsonResponse(res, 400, err);
             return;
           }
-		  //console.log( Loc.findById(req.params.Userid) ); 
-		  console.log( user.name); 
 		   var response = { 
 				user: { 
 					name: user.name,
@@ -47,13 +45,17 @@ if (req.params && req.params.Userid) {
 			  user.Events.forEach( function(doc){
 			  response.events.push({//json array object will be returned
 			      userid: req.params.Userid,
-				  user: user.name,
+				  name: event.Name,
 				  description: doc.Description,
                   location: doc.Location,
-                  pictures: doc.Pictures, 
+				  eventPicture: doc.Picture,
+                  pictures: doc.Pictures,				  
                   going: doc.Going, 
-                  attended: doc.Attended, 
-                  date: doc.Date, 
+                  attended: doc.Attended,
+				  postDate: doc.PostDate,
+                  date: doc.Date,
+				  startTime: doc.StartTime,
+				  EndTIme: doc.EndTime,
                   public: doc.Public, 
                   coords: doc.coords,
                   id: doc._id

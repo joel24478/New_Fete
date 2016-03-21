@@ -41,9 +41,15 @@ console.log(req.body);
     name: req.body.name,
     email: req.body.email,
     pw: req.body.pw,
-    About: "",
+    About: req.body.About,
 	Followers: 0,
-	Following: 0, 
+	Following: 0,
+    totalAttended: 0,
+	profilepic: req.body.profilepic,
+	followersID: [], 
+    followingID: [],
+	currentPosition: [0,0],
+	DateofCreation: new Date(),
 	Events: [] 
   }, function(err, user) {
     if (err) {
