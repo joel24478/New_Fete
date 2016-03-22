@@ -16,7 +16,7 @@ router.get('/profile/:Userid', ctrlLocations.profile);
 router.get('/profile/:Userid/event/:Eventid', ctrlLocations.event);
 router.get('/followers', ctrlLocations.followers);
 router.get('/index', ctrlLocations.index);
-
+//change userid to the username
 
 /* Other pages */
 router.get('/about', ctrlOthers.about);

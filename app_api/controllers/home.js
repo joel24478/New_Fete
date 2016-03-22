@@ -42,7 +42,9 @@ var doAddEvent = function(req, res, user) {
 	  Location: req.body.location,
 	  EventPicture:  req.body.picture, 
 	  Pictures: req.body.pictures,
-	  Going: 0, 
+	  Going: 0,
+      GoingID: [],
+      Invited: [],	  
 	  Attended: 0,
 	  PostDate: new Date(),
 	  Date: req.body.date, 
@@ -102,7 +104,9 @@ if (req.params && req.params.Userid && req.params.Eventid) {
 				  eventPicture: event.Picture,
                   pictures: event.Pictures,				  
                   going: event.Going, 
-                  attended: event.Attended,
+                  goingID: event.GoingID,
+				  invitedID: event.InvitedID, 
+				  attended: event.Attended,
 				  postDate: event.PostDate,
                   date: event.Date,
 				  startTime: event.startTime,
@@ -129,7 +133,8 @@ if (req.params && req.params.Userid && req.params.Eventid) {
   }
 };
 
-module.exports.updateEvent = function (req, res) { 
+module.exports.updateEvent = function (req, res) {
+//get the info then enter it 
 	if (!req.params.Userid || !req.params.Eventid) {
     sendJSONresponse(res, 404, {
       "message": "Not found, Userid and Eventid are both required"
@@ -162,13 +167,25 @@ module.exports.updateEvent = function (req, res) {
           } else {
 		    //console.log(thisEvent); 
 			console.log( req.body.Description)
-            thisEvent.Description = req.body.Description;
+            /*thisEvent.Description = req.body.Description;
             thisEvent.Location = req.body.Location;
             thisEvent.Pictures = req.body.Pictures;
             thisEvent.Date = req.body.Date;
 			thisEvent.Public = req.body.Public;
-			thisEvent.coords =  req.body.coords;
-			
+			thisEvent.coords =  req.body.coords;*/
+			thisEvent.name: req.body.Name,
+		    thisEvent.description: req.body.Description,
+		    thisEvent.location: req.body.Location,
+		    thisEvent.eventPicture: req.body.Picture,
+		    thisEvent.pictures: req.body.Pictures,				  
+		    thisEvent.going: req.body.Going, 
+		    thisEvent.goingID: req.body.GoingID,
+		    thisEvent.invitedID: req.body.InvitedID, 
+		    thisEvent.date: req.body.Date,
+		    thisEvent.startTime: req.body.startTime,
+		    thisEvent.EndTIme: req.body.EndTIme,
+		    thisEvent.public: req.body.Public, 
+		    thisEvent.coords: req.body.coords
 			user.save(function(err, user) {
               if (err) {
                 sendJsonResponse(res, 404, err);

@@ -47,6 +47,7 @@ var renderProfilepage = function(req, res, responseBody){
 	title: 'Profile',
     username: name,
     profilePicture: profilepic,
+	about: about, 
     location: 'SAN ANTONIO, TX',  //this will be in the about me section
     twitter: '@' + 'COOLESOCOOL', //this will be in the about me section
     followerCount: followers,
@@ -106,7 +107,28 @@ var getLocationInfo = function (req, res, callback) {
 };
 //detail page
 var renderDetailPage = function (req, res, locDetail) {
+  
   res.render('event', {
+    title: 'Event Detial',
+    detail: locDetail.Description,
+	username: locDetail.name,
+	pageHeader: {title: locDetail.name},
+	profilePicture: 'https://farm7.staticflickr.com/6163/6195546981_200e87ddaf_b.jpg',
+	Pictures: locDetail.Pictures,
+	location: locDetail.location,
+	eventTime: locDetail.StartTime,
+	eventEndTime: locDetail.EndTime,
+	eventDate: locDetail.Date,
+	PostDate: locDetail.PostDate,
+	Going: locDetail.Going,
+	GoingID: locDetail.GoingID,
+	Invited: [String],
+	Attend: locDetail.Attend,
+	flyer: locDetail.EventPicture,
+	Public: locDetail.Public,
+	Location: locDetail.coords
+  })
+  /*res.render('event', {
     title: 'Event Detial',
     username: locDetail.name,
 	pageHeader: {title: locDetail.name},
@@ -116,7 +138,7 @@ var renderDetailPage = function (req, res, locDetail) {
 	eventDate: locDetail.data,
 	details: 'Come if you want, but bring a bottle',
 	flyer: '/images/august20lawrence.jpg'
-  });
+  });*/
 };
 
 // GET 'Location info' page get the event info..
@@ -127,7 +149,14 @@ module.exports.event = function(req, res){
 };
 
 module.exports.home = function(req, res) {
-    res.render('home', {
+    /*
+	res.render('home', {
+	events: loc.Events
+	  });
+	*/
+	
+	
+	res.render('home', {
         title: 'Fete',
         subTitle: 'for the Party YOU want',
         profilePicture: 'https://farm7.staticflickr.com/6163/6195546981_200e87ddaf_b.jpg',
