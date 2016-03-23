@@ -5,7 +5,7 @@ var sendJsonResponse = function(res, status, content) {
 res.status(status);
 res.json(content);
 };
-
+ 
 //Get all user's events 
 module.exports.getMyEvents = function (req, res) { 
 // get user, then find the event

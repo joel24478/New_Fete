@@ -3,9 +3,13 @@ var router = express.Router();
 //var ctrlMain = require('../controllers/main');
 var ctrlLocations = require('../controllers/locations');
 var ctrlOthers = require('../controllers/others');
+//var ctrlLoginSignup = require('../controllers/loginSignup');
 
 /* GET home page. */
 //router.get('/', ctrlMain.index);
+//signing up 
+//router.get('/signup', ctrlLoginSignup.signup)
+
 
 /* Locations pages*/
 router.get('/', ctrlLocations.home);

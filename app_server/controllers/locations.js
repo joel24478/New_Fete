@@ -154,8 +154,6 @@ module.exports.home = function(req, res) {
 	events: loc.Events
 	  });
 	*/
-	
-	
 	res.render('home', {
         title: 'Fete',
         subTitle: 'for the Party YOU want',

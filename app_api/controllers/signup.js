@@ -5,6 +5,30 @@ var sendJsonResponse = function(res, status, content) {
 res.status(status);
 res.json(content);
 };
+
+module.exports.DoesUserExist = function (req, res) { 
+	Loc.find( { email: req.body.email } ).exec( 
+	 function(err, user) {
+	  console.log(user+"does user exist");
+	  var response;
+	  if (!user) {
+		sendJsonResponse(res, 200, {
+		  "User": false,
+		  "Email": req.body.email
+		});
+		return;
+	  } else if (err) {
+		sendJsonResponse(res, 400, err);
+		return;
+	  }
+	   var response = { 
+			User: true
+	   }
+	   sendJsonResponse(res, 200, response);
+	}
+)};
+
+
 module.exports.getUser = function (req, res) { 
 //get the user
 if (req.params && req.params.Userid) {
