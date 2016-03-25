@@ -23,7 +23,7 @@ router.delete('/:Userid/Event/:Eventid/comments/:Commentid',ctrlHome.deleteComme
 //Sign_up 
 //router.get('/login/:Userid', ctrlSignup.getUser); 
 router.post('/Signup', ctrlSignup.createUser);
-
+router.get('/Signup', ctrlSignup.GetUserByEmail); // by
 //Login
 router.get('/login', ctrlSignup.getUser);
 

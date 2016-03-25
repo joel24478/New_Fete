@@ -25,7 +25,7 @@ coords: { type: [Number], index: '2dsphere'}
 //need time of creation 
 var usersSchema = new Schema({ 
 name: {type: String, required: true}, 
-email: {type: String, required: true},
+email: {type: String, unigue: true, required: true},
 pw: {type: String, required: true},
 About: String,
 Followers: Number,
