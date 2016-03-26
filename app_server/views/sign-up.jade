@@ -1,6 +1,7 @@
 extends layout
 block append head 
   link(rel='stylesheet', href='/stylesheets/signup.css')
+  script(src="/javascripts/validation.js")
 block content
   #banner.page-header
   .container
@@ -25,10 +26,10 @@ block content
             .input-group
               span.input-group-addon
                 i.glyphicon.glyphicon-lock
-              input#password.form-control(type='password', name='password', placeholder='Password')
+              input#password.form-control(type='password', name='pw', placeholder='Password')
             .form-group
               .col-md-8.controls
-                button.btn.btn-primary.pull-right(type='submit', href='#')
+                button.btn.btn-primary.pull-right(type='submit', href='SignUp')
                   i.glyphicon.glyphicon-log-in
                   |  SignUp
               .col-md-8
