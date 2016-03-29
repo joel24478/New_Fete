@@ -1,3 +1,15 @@
+/*
+  File:  Fete/sass/profiles.scss
+  Joel Cruz, UMass Lowell Computer Science, jcruz@student.uml.edu
+  Copyright (c) 2016 by Joel Cruz.  All rights reserved.  May be freely copied or excerpted for educational purposes with credit to the author.
+  updated by JC on March 27, 2016
+*/
+/*
+  File:  Fete/sass/variables.js
+  Joel Cruz, UMass Lowell Computer Science, jcruz@student.uml.edu
+  Copyright (c) 2016 by Joel Cruz.  All rights reserved.  May be freely copied or excerpted for educational purposes with credit to the author.
+  updated by JC on March 27, 2016
+*/
 .square,
 .btn {
   border-radius: 0px !important; }
@@ -138,6 +150,16 @@ div.user-menu div.user-menu-content:not(.active) {
 .user-pad {
   padding: 20px 25px; }
 
+@media (max-width: 767px) {
+  .user-pad {
+    padding: 0px 0px; }
+  .user-pad h3 {
+    font-weight: 400 !important;
+    font-size: 10pt;
+    margin: 10px 0 0 10px !important; }
+  .user-pad h4 {
+    font-size: 15pt !important; } }
+
 .no-pad {
   padding-right: 0;
   padding-left: 0;
@@ -217,3 +239,8 @@ div.user-menu div.user-menu-content:not(.active) {
 @media (max-width: 767px) {
   .user-image {
     max-height: 400px; } }
+
+@media (max-width: 767px) {
+  div .user-menu-container .thumbnail {
+    max-height: 200px;
+    max-width: 200px; } }

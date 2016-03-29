@@ -10,7 +10,7 @@ block content
     .row.user-menu-container.square
       .col-md-7.user-details
         .row.purplebg.white
-          .col-md-6.no-pad
+          .col-md-6.col-sm-3.no-pad
             .user-pad
               div#profileClip
                 h3 #{username}
@@ -28,13 +28,13 @@ block content
             .user-image
               img.img-responsive.thumbnail(src='#{profilePicture}')
         .row.overview.lightpurplebg
-          .col-md-4.user-pad.text-center
+          .col-md-4.col-xs-4.user-pad.text-center
             h3 FOLLOWERS
             h4.white #{followerCount}
-          .col-md-4.user-pad.text-center
+          .col-md-4.col-xs-4.user-pad.text-center
             h3 FOLLOWING
             h4.white #{followingCount}
-          .col-md-4.user-pad.text-center
+          .col-md-4.col-xs-4.user-pad.text-center
             h3 ATTENDED
             h4.white #{attendedCount}
       .col-md-1.user-menu-btns
