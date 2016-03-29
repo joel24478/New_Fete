@@ -128,17 +128,6 @@ var renderDetailPage = function (req, res, locDetail) {
 	Public: locDetail.Public,
 	Location: locDetail.coords
   })
-  /*res.render('event', {
-    title: 'Event Detial',
-    username: locDetail.name,
-	pageHeader: {title: locDetail.name},
-	profilePicture: 'https://farm7.staticflickr.com/6163/6195546981_200e87ddaf_b.jpg',
-	location: locDetail.location,
-	eventTime: '11:00 PM',
-	eventDate: locDetail.data,
-	details: 'Come if you want, but bring a bottle',
-	flyer: '/images/august20lawrence.jpg'
-  });*/
 };
 
 // GET 'Location info' page get the event info..

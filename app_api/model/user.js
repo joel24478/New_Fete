@@ -2,10 +2,11 @@
 	Author: Zheondre Angel Calcano
 	Created: ‎Tuesday, ‎March ‎08, ‎2016, ‏‎8:02:00 PM
 	File name: user.js 
-	Objective: File that contains the schemas
 */
 var mongoose = require('mongoose') 
 var Schema = mongoose.Schema; 
+var crypto = require('crypto');
+var jwt = require('jsonwebtoken');
 
 var eventSchema = new Schema({
 Name: {type: String, required: true}, 
@@ -15,9 +16,9 @@ EventPicture: String,
 Pictures: [String],
 Going: Number,
 GoingID: [String],
-Invited: [String],  
+InvitedID: [String],  
 Attended: Number,
-PostDate: { type: Date, required: true},
+PostDate: { type: Date, "default": Date.now },
 Date: { type: Date, required: true},
 StartTime: String, 
 EndTime: String,  
@@ -27,11 +28,11 @@ coords: { type: [Number], index: '2dsphere'}
 
 // Schema for user 
 var usersSchema = new Schema({
-hash: String
+hash: String,
 salt: String, 
 name: {type: String, required: true}, 
 email: {type: String, unigue: true, required: true},
-pw: {type: String, required: true},
+//pw: {type: String, required: true},
 About: String,
 Followers: Number,
 Following: Number,
@@ -40,7 +41,7 @@ followingID: [String],
 totalAttended: Number,
 profilepic: String, 
 currentposition: { type: [Number], index: '2dsphere'},
-DateofCreation:{ type: Date, required: true},
+DateofCreation:{ type: Date, "default": Date.now},
 Events: [eventSchema]
 }) ;
 

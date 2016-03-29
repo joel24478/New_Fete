@@ -3,6 +3,7 @@ var router = express.Router();
 //var ctrlMain = require('../controllers/main');
 var ctrlLocations = require('../controllers/locations');
 var ctrlOthers = require('../controllers/others');
+var ctrlEvents = require('../controllers/event');
 //var ctrlLoginSignup = require('../controllers/loginSignup');
 
 /* GET home page. */
@@ -21,6 +22,10 @@ router.get('/profile/:Userid/event/:Eventid', ctrlLocations.event);
 router.get('/followers', ctrlLocations.followers);
 router.get('/index', ctrlLocations.index);
 //change userid to the username
+
+//post event
+router.post('/profile/:Userid', ctrlEvents.addEvent);
+
 
 /* Other pages */
 router.get('/about', ctrlOthers.about);

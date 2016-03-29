@@ -6,7 +6,7 @@ server : "http://localhost:3000"
 var DoesUserAlreadyExist = function( req, res, callback ) { 
   //check if the email is in the database if not create the user
   var requestOptions, path;
-  path = '/api/sign-up'; 
+  //path = '/api/sign-up'; 
   postdata  = { name: req.body.name	};
   requestOptions = {
 	url : apiOptions.server + path,
@@ -21,7 +21,7 @@ var DoesUserAlreadyExist = function( req, res, callback ) {
 } 
 var MakeNewAccount = function(req, res, callback) {
 var requestOptions, path;
-  path = '/api/Signup'; 
+  //path = '/api/Signup'; 
   postdata  = {
     name:  req.body.name,
 	email: req.body.email,

@@ -29,7 +29,7 @@ if (req.params && req.params.Userid) {
           }
 		   var response = { 
 				user: { 
-					name: user.name,
+					name: user.Name,
 					profilePicture: user.profilepic,
 					followerCount: user.Followers,
 					followersID: user.followersID, 
@@ -45,7 +45,7 @@ if (req.params && req.params.Userid) {
 			  user.Events.forEach( function(doc){
 			  response.events.push({//json array object will be returned
 			      userid: req.params.Userid,
-				  name: event.Name,
+				  name: doc.Name,
 				  description: doc.Description,
                   location: doc.Location,
 				  eventPicture: doc.Picture,

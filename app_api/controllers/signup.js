@@ -5,7 +5,7 @@ var sendJsonResponse = function(res, status, content) {
   res.status(status);
   res.json(content);
 };
-
+/*
 module.exports.DoesUserExist = function (req, res) { 
 	Loc.find( { email: req.body.email } ).exec( 
 	 function(err, user) {
@@ -24,7 +24,8 @@ module.exports.DoesUserExist = function (req, res) {
 	   var response = { User: true }
 	   sendJsonResponse(res, 200, response);
 	}
-)};
+)};*/
+/*
 // get user by email
 module.exports.GetUserByEmail = function (req, res) { 
 	Loc.find( { email: req.body.email } ).exec(function(err, Profile) {
@@ -48,7 +49,7 @@ module.exports.GetUserByEmail = function (req, res) {
     });
   }
 )};
- 
+ */
 module.exports.getUser = function (req, res) { 
 //get the user
 if (req.params && req.params.Userid) {
@@ -82,9 +83,11 @@ if (req.params && req.params.Userid) {
 module.exports.createUser = function (req, res) { 
 console.log(req.body);
   Loc.create({
+    hash: "",
+    salt: "",
     name: req.body.name,
     email: req.body.email,
-    pw: req.body.pw,
+    //pw: req.body.pw,
     About: req.body.About,
 	Followers: 0,
 	Following: 0,
@@ -93,7 +96,7 @@ console.log(req.body);
 	followersID: [], 
     followingID: [],
 	currentPosition: [0,0],
-	DateofCreation: new Date(),
+	//DateofCreation: new Date(),
 	Events: [] 
   }, function(err, user) {
     if (err) {

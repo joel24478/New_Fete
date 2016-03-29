@@ -20,7 +20,7 @@ module.exports.createEvent = function (req, res) {
           if (err) {
             sendJsonResponse(res, 400, err);
           } else {
-		    console.log(" got the userid")
+		    console.log(" Got the userid")
             doAddEvent(req, res, user);
           }
         }
@@ -33,29 +33,34 @@ module.exports.createEvent = function (req, res) {
 };
 // Sub function for adding an event
 var doAddEvent = function(req, res, user) {
+  console.log(" API do add event");
+  //console.log(user);
+  var User = req.body;
+  //console.log( user.Events ); 
   if (!user) {
     sendJsonResponse(res, 404, "Userid not found");
   } else {
     user.Events.push({
-	  Name: req.body.name,
-	  Description: req.body.description,
-	  Location: req.body.location,
-	  EventPicture:  req.body.picture, 
-	  Pictures: req.body.pictures,
+	  Name: User.Name,
+	  Description: User.Description,
+	  Location: User.Location,
+	  EventPicture:  User.Picture, 
+	  Pictures: [],
 	  Going: 0,
       GoingID: [],
       Invited: [],	  
-	  Attended: 0,
-	  PostDate: new Date(),
-	  Date: req.body.date, 
-	  StartTime: String, 
-	  EndTime: String, 
-	  Public: req.body.public, 
-	  coords: req.body.coords 
+	  Attended: "" ,
+	  //PostDate: new Date(),
+	  Date: User.Date, 
+	  StartTime: User.StartTime, 
+	  EndTime: User.EndTime, 
+	  Public: User.Public, 
+	  coords: User.coords 
     });
     user.save(function(err, user) {
       var thisEvent;
       if (err) {
+	  console.log(err); 
         sendJsonResponse(res, 400, err);
       } else {
         //updateAverageRating(user._id);
@@ -136,7 +141,7 @@ if (req.params && req.params.Userid && req.params.Eventid) {
 module.exports.updateEvent = function (req, res) {
 //get the info then enter it 
 	if (!req.params.Userid || !req.params.Eventid) {
-    sendJSONresponse(res, 404, {
+    sendJsonResponse(res, 404, {
       "message": "Not found, Userid and Eventid are both required"
     });
     return;
@@ -167,25 +172,19 @@ module.exports.updateEvent = function (req, res) {
           } else {
 		    //console.log(thisEvent); 
 			console.log( req.body.Description)
-            /*thisEvent.Description = req.body.Description;
-            thisEvent.Location = req.body.Location;
-            thisEvent.Pictures = req.body.Pictures;
-            thisEvent.Date = req.body.Date;
-			thisEvent.Public = req.body.Public;
-			thisEvent.coords =  req.body.coords;*/
-			thisEvent.name: req.body.Name,
-		    thisEvent.description: req.body.Description,
-		    thisEvent.location: req.body.Location,
-		    thisEvent.eventPicture: req.body.Picture,
-		    thisEvent.pictures: req.body.Pictures,				  
-		    thisEvent.going: req.body.Going, 
-		    thisEvent.goingID: req.body.GoingID,
-		    thisEvent.invitedID: req.body.InvitedID, 
-		    thisEvent.date: req.body.Date,
-		    thisEvent.startTime: req.body.startTime,
-		    thisEvent.EndTIme: req.body.EndTIme,
-		    thisEvent.public: req.body.Public, 
-		    thisEvent.coords: req.body.coords
+			thisEvent.Name = req.body.name,
+		    thisEvent.Description= req.body.Description,
+		    thisEvent.Location= req.body.Location,
+		    thisEvent.EventPicture= req.body.Picture,
+		    thisEvent.Pictures= req.body.Pictures,				  
+		    thisEvent.Going= req.body.Going, 
+		    thisEvent.GoingID= req.body.GoingID,
+		    thisEvent.InvitedID= req.body.InvitedID, 
+		    thisEvent.Date= req.body.Date,
+		    thisEvent.StartTime= req.body.startTime,
+		    thisEvent.EndTIme= req.body.EndTIme,
+		    thisEvent.public= req.body.Public, 
+		    thisEvent.coords= req.body.coords
 			user.save(function(err, user) {
               if (err) {
                 sendJsonResponse(res, 404, err);
