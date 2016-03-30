@@ -21,6 +21,7 @@ router.get('/profile/:Userid', ctrlLocations.profile);
 router.get('/profile/:Userid/event/:Eventid', ctrlLocations.event);
 router.get('/followers', ctrlLocations.followers);
 router.get('/index', ctrlLocations.index);
+//router.delete('/profile/:Userid/event/:Eventid', ctrlLocations.deleteEvent); 
 //change userid to the username
 
 //post event

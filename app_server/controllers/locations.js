@@ -87,7 +87,7 @@ module.exports.profile = function(req, res){
 // event detail page ? 
 var getLocationInfo = function (req, res, callback) {
   var requestOptions, path;
-  path = "/api/profile/" + req.params.Useriid + "/Event/" + req.params.locationid;
+  path = "/api/profile/" + req.params.Useriid + "/Event/" + req.params.Eventid;
   requestOptions = {
     url : apiOptions.server + path,
     method : "GET",
@@ -130,7 +130,7 @@ var renderDetailPage = function (req, res, locDetail) {
   })
 };
 
-// GET 'Location info' page get the event info..
+// GET event info
 module.exports.event = function(req, res){
   getLocationInfo(req, res, function(req, res, responseData) {
     renderDetailPage(req, res, responseData);

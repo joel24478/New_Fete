@@ -27,6 +27,37 @@ var _showError = function (req, res, status) {
     content : content
   });
 };
+//Update event 
+/*module.exports.UpdateEvent = function(req, res){
+	// get info from page
+	// figure out how to change data on page
+	// submit it to db
+
+}
+*/ 
+//Delete an Event             
+module.exports.DeleteEvent = function(req, res){
+
+var requestOptions, path;
+  path = "/api/profile/" + req.params.Useriid + "/Event/" + req.params.Eventid;
+  requestOptions = {
+    url : apiOptions.server + path,
+    method : "Delete",
+    json : {}
+  };
+  request(
+    requestOptions,
+    function(err, response, body) {
+      //var data = body;
+      if (response.statusCode === 200) {
+        //callback(req, res, data);
+		console.log(" Event deleted" ); 
+      } else {
+        _showError(req, res, response.statusCode);
+      }
+    }
+  );
+}
 
 /* POST 'Add event' */
 module.exports.addEvent = function(req, res){

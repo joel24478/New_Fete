@@ -20,10 +20,13 @@ console.log( " check" );
     return;
   }
 
-  var user = new User();
+  var user = new User({ 
+	name: req.body.name,
+	email: req.body.email
+  });
 
-  user.name = req.body.name;
-  user.email = req.body.email;
+  //user.name = req.body.name;
+  //user.email = req.body.email;
   user.DateofCreation = new Date();
   user.setPassword(req.body.password);
 
@@ -42,6 +45,7 @@ console.log( " check" );
 };
 
 module.exports.login = function(req, res) {
+  console.log( ctrlAuth.login ) ;
   if(!req.body.email || !req.body.password) {
     sendJsonResponse(res, 400, {
       "message": "All fields required"
