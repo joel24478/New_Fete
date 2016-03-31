@@ -49,7 +49,7 @@ var doAddEvent = function(req, res, user) {
 	  Going: 0,
       GoingID: [],
       Invited: [],	  
-	  Attended: "" ,
+	  Attended: 0,
 	  //PostDate: new Date(),
 	  Date: User.Date, 
 	  StartTime: User.StartTime, 

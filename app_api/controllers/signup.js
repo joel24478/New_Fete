@@ -95,7 +95,7 @@ console.log(req.body);
 	profilepic: req.body.profilepic,
 	followersID: [], 
     followingID: [],
-	currentPosition: [0,0],
+	//currentPosition: [0,0],
 	//DateofCreation: new Date(),
 	Events: [] 
   }, function(err, user) {

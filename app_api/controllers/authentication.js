@@ -1,6 +1,9 @@
 /* 
   Author: https://github.com/simonholmes/getting-MEAN/blob/chapter-11/app_api/controllers/authentication.js
 */
+
+// https://www.npmjs.com/package/geocoder
+var google = require('geocoder');
 var passport = require('passport');
 var mongoose = require('mongoose');
 var User = mongoose.model('Profile');
@@ -10,9 +13,37 @@ var sendJsonResponse = function(res, status, content) {
  res.status(status);
   res.json(content);
 };
+//navigator doesn't work with postmon.. 
+/*
+ function getLocation() {
+ console.log("getlocation"); 
+	
+	if (navigator.geolocation) {
+    	navigator.geolocation.getCurrentPosition(showPosition);
+	} else {
+    	console.log("Geolocation is not supported by this browser."); 
+		//user.currentPosition = [0,0];
+	}
+}
+function showPosition(position) {
+	  //user.currentPosition = [ position.coords.latitude , position.coords.longitude];
+      console.log(  position.coords.latitude); 	  
+}*/
+module.exports.test = function(req, res) {
+google.geocode("52 marshland st, haverhill ma", function ( err, data ) {
+console.log( Number(data.results[0].geometry.location.lat));
+console.log( data.results[0].geometry.location.lng);   
+ // do something with data 
+});
+ sendJsonResponse(res, 200, { 
+ "message" : "ok"
+ });
 
+
+};
 module.exports.register = function(req, res) {
-console.log( " check" ); 
+
+  console.log( "Registering user" ); 
   if(!req.body.name || !req.body.email || !req.body.password) {
     sendJsonResponse(res, 400, {
       "message": "All fields required"
@@ -22,11 +53,11 @@ console.log( " check" );
 
   var user = new User({ 
 	name: req.body.name,
-	email: req.body.email
+	email: req.body.email,
+	currentPosition : [0,0]
   });
-
-  //user.name = req.body.name;
-  //user.email = req.body.email;
+ 
+  //getLocation(); 
   user.DateofCreation = new Date();
   user.setPassword(req.body.password);
 

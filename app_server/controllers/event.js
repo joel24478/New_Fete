@@ -1,9 +1,11 @@
 /* 
 	Author: Zheondre Angel Calcano
-	Created: Monday, ?March 28, 2016, 5:45:00 PM
+	Created: Monday, March 28, 2016, 5:45:00 PM
 	File name: event.js 
 */
 
+// https://www.npmjs.com/package/geocoder
+var google = require('geocoder');
 var request = require("request"); 
 var apiOptions = {
 server : "http://localhost:3000"
@@ -58,27 +60,39 @@ var requestOptions, path;
     }
   );
 }
-
+ 
 /* POST 'Add event' */
 module.exports.addEvent = function(req, res){
 // CALL FUNCTION TO GET ADDRESS AND CONVER TO CORDINATES
 // CHECK IF location is NULL IF SOO ADD [0,0]
 // if profile pic is null set a default one
   var requestOptions, path, locationid, postdata;
-  locationid = req.params.Userid;
-  path = "/api/profile/" + locationid;
-  postdata = {
-    Name: req.body.Name,
-	Description:  req.body.Description,
-	Location:  req.body.Location,
-	EventPicture: req.body.EventPicture,
-	StartTime: req.body.StartTime, 
-	EndTime: req.body.EndTime,
-    Date: req.body.Date,
-	Public: req.body.Public,
-	coords: [0,0]
-  };
-  console.log( req.body); 
+  var cord = [0,0]
+	console.log( google.geocode(req.body.Location, function ( err, data) {
+	//warning this function is asynchronous 
+		console.log( Number(data.results[0].geometry.location.lat));
+		console.log( data.results[0].geometry.location.lng); 
+		cord[0] = Number(data.results[0].geometry.location.lat); 
+		cord[1] = Number(data.results[0].geometry.location.lng);
+	}));
+	setTimeout(function(){
+	  console.log( cord);
+	  locationid = req.params.Userid;
+	  path = "/api/profile/" + locationid;
+	  postdata = {
+		Name: req.body.Name,
+		Description:  req.body.Description,
+		Location:  req.body.Location,
+		EventPicture: req.body.EventPicture,
+		StartTime: req.body.StartTime, 
+		EndTime: req.body.EndTime,
+		Date: req.body.Date,
+		Public: req.body.Public,
+		coords: cord
+	  };
+	//}, 2000);
+	console.log(postdata); 
+  //console.log( req.body); 
   console.log(" Add Event" ); 
   requestOptions = {
     url : apiOptions.server + path,
@@ -96,10 +110,11 @@ module.exports.addEvent = function(req, res){
         } else if (response.statusCode === 400 && body.name && body.name === "ValidationError" ) {
           res.redirect('/profile/' + locationid + '/new?err=val');
         } else {
-          console.log(body);
+          //console.log(body);
           _showError(req, res, response.statusCode);
         }
       }
     );
   }
+  }, 2000);
 };
