@@ -1,3 +1,8 @@
+/* 
+	Author: Zheondre Angel Calcano
+	Created: Monday, March 28, 2016, 5:45:00 PM
+	File name: index.js 
+*/
 var express = require('express');
 var router = express.Router();
 //var ctrlMain = require('../controllers/main');

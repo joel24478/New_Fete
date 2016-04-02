@@ -1,4 +1,10 @@
 /* 
+	Author: Zheondre Angel Calcano
+	Created: Monday, March 28, 2016, 5:45:00 PM
+	File name: Authentication.js 
+*/
+
+/* 
   Author: https://github.com/simonholmes/getting-MEAN/blob/chapter-11/app_api/controllers/authentication.js
 */
 
@@ -15,8 +21,8 @@ var sendJsonResponse = function(res, status, content) {
 };
 //navigator doesn't work with postmon.. 
 /*
- function getLocation() {
- console.log("getlocation"); 
+function getLocation() {
+	console.log("getlocation"); 
 	
 	if (navigator.geolocation) {
     	navigator.geolocation.getCurrentPosition(showPosition);
@@ -28,19 +34,20 @@ var sendJsonResponse = function(res, status, content) {
 function showPosition(position) {
 	  //user.currentPosition = [ position.coords.latitude , position.coords.longitude];
       console.log(  position.coords.latitude); 	  
-}*/
+}
+*/
 module.exports.test = function(req, res) {
-google.geocode("52 marshland st, haverhill ma", function ( err, data ) {
-console.log( Number(data.results[0].geometry.location.lat));
-console.log( data.results[0].geometry.location.lng);   
- // do something with data 
-});
- sendJsonResponse(res, 200, { 
- "message" : "ok"
- });
-
-
+	// geolocation works
+	google.geocode("52 marshland st, haverhill ma", function ( err, data ) {
+		console.log( Number(data.results[0].geometry.location.lat));
+		console.log( data.results[0].geometry.location.lng);   
+	// do something with data 
+	});
+	sendJsonResponse(res, 200, { 
+		"message" : "ok"
+	});
 };
+
 module.exports.register = function(req, res) {
 
   console.log( "Registering user" ); 

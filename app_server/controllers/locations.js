@@ -1,3 +1,8 @@
+/* 
+	Author: Zheondre Angel Calcano
+	Created: Monday, March 28, 2016, 5:45:00 PM
+	File name: locations.js 
+*/
 var request = require("request"); 
 var apiOptions = {
 server : "http://localhost:3000"

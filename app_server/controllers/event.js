@@ -62,6 +62,7 @@ var requestOptions, path;
 }
  
 /* POST 'Add event' */
+// who is the author of the event ????
 module.exports.addEvent = function(req, res){
 // CALL FUNCTION TO GET ADDRESS AND CONVER TO CORDINATES
 // CHECK IF location is NULL IF SOO ADD [0,0]
