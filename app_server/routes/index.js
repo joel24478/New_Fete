@@ -18,7 +18,7 @@ var ctrlEvents = require('../controllers/event');
 
 
 /* Locations pages*/
-router.get('/', ctrlLocations.home);
+router.get('/', ctrlLocations.angularApp);
 router.get('/signup', ctrlLocations.signup)
 router.get('/login', ctrlLocations.login);
 router.get('/search', ctrlLocations.search);

@@ -14,6 +14,9 @@ html
     script(src='/javascripts/mapHandler.js')
     script(src='/javascripts/postHandler.js')
     script(src="https://maps.googleapis.com/maps/api/js?callback=initMap", async defer)
+    script(src='/angular/angular.min.js')
+    script(src='/lib/angular-route.min.js')
+    script(src='/app.js')
 
   body(background=background)
     .navbar.navbar-default.navbar-fixed-top
@@ -26,8 +29,10 @@ html
         a.navbar-brand(href='/') Fete
       #bs-example-navbar-collapse-1.collapse.navbar-collapse
         ul.nav.navbar-nav
-          li.active
-            a(href='#') Request
+          li.active(ng-hide="navvm.isLoggedIn")
+            a(href='#') Fete
+          li.active(ng-show="navvm.isLoggedIn")
+            a(href='#') {{ navvm.currentUser.name }}
           li
             a(href='#') Notifications
               
@@ -47,7 +52,11 @@ html
                 a(href='/followers') Followers
               li.divider
               li
+                a(href="ng-click="navvm.logout()") Logout
+              li.divider
+              li
                 a(href='#') One more separated link
+
         .col-md-4.col-md-4
           form.navbar-form(role='search')
             .input-group

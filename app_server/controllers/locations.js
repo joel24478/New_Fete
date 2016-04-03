@@ -213,3 +213,6 @@ module.exports.index = function(req, res) {
         eventTime: '11:00'
     });
 };
+module.exports.angularApp = function(req, res){
+res.render('_layout', { title: 'Loc8r' });
+};

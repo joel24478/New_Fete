@@ -1,3 +1,12 @@
+/*
+	File:  
+	COMP 4620 Project: Fete
+	Angel Calcano, UMass Lowell Computer Science, Angel_Calcano@cs.uml.edu
+	Copyright (c) 2016 by Angel Calcano.  All rights reserved.  May be freely 
+	copied or excerpted for educational purposes with credit to the author.
+	created by AC on .
+*/
+
 require('dotenv').load();
 var express = require('express');
 var sassMiddleware = require('node-sass-middleware');
@@ -14,7 +23,6 @@ require('./app_api/config/passport');
  
 var routes = require('./app_server/routes/index');
 var routesApi = require('./app_api/routes/index'); 
-//var users = require('./app_server/routes/users');
 
 var app = express();
 
@@ -40,11 +48,13 @@ app.use(
 
 app.use(cookieParser());
 // The static middleware must come after the sass middleware
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'app_client')));
+
 app.use(passport.initialize());
 app.use('/', routes);
 app.use('/api', routesApi);
-//app.use('/users', users);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

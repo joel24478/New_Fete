@@ -10,27 +10,27 @@ block content
         .panel-heading
           .panel-title.text-center #{panelTitle}
         .panel-body
-          form#form.form-horizontal(name='form', enctype='multipart/form-data', method='POST')
+          form#form.form-horizontal(name='form', enctype='multipart/form-data', method='POST', ng-submit="vm.onSubmit()")
             .input-group
               span.input-group-addon
                 i.glyphicon.glyphicon-user
-              input#user.form-control(type='text', name='user', value='', placeholder='UserNane')
+              input#user.form-control(type='text', name='user', value='', placeholder='UserNane', ng-model="vm.credentials.name")
             .input-group
               span.input-group-addon
                 i.glyphicon.glyphicon-envelope
-              input#email.form-control(type='email', name='email', placeholder='name@example.com')
+              input#email.form-control(type='email', name='email', placeholder='name@example.com', ng-model="vm.credentials.email")
             .input-group
               span.input-group-addon
                 i.glyphicon.glyphicon-lock
-              input#password.form-control(type='password', name='comfirmPassword', placeholder='Confirm Password')
+              input#password.form-control(type='password', name='comfirmPassword', placeholder='Confirm Password', ng-model="vm.credentials.confirmpw" )
             .input-group
               span.input-group-addon
                 i.glyphicon.glyphicon-lock
-              input#password.form-control(type='password', name='password', placeholder='Password')
+              input#password.form-control(type='password', name='password', placeholder='Password', ng-model="vm.credentials.password")
             .form-group
               .col-md-8.controls
                 button.btn.btn-primary.pull-right(type='submit', href='SignUp')
                   i.glyphicon.glyphicon-log-in
                   |  SignUp
               .col-md-8
-                a(href='/login') Or Login
+                a(href='/#login?page={{ vm.returnPage }}') Or Login
