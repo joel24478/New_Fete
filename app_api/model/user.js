@@ -7,7 +7,7 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema; 
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
-
+// need the name of the person who created the event and the persons _id
 var eventSchema = new Schema({
 Name: {type: String, required: true}, 
 Description:  String,

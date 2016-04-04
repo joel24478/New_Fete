@@ -1,7 +1,7 @@
 (function () {
 
   angular
-    .module('loc8rApp')
+    .module('feteApp')
     .directive('navigation', navigation);
 
   function navigation () {

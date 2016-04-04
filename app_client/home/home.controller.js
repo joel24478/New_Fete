@@ -1,7 +1,7 @@
 (function () {
 
   angular
-    .module('loc8rApp')
+    .module('feteApp')
     .controller('homeCtrl', homeCtrl);
 
   homeCtrl.$inject = ['$scope', 'loc8rData', 'geolocation'];

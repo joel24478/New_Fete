@@ -15,30 +15,61 @@ module.exports.home = function (req, res) {
 //get all events in radius and in time frame
 sendJsonResponse(res, 200, {"status" : "Welcome Home"});
 };
-// Create an event
-module.exports.createEvent = function (req, res) { 
- if (req.params.Userid) {
-    Loc
-      .findById(req.params.Userid)
-      .select('Events')
-      .exec(
-        function(err, user) {
-          if (err) {
-            sendJsonResponse(res, 400, err);
-          } else {
-		    console.log(" Got the userid")
-            doAddEvent(req, res, user);
-          }
+var getAuthor = function(req, res, callback) {
+  console.log("Finding author with email " + req.payload.email);
+  if (req.payload.email) {
+     Loc
+     .findOne({ email : req.payload.email })
+      .exec(function(err, user) {
+        if (!user) {
+          sendJsonResponse(res, 404, {
+            "message": "User not found"
+          });
+          return;
+        } else if (err) {
+          console.log(err);
+          sendJsonResponse(res, 404, err);
+          return;
         }
-    );
+        console.log(user);
+        callback(req, res, user.name);
+      });
+
   } else {
     sendJsonResponse(res, 404, {
-      "message": "Not found, Userid required"
+      "message": "User not found"
     });
+    return;
   }
+
+};
+
+// Create an event
+module.exports.createEvent = function (req, res) {
+ getAuthor(req, res, function (req, res, userName) {
+     if (req.params.Userid) {
+        Loc
+          .findById(req.params.Userid)
+          .select('Events')
+          .exec(
+            function(err, user) {
+              if (err) {
+                sendJsonResponse(res, 400, err);
+              } else {
+                console.log(" Got the userid")
+                doAddEvent(req, res, userName);
+              }
+            }
+        );
+      } else {
+        sendJsonResponse(res, 404, {
+          "message": "Not found, Userid required"
+        });
+      }
+  });
 };
 // Sub function for adding an event
-var doAddEvent = function(req, res, user) {
+var doAddEvent = function(req, res, user, author) {
   console.log(" API do add event");
   //console.log(user);
   var User = req.body;

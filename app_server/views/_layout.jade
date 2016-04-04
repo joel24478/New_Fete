@@ -1,5 +1,5 @@
 doctype html
-html
+html(ng-app='feteApp') 
   block head
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title= title
@@ -17,6 +17,9 @@ html
     script(src='/angular/angular.min.js')
     script(src='/lib/angular-route.min.js')
     script(src='/app.js')
+    script(src='/home/home.controller.js')
+    script(src='/common/services/loc8rData.service.js')
+    script(src='/common/services/geolocation.service.js')
 
   body(background=background)
     .navbar.navbar-default.navbar-fixed-top
@@ -68,6 +71,7 @@ html
      block content
 
    block footer
+    div(ng-view)
      footer
         .container.text-center
           hr

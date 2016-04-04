@@ -2,13 +2,12 @@
 
 var express = require('express');
 var router = express.Router();
-/*
+
 var jwt = require('express-jwt');
 var auth = jwt({
   secret: process.env.JWT_SECRET,
   userProperty: 'payload'
 });
-*/
 
 var ctrlSignup = require('../controllers/signup'); 
 var ctrlHome = require('../controllers/home'); 
@@ -25,22 +24,22 @@ router.get('/test', ctrlAuth.test);
 // need to add home to all the path names for the home related routes
 router.get('/Home',ctrlHome.home); //this will be changed to get world's events
 router.get('/Home/:Userid/Event/:Eventid',ctrlHome.getEvent);
-router.post('/Home/:Userid',ctrlHome.createEvent); 
-router.put('/Home/:Userid/Event/:Eventid',ctrlHome.updateEvent);
-router.delete('/Home/:Userid/Event/:Eventid',ctrlHome.deleteEvent);
+router.post('/Home/:Userid', auth, ctrlHome.createEvent); 
+router.put('/Home/:Userid/Event/:Eventid', auth, ctrlHome.updateEvent);
+router.delete('/Home/:Userid/Event/:Eventid', auth, ctrlHome.deleteEvent);
 router.get('/Home/:Userid/Event/:Eventid/comments/:Commentid',ctrlHome.getComment);
-router.post('/Home/:Userid/Event/:Eventid/comments', ctrlHome.createComment);
-router.put('/Home/:Userid/Event/:Eventid/comments/:Commentid',ctrlHome.updateComment); 
-router.delete('/Home/:Userid/Event/:Eventid/comments/:Commentid',ctrlHome.deleteComment);
+router.post('/Home/:Userid/Event/:Eventid/comments', auth, ctrlHome.createComment);
+router.put('/Home/:Userid/Event/:Eventid/comments/:Commentid', auth, ctrlHome.updateComment); 
+router.delete('/Home/:Userid/Event/:Eventid/comments/:Commentid', auth, ctrlHome.deleteComment);
 
 //Profile
 router.get('/profile/:Userid/Event/:Eventid',ctrlHome.getEvent);
 router.get('/profile/:Userid',ctrlProfile.getMyEvents);
-router.post('/profile/:Userid',ctrlHome.createEvent); 
-router.put('/profile/:Userid/Event/:Eventid',ctrlHome.updateEvent);
-router.delete('/profile/:Userid/Event/:Eventid',ctrlHome.deleteEvent);
-router.put('/profile/:Userid',ctrlProfile.updateUser);
-router.delete('/profile/:Userid',ctrlProfile.deleteUser);
+router.post('/profile/:Userid', auth, ctrlHome.createEvent); 
+router.put('/profile/:Userid/Event/:Eventid', auth, ctrlHome.updateEvent);
+router.delete('/profile/:Userid/Event/:Eventid', auth, ctrlHome.deleteEvent);
+router.put('/profile/:Userid', auth, ctrlProfile.updateUser);
+router.delete('/profile/:Userid', auth, ctrlProfile.deleteUser);
 //list all events from signed in user
 
 //authentication 
