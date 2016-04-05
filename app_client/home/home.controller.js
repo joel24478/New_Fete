@@ -4,7 +4,7 @@
     .module('feteApp')
     .controller('homeCtrl', homeCtrl);
 
-  homeCtrl.$inject = ['$scope', 'loc8rData', 'geolocation'];
+  homeCtrl.$inject = ['$scope', 'feteData', 'geolocation'];
   function homeCtrl ($scope, loc8rData, geolocation) {
     // Nasty IE9 redirect hack (not recommended)
     if (window.location.pathname !== '/') {

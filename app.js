@@ -40,7 +40,7 @@ var appClientFiles = [
   'app_client/reviewModal/reviewModal.controller.js',
   'app_client/common/services/authentication.service.js',
   'app_client/common/services/geolocation.service.js',
-  'app_client/common/services/loc8rData.service.js',
+  'app_client/common/services/feteData.service.js',
   'app_client/common/filters/formatDistance.filter.js',
   'app_client/common/filters/addHtmlLineBreaks.filter.js',
   'app_client/common/directives/navigation/navigation.controller.js',
@@ -78,7 +78,7 @@ app.use('/api', routesApi);
 //Add catchall app.use function to respond to any
 //requests that make it this far by sending HTML file
 app.use(function(req, res) {
-res.sendfile(path.join(__dirname, 'app_client', 'index.html'));
+res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
 });
 // error handlers
 // Catch unauthorised errors
