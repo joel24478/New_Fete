@@ -1,0 +1,53 @@
+extends layout
+
+block append head 
+  link(rel='stylesheet', href='/stylesheets/event.css')
+block content
+ .container#post(style='margin-top:100px;')
+  #template
+    .row
+      .col-md-6
+        .flyer
+          img(src='#{flyer}')
+      .col-md-6
+        .panel.panel-default
+          .panel-heading
+            img.img-circle.pull-left(src='#{profilePicture}', alt='#{username}')
+            h3 #{username}
+            h5
+              | Details
+          .panel-body
+            p
+              | &emsp; #{details} 
+            p
+              | &emsp; Date: #{eventDate} 
+              br
+              | &emsp; Time: #{eventTime} 
+              br
+              | &emsp; Location: #{location}
+              | #{eventDescription}
+          .panel-footer
+            div#map
+    .row
+      .col-md-8.col-md-offset-2
+        .panel-textarea(rows='4')
+          textarea
+        button.btn.btn-success.disabled(type='submit') Post comment
+        button.btn.btn-default(type='reset') Cancel
+    .row
+      .col-md-6.col-md-offset-2
+        .comments-list
+          .media
+            p.pull-right
+              small 5 days ago
+            a.media-left(href='#')
+              img(src='http://lorempixel.com/40/40/people/1/')
+            .media-body
+              h4.media-heading.user_name Baltej Singh
+              | Nobody giving you a bottle 
+              p
+                small
+                  a(href='') Like
+                  |  - 
+                  a(href='') Share
+

@@ -34,18 +34,17 @@
         controllerAs: 'vm'
       })
       .when('/login', {
-        templateUrl: 'views/login.jade',
+        templateUrl: 'auth/login/login.view.html',
         controller: 'loginCtrl',
         controllerAs: 'vm'
       })
-      .otherwise({redirectTo: '/'});
-     /* 
-     .when('/Profile', {
-        templateUrl: 'app_server/views/profile.jade',
+      .when('/profile', {
+        templateUrl: 'profile/profile.view.html',
         controller: 'profileCtrl',
         controllerAs: 'vm'
       })
-     */ 
+      .otherwise({redirectTo: '/'});
+     
     // use the HTML5 History API
     $locationProvider.html5Mode(true);
   }

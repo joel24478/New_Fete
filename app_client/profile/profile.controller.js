@@ -2,27 +2,45 @@
 
   angular
     .module('feteApp')
-    .controller('loginCtrl', loginCtrl);
+    .controller('profileCtrl', profileCtrl);
 
-  loginCtrl.$inject = ['$location','authentication'];
-  function loginCtrl($location, authentication) {
+  profileCtrl.$inject = ['$event','authentication'];
+  function loginCtrl($event, authentication) {
     var vm = this;
 
-    vm.pageHeader = {
-      title: 'Sign in to Fete'
-    };
+    vm.NewEventInfo = { 
+        Name: '',
+        detail: '',
+        username: '',
+        user_ID: '',
+        profilePicture: '',
+        Pictures: [],
+        eventTime: '',
+        eventEndTime: '',
+        eventDate: '',
+        PostDate: '',
+        Going: 0,
+        GoingID: [],
+        Invited: [],
+        Attend: 0,
+        flyer: '',
+        Public: true,
+        Location: [0,0]    
+    
+    }
+ 
+    vm.returnPage = '/profile'; // after login go to home page
 
-    vm.credentials = {
-      email : "",
-      password : ""
-    };
-
-    vm.returnPage = $location.search().page || '/'; // after login go to home page
-
-    vm.onSubmit = function () {
+    vm.getData = function () {
       vm.formError = "";
       console.log( "credentials");
       console.log( vm.credentials); 
+      /*
+      vm.data = { 
+      user: data.user;
+      events: data.events; 
+      } 
+      */
       if (!vm.credentials.email || !vm.credentials.password) {
         vm.formError = "All fields required, please try again";
         return false;

@@ -83,7 +83,9 @@ module.exports.register = function(req, res) {
 };
 
 module.exports.login = function(req, res) {
+ console.log("Login function"); 
   console.log( ctrlAuth.login ) ;
+  console.log(req.body.email); 
   if(!req.body.email || !req.body.password) {
     sendJsonResponse(res, 400, {
       "message": "All fields required"

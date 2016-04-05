@@ -1,0 +1,36 @@
+extends layout
+block append head 
+  link(rel='stylesheet', href='/stylesheets/signup.css')
+  script(src="/javascripts/validation.js")
+block content
+  #banner.page-header
+  .container
+    #loginbox.mainbox.col-md-6.col-md-offset-3.col-sm-6.col-sm-offset-3
+      .panel.panel-default
+        .panel-heading
+          .panel-title.text-center #{panelTitle}
+        .panel-body
+          form#form.form-horizontal(name='form', enctype='multipart/form-data', method='POST', ng-submit="vm.onSubmit()")
+            .input-group
+              span.input-group-addon
+                i.glyphicon.glyphicon-user
+              input#user.form-control(type='text', name='user', value='', placeholder='UserNane', ng-model="vm.credentials.name")
+            .input-group
+              span.input-group-addon
+                i.glyphicon.glyphicon-envelope
+              input#email.form-control(type='email', name='email', placeholder='name@example.com', ng-model="vm.credentials.email")
+            .input-group
+              span.input-group-addon
+                i.glyphicon.glyphicon-lock
+              input#password.form-control(type='password', name='comfirmPassword', placeholder='Confirm Password', ng-model="vm.credentials.confirmpw" )
+            .input-group
+              span.input-group-addon
+                i.glyphicon.glyphicon-lock
+              input#password.form-control(type='password', name='password', placeholder='Password', ng-model="vm.credentials.password")
+            .form-group
+              .col-md-8.controls
+                button.btn.btn-primary.pull-right(type='submit', href='SignUp')
+                  i.glyphicon.glyphicon-log-in
+                  |  SignUp
+              .col-md-8
+                a(href='/#login?page={{ vm.returnPage }}') Or Login

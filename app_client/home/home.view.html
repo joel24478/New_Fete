@@ -1,33 +1,138 @@
 <navigation></navigation>
 
-<div class="container">
-  <page-header content="vm.pageHeader"></page-header>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-8">
-      <label for="filter">Filter results</label>
-      <input id="filter" type="text", name="filter", ng-model="textFilter">
-      <div class="error">{{ vm.message }}</div>
-      <div class="row list-group">
-        <div class="col-xs-12 list-group-item" ng-repeat="location in vm.data.locations | filter : textFilter">
-          <h4>
-            <a href="#/location/{{ location._id }}">{{ location.name }}</a>
-            <small class="rating-stars" rating-stars rating="location.rating"></small>
-            <span class="badge pull-right badge-default">{{ location.distance | formatDistance }}</span>
-          </h4>
-          <p class="address">{{ location.address }}</p>
-          <p>
-            <span class="label label-warning label-facility" ng-repeat="facility in location.facilities">
-              {{ facility }}
-            </span>
-          </p>
+<link rel="stylesheet" href="/stylesheets/home.css"/>
+<link rel="stylesheet" href="/stylesheets/datepicker.css"/>
+<script src="/javascripts/dateHandler.js"></script>
+<div id="post" style="margin-top:100px;" class="container">
+  <div id="template">
+    <div class="row">
+      <div class="col-lg-8 postPanel">
+        <div id="blackText" class="panel-body">
+          <div class="panel-content">
+            <div rows="4" class="panel-textarea">
+              <textarea></textarea>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="input-group">Location
+                    <input type="text"/>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="input-group">Date  
+                    <input id="datePicker" type="text"/>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="input-group">Time
+                    <input type="text"/>
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <div class="input-group">Public  
+                    <input type="checkbox"/>
+                  </div>
+                  <div class="input-group">Private 
+                    <input type="checkbox"/>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <button type="submit" class="btn btn-default">Post Event</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8 scrollPanelLeft">
+        <div class="panel panel-default">
+          <div class="panel-heading"><img src="undefined" alt="undefined" class="img-circle pull-left"/>
+            <h3></h3>
+            <h5><span>Shared </span> - <span></span></h5>
+          </div>
+          <div class="panel-body">
+            <p></p>
+          </div>
+          <div class="panel-footer">
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-share-alt"></span></button>
+            <button type="button" data-toggle="collapse" href="#collapseTextArea" class="btn btn-default">Add a Comment</button>
+            <div id="collapseTextArea" class="panel-collapse collapse">
+              <div rows="4" class="panel-textarea">
+                <textarea></textarea>
+                <button type="submit" class="btn btn-default">Post comment</button>
+                <button type="reset" class="btn btn-default">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- put for loop here to add all events --> 
+       <!-- <div class="panel panel-default">
+          <div class="panel-heading"><img src="undefined" alt="undefined" class="img-circle pull-left"/>
+            <h3></h3>
+            <h5><span>Shared </span> - <span></span></h5>
+          </div>
+          <div class="panel-body">
+            <p></p>
+          </div>
+          <div class="panel-footer">
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-share-alt"></span></button>
+            <button type="button" data-toggle="collapse" href="#collapseTextArea" class="btn btn-default">Add a Comment</button>
+            <div id="collapseTextArea" class="panel-collapse collapse">
+              <div rows="4" class="panel-textarea">
+                <textarea></textarea>
+                <button type="submit" class="btn btn-default">Post comment</button>
+                <button type="reset" class="btn btn-default">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+    <!--    <div class="panel panel-default">
+          <div class="panel-heading"><img src="undefined" alt="undefined" class="img-circle pull-left"/>
+            <h3></h3>
+            <h5><span>Shared </span> - <span></span></h5>
+          </div>
+          <div class="panel-body">
+            <p></p>
+          </div>
+          <div class="panel-footer">
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-share-alt"></span></button>
+            <button type="button" data-toggle="collapse" href="#collapseTextArea" class="btn btn-default">Add a Comment</button>
+            <div id="collapseTextArea" class="panel-collapse collapse">
+              <div rows="4" class="panel-textarea">
+                <textarea></textarea>
+                <button type="submit" class="btn btn-default">Post comment</button>
+                <button type="reset" class="btn btn-default">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> --> 
+      <div class="col-md-4 scrollPanelRight">
+        <div class="panel with-nav-tabs panel-default">
+          <div class="panel-heading2">
+            <ul id="tabs" class="nav nav-tabs">
+              <li class="active"><a href="#mapByDistance" data-toggle="tab">Distance</a></li>
+              <li><a href="#mapByTime" data-toggle="tab">Time</a></li>
+            </ul>
+          </div>
+          <div class="panel-body">
+            <div class="tab-content">
+              <div id="mapByDistance" class="tab-pane fade in active">
+                <div id="map"></div>
+              </div>
+              <div id="mapByTime" class="tab-pane fade">
+                <div id="map"></div>
+              </div>
+              <div id="mapByGroup" class="tab-pane fade">
+                <div id="map"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-4">
-      <p class="lead">{{ vm.sidebar.content }}</p>
-    </div>
   </div>
-
-  <footer-generic></footer-generic>
 </div>
+<footer-generic></footer-generic>

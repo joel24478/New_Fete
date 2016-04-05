@@ -31,6 +31,7 @@
       if(isLoggedIn()){
         var token = getToken();
         var payload = JSON.parse($window.atob(token.split('.')[1]));
+        console.log( payload._id); 
         return {
           email : payload.email,
           name : payload.name
