@@ -1,3 +1,9 @@
+//
+  File:  Fete/app_server/views/layout.jade
+  Joel Cruz, UMass Lowell Computer Science, jcruz@student.uml.edu
+  Copyright (c) 2016 by Joel Cruz.  All rights reserved.  May be freely copied or excerpted for educational purposes with credit to the author.
+  updated by JC on March 27, 2016
+
 doctype html
 html
   block head
@@ -16,8 +22,10 @@ html
     script(src="http://maps.google.com/maps/api/js?key=AIzaSyBFIL8n3bU9uF9QIUHxm1T3J2t3VFJZ2cU&callback=initMap", async defer)
 
   body(background=background)
+    //Nav-bar
     nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
       .container-fluid
+        //The title including logo and functionality 
         .navbar-header
           button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#fete-navbar')
             span.sr-only Toggle navigation
@@ -44,16 +52,17 @@ html
               a(href='/index') About
           form.navbar-form.navbar-left(role='search')
             .form-group
-              input.form-control(type='text', placeholder='Search')
+              input.form-control.search-bar(type='text', placeholder='Search')
             button.btn.btn-default.btn-search(type='submit') Search
           ul.nav.navbar-nav.navbar-right
             li
-              p.navbar-text.md-font Already have an account?
+              a.nav-links(href="/login")
+                p.navbar-text.md-font Already have an account?
             li.dropdown
               a.dropdown-toggle(href='#', data-toggle='dropdown')
                 b Login
                 span.caret
-              ul#login-dp.dropdown-menu
+              ul#login-dp.dropdown-menu.hidden-sm-down
                 li
                   .row
                     .col-md-12
@@ -83,7 +92,7 @@ html
                             |  keep me logged-in
                     .bottom.text-center
                       | New here ? 
-                      a(href='#')
+                      a(href='/signup')
                         b Join Us
 
    .container

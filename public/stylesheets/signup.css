@@ -10,3 +10,8 @@ legend h1 {
 .signupWrapper {
   width: 300;
   height: 600; }
+
+#loginbox {
+  margin-left: 25%;
+  margin-bottom: 25%;
+  margin-top: 10%; }
