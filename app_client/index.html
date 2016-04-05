@@ -8,51 +8,9 @@
       <link rel="stylesheet" href="/bootstrap/css/grayscale.css">
       <link rel="stylesheet" href="/stylesheets/style.css">
       <link rel="stylesheet" href="/stylesheets/jquery-ui.css">
-
     </head>
   <body ng-view> 
-    <!-- 
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="navbar-header">
-        <button type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand">Fete</a>
-      </div>
-      <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li ng-hide="navvm.isLoggedIn" class=""><a href="#">Fete</a></li>
-          <li ng-show="navvm.isLoggedIn" class=""><a href="#">{{ navvm.currentUser.name }}</a></li>
-          <li><a href="#">Notifications</a></li>
-          <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Account <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="/profile">Profile</a></li>
-              <li class="divider"><a href="/event">Events</a></li>
-              <li><a href="/createevent">Create Events</a></li>
-              <li class="divider"></li>
-              <li><a href="/followers">Followers</a></li>
-              <li class="divider"></li>
-              <li><a href="ng-click=&quot;navvm.logout()&quot;">Logout</a></li>
-              <li class="divider"></li>
-              <li><a href="#">One more separated link</a></li>
-            </ul>
-          </li>
-        </ul>
-        <div class="col-md-4 col-md-4">
-          <form role="search" class="navbar-form">
-            <div class="input-group">
-              <input type="text" placeholder="Search" name="naviSearch" class="form-control">
-              <div class="input-group-btn">
-                <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div> 
-    --> 
-  <!--
-    <div ng-view> 
-    </div> --> 
  
-       <!--  <footer-generic></footer-generic> --> 
           <script src="/bootstrap/js/jquery.js"></script>
           <script src="/bootstrap/js/bootstrap.min.js"></script>
           <script src="/javascripts/tabsHandler.js"></script>
@@ -65,13 +23,16 @@
          <script src="/lib/angular-route.min.js"></script>
          <script src="/lib/ui-bootstrap-custom-0.12.0.min.js"></script>
          <script src="/lib/ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
-          <script src="/app.js"></script>
-          <script src='/home/home.controller.js'> </script>
-          <script src='/auth/register/register.controller.js'> </script>
-          <script src='/common/services/feteData.service.js'> </script>
-          <script src='/common/services/geolocation.service.js'> </script>
-          <script src='/common/services/authentication.service.js'> </script>
+         <script src="/app.js"></script>
+         <script src='/home/home.controller.js'> </script>
+         <script src='/auth/register/register.controller.js'> </script>
+     <!--<script src='/auth/register/login.controller.js'> </script> --> 
+         <script src='/common/services/feteData.service.js'> </script>
+         <script src='/common/services/geolocation.service.js'> </script>
+         <script src='/common/services/authentication.service.js'> </script>
          <script src='/common/filters/formatDistance.filter.js'> </script> 
-          <script src='/common/directives/footerGeneric/footerGeneric.directive.js'> </script>
+         <script src='/common/directives/footerGeneric/footerGeneric.directive.js'> </script>
+         <script src='/common/directives/navigation/navigation.directive.js'> </script>
+         <script src='/common/directives/navigation/navigation.controller.js'> </script>
     </body> 
 </html>

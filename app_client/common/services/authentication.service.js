@@ -19,7 +19,7 @@
       var token = getToken();
 
       if(token){
-        var payload = Json.parse($window.atob(token.split('.')[1]));
+        var payload = JSON.parse($window.atob(token.split('.')[1]));
 
         return payload.exp > Date.now() / 1000;
       } else {

@@ -28,12 +28,12 @@
         controller: 'locationDetailCtrl',
         controllerAs: 'vm'
       })
-      .when('/SPAsignup', {
+      .when('/signup', {
         templateUrl: 'auth/register/register.view.html',
         controller: 'registerCtrl',
         controllerAs: 'vm'
       })
-      .when('/SPAlogin', {
+      .when('/login', {
         templateUrl: 'views/login.jade',
         controller: 'loginCtrl',
         controllerAs: 'vm'
