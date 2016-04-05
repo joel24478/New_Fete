@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-/* 
-	Author: Zheondre Angel Calcano
-	Created: Monday, March 28, 2016, 5:45:00 PM
-	File name: index.js 
-=======
 /*
   File:  Fete/app_server/routes/index.js
   Joel Cruz, UMass Lowell Computer Science, jcruz@student.uml.edu
-  Copyright (c) 2016 by Joel Cruz.  All rights reserved.  May be freely copied or excerpted for educational purposes with credit to the author.
+  Copyright (c) 2016 by Joel Cruz and Zheondre Calcano.  All rights reserved.  May be freely copied or excerpted for educational purposes with credit to the author.
   updated by JC on March 27, 2016
->>>>>>> master
 */
 var express = require('express');
 var router = express.Router();

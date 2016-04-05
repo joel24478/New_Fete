@@ -1,8 +1,9 @@
-<<<<<<< HEAD
-/* 
-	Author: Zheondre Angel Calcano
-	Created: Monday, March 28, 2016, 5:45:00 PM
-	File name: locations.js 
+
+/*
+  File:  Fete/app_server/controllers/locations.js
+  Joel Cruz, UMass Lowell Computer Science, jcruz@student.uml.edu
+  Copyright (c) 2016 by Joel Cruz and Zheondre Calcano.  All rights reserved.  May be freely copied or excerpted for educational purposes with credit to the author.
+  updated by JC on March 27, 2016
 */
 var request = require("request"); 
 var apiOptions = {
@@ -142,17 +143,8 @@ module.exports.event = function(req, res){
     renderDetailPage(req, res, responseData);
   });
 };
-
-=======
-/*
-  File:  Fete/app_server/controllers/locations.js
-  Joel Cruz, UMass Lowell Computer Science, jcruz@student.uml.edu
-  Copyright (c) 2016 by Joel Cruz.  All rights reserved.  May be freely copied or excerpted for educational purposes with credit to the author.
-  updated by JC on March 27, 2016
-*/
-
 /* Get home page */
->>>>>>> master
+
 module.exports.home = function(req, res) {
     /*
 	res.render('home', {
@@ -195,22 +187,6 @@ module.exports.search = function(req, res) {
         subTitle: 'for the Party YOU want'
     });
 };
-
-<<<<<<< HEAD
-=======
-/* GET profile page */
-module.exports.profile = function(req, res) {
-    res.render('profile', {
-        title: 'Profile',
-        username: 'Jessica',
-        profilePicture: 'https://farm7.staticflickr.com/6163/6195546981_200e87ddaf_b.jpg',
-        location: 'SAN ANTONIO, TX',
-        twitter: '@' + 'COOLESOCOOL',
-        followerCount: '2,784',
-        followingCount: '456',
-        attendedCount: '400,901'
-    });
-};
 /* GET event page */
 module.exports.event = function(req, res) {
     res.render('event', {
@@ -225,7 +201,6 @@ module.exports.event = function(req, res) {
     });
 };
 
->>>>>>> master
 /* GET Followers page */
 module.exports.followers = function(req, res) {
     res.render('followers', {
