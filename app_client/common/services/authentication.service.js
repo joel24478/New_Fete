@@ -31,7 +31,7 @@ console.log( "authentication");
       if(isLoggedIn()){
         var token = getToken();
         var payload = JSON.parse($window.atob(token.split('.')[1]));
-        console.log( payload._id); 
+        console.log("user id " + payload._id); 
         //var id = payload._id;
         return {
           email : payload.email,

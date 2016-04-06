@@ -19,14 +19,13 @@
         StartTime : "",
         EndTime : "",
         Public : true,
-        coords : ""
+        coords : [0,0]
     };
-    console.log(window.location);
-    vm.message = "Checking your location";
-
-    vm.onSubmit = function () {
-    // ****need to grab true or false from toggle switch ******
+    vm.test = function() { 
+     //console.log( "testing toggle switch" ); 
+     // ****need to grab true or false from toggle switch ******
       vm.formError = "";
+      console.log(vm.formData); 
       if (!vm.formData.Name ||  !vm.formData.Description
       || !vm.formData.Location || !vm.formData.Date || !vm.formData.StartTime
       || !vm.formData.EndTime
@@ -34,21 +33,14 @@
         vm.formError = "All fields required, please try again";
         return false;
       } else {
-        //console.log( vm.formData ); 
+        //console.log( vm.formData );
+        console.log("form is valid"); 
         vm.doAddEvent( vm.formData );
       }
-    };
-    vm.doAddEvent = function ( formData ) {
-        vm.coords = [0,0];
-        console.log( google.geocode(formData.Location, function ( err, data) {
-        //warning this function is asynchronous 
-            console.log( Number(data.results[0].geometry.location.lat));
-            console.log( data.results[0].geometry.location.lng); 
-            cord[0] = Number(data.results[0].geometry.location.lat); 
-            cord[1] = Number(data.results[0].geometry.location.lng);
-        }));
-        //console.log(coords); 
-        setTimeout(function(){
+    }; //end of vm.test 
+    vm.doAddEvent = function( formData ) {
+    
+       console.log(" doAddEvent"); 
           feteData.addEventByUserId({
             Name : formData.Name,
             Description : formData.Description, 
@@ -60,43 +52,12 @@
             coords : coords, 
             EventPicture:""
             
-          })
-            .error(function (data) {
+          }).error(function (data) {
               vm.formError = "Your event has not been saved, please try again";
             });
           return false;
-      }, 2000);
+      //}, 2000);
     };
-
-    vm.getData = function (position) {
-      var lat = position.coords.latitude,
-          lng = position.coords.longitude;
-      vm.message = "Searching for nearby places";
-      feteData.locationByCoords(lat, lng)
-        .success(function(data) {
-          vm.message = data.length > 0 ? "" : "No locations found nearby";
-          vm.data = { locations: data };
-          console.log(vm.data);
-        })
-        .error(function (e) {
-          vm.message = "Sorry, something's gone wrong, please try again later";
-        });
-    };
-
-    vm.showError = function (error) {
-      $scope.$apply(function() {
-        vm.message = error.message;
-      });
-    };
-
-    vm.noGeo = function () {
-      $scope.$apply(function() {
-        vm.message = "Geolocation is not supported by this browser.";
-      });
-    };
-
-    geolocation.getPosition(vm.getData,vm.showError,vm.noGeo);
-
+  
   }
-
 })();

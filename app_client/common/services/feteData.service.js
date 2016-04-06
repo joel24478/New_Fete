@@ -21,7 +21,9 @@
         }
       });
     };
-
+    var GetMyEvents = function () {
+      return $http.get('/api/profile/'+ authentication.currentUser._id);
+    };
     var addEventByUserId = function (data) {
       return $http.post('/api/Home/'+ authentication.currentUser._id, data, {
         headers: {

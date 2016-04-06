@@ -6,6 +6,7 @@
 */
 
 //Places information about maps
+ /* 
 function initMap() {
     var mapDiv = document.getElementById('map');
     var map = new google.maps.Map(mapDiv, {
@@ -15,4 +16,4 @@ function initMap() {
         },
         zoom: 8
     });
-}
+}*/  
