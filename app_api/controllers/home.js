@@ -78,6 +78,7 @@ var doAddEvent = function(req, res, user, author) {
     sendJsonResponse(res, 404, "Userid not found");
   } else {
     user.Events.push({
+      Author: author,
 	  Name: User.Name,
 	  Description: User.Description,
 	  Location: User.Location,
@@ -87,7 +88,6 @@ var doAddEvent = function(req, res, user, author) {
       GoingID: [],
       Invited: [],	  
 	  Attended: 0,
-	  //PostDate: new Date(),
 	  Date: User.Date, 
 	  StartTime: User.StartTime, 
 	  EndTime: User.EndTime, 

@@ -35,6 +35,7 @@
         return {
           email : payload.email,
           name : payload.name
+          _id : payload._id
         };// grab id
       }
     };

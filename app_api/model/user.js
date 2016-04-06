@@ -9,6 +9,7 @@ var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
 // need the name of the person who created the event and the persons _id
 var eventSchema = new Schema({
+Author: {type: String, required: true}, 
 Name: {type: String, required: true}, 
 Description:  String,
 Location:  {type: String, required: true}, 

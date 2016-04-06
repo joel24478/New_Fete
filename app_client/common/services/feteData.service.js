@@ -9,7 +9,7 @@
     var locationByCoords = function (lat, lng) {
       return $http.get('/api/locations?lng=' + lng + '&lat=' + lat + '&maxDistance=20');
     };
-
+    // userbyid
     var locationById = function (locationid) {
       return $http.get('/api/locations/' + locationid);
     };
@@ -21,7 +21,17 @@
         }
       });
     };
-
+    /*
+    var addEventByUserId = function ( data) {
+      return $http.post('/api/Home/'+authentication.currentUser._id', data, {
+        headers: {
+          Authorization: 'Bearer '+ authentication.getToken()
+        }
+      });
+    };
+    
+    
+    */
     return {
       locationByCoords : locationByCoords,
       locationById : locationById,

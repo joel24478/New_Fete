@@ -14,9 +14,9 @@
         <div class="col-md-6 col-sm-3 no-pad">
           <div class="user-pad">
             <div id="profileClip">
-              <h3></h3>
-              <h4 class="white"><span class="glyphicon glyphicon-globe"></span> http://jade-lang.com/</h4>
-              <h4 class="white"><span class="glyphicon glyphicon-twitter"></span> </h4>
+              <h3 id="username">{{vm.user.username}}</h3>
+              <h4 class="white"><span class="glyphicon glyphicon-globe"></span>{{vm.user.About}}</h4>
+              <!--<h4 class="white"><span class="glyphicon glyphicon-twitter"></span> </h4>-->
             </div>
             <button type="button" href="#" class="btn btn-labeled btn-info"><span class="btn-label"><span class="glyphicon glyphicon-pencil"></span></span>Update</button>
           </div>
@@ -28,15 +28,15 @@
       <div class="row overview lightpurplebg">
         <div class="col-md-4 col-xs-4 user-pad text-center">
           <h3>FOLLOWERS</h3>
-          <h4 class="white">10</h4>
+          <h4 class="white">{{vm.user.followerCount}}</h4>
         </div>
         <div class="col-md-4 col-xs-4 user-pad text-center">
           <h3>FOLLOWING</h3>
-          <h4 class="white">2</h4>
+          <h4 class="white">{{vm.user.followingCount}}</h4>
         </div>
         <div class="col-md-4 col-xs-4 user-pad text-center">
           <h3>ATTENDED</h3>
-          <h4 class="white">1</h4>
+          <h4 class="white">{{vm.user.attendedCount}}</h4>
         </div>
       </div>
     </div>

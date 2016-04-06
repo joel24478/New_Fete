@@ -11,25 +11,29 @@
     <div class="col-lg-6 col-sm-12 col-md-6 postPanel">
      <!-- <div id="template">-->
       <div class="row panel panel-default ">
+        <form id="addEvent" name="addReview" ng-submit="vm.onSubmit()" class="panel-footer">        
         <div id="blackText" class="panel-body">
-          <div rows="4" class="panel-textarea">
+        <div class="input-group panel-textarea">
+          <input type="text" required="required" ngmodel="vm.formData.Name" value="Name" style="width:100%;"/>
+        </div>
+          <div rows="2" class="panel-textarea">
             <textarea>      </textarea>
           </div>
         </div>
         <!-- post area --> 
-        <div class="panel-footer">
-          <qbutton type="button" data-toggle="collapse" href="#event-info" class="btn btn-default">More Info</qbutton>
+        <!--<form id="addEvent" name="addReview" ng-submit="vm.onSubmit()" class="panel-footer">
+    -->      <qbutton type="button" data-toggle="collapse" href="#event-info" class="btn btn-default">More Info</qbutton>
           <div id="event-info" class="panel-collapse collapse">
             <div class="row">
               <div class="col-md-3 col-sm-3">
                 <div class="row">
                 <div class="input-group">Location
-                  <input type="text"/>
+                  <input type="text" required="required" ngmodel="vm.formData.Location" />
                 </div>
                 </div>
                 <div class="row">
                 <div class="input-group">Date  
-                  <input id="datePicker" type="text"/>
+                  <input id="datePicker" type="text" required="required" ngmodel="vm.formData.Date" />
                 </div>
                 </div>
               </div>
@@ -38,12 +42,12 @@
               <div class="col-md-3 col-sm-3">
                 <div class="row">
                 <div class="input-group">Start Time
-                  <input type="text"/>
+                  <input type="text"  required="required" ngmodel="vm.formData.Date"  />
                 </div>
                 </div>
                 <div class="row">
                 <div class="input-group">End Time  
-                  <input type="text"/>
+                  <input type="text"   required="required" ngmodel="vm.formData.Date" />
                 </div>
                 </div>
               </div> 
@@ -66,14 +70,40 @@
               </div> --> 
             </div>
           </div>
-        </div>
+        </form>
        </div>
       <!--</div> -->
       <!-- posts --> 
       <!-- <div class="col-lg-6 col-sm-12 col-md-6 scrollPanelLeft"> -->
-      <div class="row panel panel-default" style="margin-top:10px"> 
-        <div class="panel-heading"><img src="undefined" alt="undefined" class="img-circle pull-left"/>
-          <h3></h3>
+      <div class="row panel panel-default" style="margin-top:10px">
+        <div class="col-lg-1 col-md-1">
+            <div class="row">
+            <div class="panel-heading"><img src="{{location.profilepicture}}" alt="undefined" class="img-circle pull-left"/>
+            </div>
+            <div class="row">
+                <a href="#/profile/{{ location._id }}">{{ location.auth }}</a>
+            </div>
+            <div class="row">
+                {{ location.PostDate }}
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-8">
+            <div class="row">
+              <h2>  {{ location.Name }} </h2>
+            </div>
+            <div class="row">
+              <h2> {{ location.EventDate }}</h2>
+            </div>
+            <div class="row">
+               <h2> {{ location.location }}</h2>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3">
+        <!--Event picture-->
+        <a href="#{{ location.EventPicture }}"></a>
+        </div>
+        <!-- add coords to map -->
+    
           <h5><span>Shared </span> - <span></span></h5>
         </div>
         <div class="panel-body">
