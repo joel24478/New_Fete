@@ -6,7 +6,7 @@
     console.log("reg"); 
   authentication.$inject = ['$http', '$window'];
   function authentication ($http, $window) {
-
+console.log( "authentication"); 
     var saveToken = function (token) {
       $window.localStorage['fete-token'] = token;
     };
@@ -32,9 +32,10 @@
         var token = getToken();
         var payload = JSON.parse($window.atob(token.split('.')[1]));
         console.log( payload._id); 
+        //var id = payload._id;
         return {
           email : payload.email,
-          name : payload.name
+          name : payload.name,
           _id : payload._id
         };// grab id
       }
@@ -47,6 +48,7 @@
     };
 
     login = function(user) {
+        console.log("calling login api"); 
       return $http.post('/api/login', user).success(function(data) {
         saveToken(data.token);
       });

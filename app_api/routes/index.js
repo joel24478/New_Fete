@@ -13,7 +13,7 @@ var ctrlSignup = require('../controllers/signup');
 var ctrlHome = require('../controllers/home'); 
 var ctrlProfile = require('../controllers/profile');
 var ctrlAuth = require('../controllers/authentication');
-console.log( "routes"); 
+
 //authentication 
 router.post('/signup', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
@@ -41,9 +41,5 @@ router.delete('/profile/:Userid/Event/:Eventid', auth, ctrlHome.deleteEvent);
 router.put('/profile/:Userid', auth, ctrlProfile.updateUser);
 router.delete('/profile/:Userid', auth, ctrlProfile.deleteUser);
 //list all events from signed in user
-
-//authentication 
-//router.post('/signup', ctrlAuth.register);
-//router.post('/login', ctrlAuth.login);
 
 module.exports = router; 

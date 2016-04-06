@@ -38,6 +38,7 @@
       authentication
         .login(vm.credentials)
         .error(function(err){
+          console.log( err ) ; 
           vm.formError = err;
         })
         .then(function(){

@@ -7,6 +7,7 @@
       <div class="panel-title text-center"></div>
     </div>
     <div class="panel-body">
+     <div role="alert" ng-show="vm.formError" class="alert alert-danger">{{ vm.formError }}</div>
       <form id="form" name="form" enctype="multipart/form-data" method="POST" ng-submit="vm.onSubmit()" class="form-horizontal">
         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
           <input id="user" type="text" name="user" value="" placeholder="Email" ng-model="vm.credentials.email" class="form-control"/>

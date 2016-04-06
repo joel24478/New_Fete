@@ -19,23 +19,7 @@ var sendJsonResponse = function(res, status, content) {
  res.status(status);
   res.json(content);
 };
-//navigator doesn't work with postmon.. 
-/*
-function getLocation() {
-	console.log("getlocation"); 
-	
-	if (navigator.geolocation) {
-    	navigator.geolocation.getCurrentPosition(showPosition);
-	} else {
-    	console.log("Geolocation is not supported by this browser."); 
-		//user.currentPosition = [0,0];
-	}
-}
-function showPosition(position) {
-	  //user.currentPosition = [ position.coords.latitude , position.coords.longitude];
-      console.log(  position.coords.latitude); 	  
-}
-*/
+
 module.exports.test = function(req, res) {
 	// geolocation works
 	google.geocode("52 marshland st, haverhill ma", function ( err, data ) {
@@ -84,7 +68,7 @@ module.exports.register = function(req, res) {
 
 module.exports.login = function(req, res) {
  console.log("Login function"); 
-  console.log( ctrlAuth.login ) ;
+  //console.log( ctrlAuth.login ) ;
   console.log(req.body.email); 
   if(!req.body.email || !req.body.password) {
     sendJsonResponse(res, 400, {

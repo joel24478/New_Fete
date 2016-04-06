@@ -21,17 +21,15 @@
         }
       });
     };
-    /*
-    var addEventByUserId = function ( data) {
-      return $http.post('/api/Home/'+authentication.currentUser._id', data, {
+
+    var addEventByUserId = function (data) {
+      return $http.post('/api/Home/'+ authentication.currentUser._id, data, {
         headers: {
           Authorization: 'Bearer '+ authentication.getToken()
         }
       });
     };
-    
-    
-    */
+
     return {
       locationByCoords : locationByCoords,
       locationById : locationById,
