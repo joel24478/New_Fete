@@ -5,111 +5,78 @@
 <script src="/javascripts/dateHandler.js"></script>
 <div id="post" style="margin-top:100px;" class="container">
   <div id="template">
-    <div class="row">
-      <div class="col-lg-8 postPanel">
+    <!--<div class="row"> -->
+    <div class="col-lg-6 col-sm-12 col-md-6 postPanel panel panel-defeault">
+     <!-- <div id="template">-->
+      <div class="row">
         <div id="blackText" class="panel-body">
-          <div class="panel-content">
+          <div rows="4" class="panel-textarea">
+            <textarea>      </textarea>
+          </div>
+        </div>
+        <!-- post area --> 
+        <div class="panel-footer">
+          <qbutton type="button" data-toggle="collapse" href="#event-info" class="btn btn-default">More Info</qbutton>
+          <div id="event-info" class="panel-collapse collapse">
+            <div class="row">
+              <div class="col-md-3 col-sm-3">
+                <div class="input-group">Location
+                  <input type="text"/>
+                </div>
+              </div>
+              <!-- need start and end time -->
+              <div class="col-md-3 col-sm-3">
+                <div class="input-group">Date  
+                  <input id="datePicker" type="text"/>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-3">
+                <div class="input-group">Time
+                  <input type="text"/>
+                </div>
+              </div>
+              <div class="col-md-2 col-sm-2">
+                <div class="input-group">Public  
+                  <input type="checkbox"/>
+                </div>
+              </div>
+              <div class="input-group">Private 
+                <input type="checkbox"/>
+              </div>
+              <div class="col-md-2">
+                <button type="submit" class="btn btn-default">Post Event</button>
+              </div>
+            </div>
+          </div>
+        </div>
+       </div>
+      <!--</div> -->
+      <!-- posts --> 
+      <!-- <div class="col-lg-6 col-sm-12 col-md-6 scrollPanelLeft"> -->
+      <div class="row" style="padding-top:10px"> 
+        <div class="panel-heading"><img src="undefined" alt="undefined" class="img-circle pull-left"/>
+          <h3></h3>
+          <h5><span>Shared </span> - <span></span></h5>
+        </div>
+        <div class="panel-body">
+          <p></p>
+        </div>
+        <div class="panel-footer">
+          <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+          <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-share-alt"></span></button>
+          <button type="button" data-toggle="collapse" href="#collapseTextArea" class="btn btn-default">Add a Comment</button>
+          <div id="collapseTextArea" class="panel-collapse collapse">
             <div rows="4" class="panel-textarea">
               <textarea></textarea>
-              <div class="row">
-                <div class="col-md-3">
-                  <div class="input-group">Location
-                    <input type="text"/>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="input-group">Date  
-                    <input id="datePicker" type="text"/>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="input-group">Time
-                    <input type="text"/>
-                  </div>
-                </div>
-                <div class="col-md-1">
-                  <div class="input-group">Public  
-                    <input type="checkbox"/>
-                  </div>
-                  <div class="input-group">Private 
-                    <input type="checkbox"/>
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  <button type="submit" class="btn btn-default">Post Event</button>
-                </div>
-              </div>
+              <button type="submit" class="btn btn-default">Post comment</button>
+              <button type="reset" class="btn btn-default">Cancel</button>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-8 scrollPanelLeft">
-        <div class="panel panel-default">
-          <div class="panel-heading"><img src="undefined" alt="undefined" class="img-circle pull-left"/>
-            <h3></h3>
-            <h5><span>Shared </span> - <span></span></h5>
-          </div>
-          <div class="panel-body">
-            <p></p>
-          </div>
-          <div class="panel-footer">
-            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
-            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-share-alt"></span></button>
-            <button type="button" data-toggle="collapse" href="#collapseTextArea" class="btn btn-default">Add a Comment</button>
-            <div id="collapseTextArea" class="panel-collapse collapse">
-              <div rows="4" class="panel-textarea">
-                <textarea></textarea>
-                <button type="submit" class="btn btn-default">Post comment</button>
-                <button type="reset" class="btn btn-default">Cancel</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- put for loop here to add all events --> 
-       <!-- <div class="panel panel-default">
-          <div class="panel-heading"><img src="undefined" alt="undefined" class="img-circle pull-left"/>
-            <h3></h3>
-            <h5><span>Shared </span> - <span></span></h5>
-          </div>
-          <div class="panel-body">
-            <p></p>
-          </div>
-          <div class="panel-footer">
-            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
-            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-share-alt"></span></button>
-            <button type="button" data-toggle="collapse" href="#collapseTextArea" class="btn btn-default">Add a Comment</button>
-            <div id="collapseTextArea" class="panel-collapse collapse">
-              <div rows="4" class="panel-textarea">
-                <textarea></textarea>
-                <button type="submit" class="btn btn-default">Post comment</button>
-                <button type="reset" class="btn btn-default">Cancel</button>
-              </div>
-            </div>
-          </div>
-        </div> -->
-    <!--    <div class="panel panel-default">
-          <div class="panel-heading"><img src="undefined" alt="undefined" class="img-circle pull-left"/>
-            <h3></h3>
-            <h5><span>Shared </span> - <span></span></h5>
-          </div>
-          <div class="panel-body">
-            <p></p>
-          </div>
-          <div class="panel-footer">
-            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
-            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-share-alt"></span></button>
-            <button type="button" data-toggle="collapse" href="#collapseTextArea" class="btn btn-default">Add a Comment</button>
-            <div id="collapseTextArea" class="panel-collapse collapse">
-              <div rows="4" class="panel-textarea">
-                <textarea></textarea>
-                <button type="submit" class="btn btn-default">Post comment</button>
-                <button type="reset" class="btn btn-default">Cancel</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> --> 
-      <div class="col-md-4 scrollPanelRight">
+       </div>
+      </div>       
+      <!-- Map -->
+      <div class="col-lg-6 col-md-0 col-sm-0 scrollPanelRight">
         <div class="panel with-nav-tabs panel-default">
           <div class="panel-heading2">
             <ul id="tabs" class="nav nav-tabs">
@@ -125,9 +92,6 @@
               <div id="mapByTime" class="tab-pane fade">
                 <div id="map"></div>
               </div>
-              <div id="mapByGroup" class="tab-pane fade">
-                <div id="map"></div>
-              </div>
             </div>
           </div>
         </div>
@@ -135,4 +99,7 @@
     </div>
   </div>
 </div>
+</div>
+        <!-- put for loop here to add all events --> 
+     
 <footer-generic></footer-generic>

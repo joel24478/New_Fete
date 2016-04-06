@@ -17,7 +17,7 @@
       password : ""
     };
 
-    vm.returnPage = $location.search().page || '/'; // after login go to home page
+    vm.returnPage = $location.search().page || '/home'; // after login go to home page
 
     vm.onSubmit = function () {
       vm.formError = "";
@@ -41,7 +41,8 @@
           vm.formError = err;
         })
         .then(function(){
-          $location.search('page', null); 
+          $location.search('page', null);
+            console.log("logging in"); 
           $location.path(vm.returnPage);
         });
     };

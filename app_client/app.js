@@ -13,7 +13,7 @@
 
   function config ($routeProvider, $locationProvider) {
     $routeProvider
-      .when('/', {
+      .when('/home', {
         templateUrl: 'home/home.view.html',
         controller: 'homeCtrl',
         controllerAs: 'vm'

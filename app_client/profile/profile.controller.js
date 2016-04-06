@@ -4,10 +4,10 @@
     .module('feteApp')
     .controller('profileCtrl', profileCtrl);
 
-  profileCtrl.$inject = ['$event','authentication'];
-  function loginCtrl($event, authentication) {
+  profileCtrl.$inject = ['authentication'];
+  function profileCtrl( authentication) {
     var vm = this;
-
+/*
     vm.NewEventInfo = { 
         Name: '',
         detail: '',
@@ -35,12 +35,12 @@
       vm.formError = "";
       console.log( "credentials");
       console.log( vm.credentials); 
-      /*
+      
       vm.data = { 
       user: data.user;
       events: data.events; 
       } 
-      */
+      
       if (!vm.credentials.email || !vm.credentials.password) {
         vm.formError = "All fields required, please try again";
         return false;
@@ -63,7 +63,7 @@
           $location.path(vm.returnPage);
         });
     };
-
+*/
   }
 
 })();

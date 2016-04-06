@@ -7,7 +7,7 @@
   homeCtrl.$inject = ['$scope', 'feteData', 'geolocation'];
   function homeCtrl ($scope, loc8rData, geolocation) {
     // Nasty IE9 redirect hack (not recommended)
-    if (window.location.pathname !== '/') {
+    if (window.location.pathname !== '/home') {
       window.location.href = '/#' + window.location.pathname;
     }
     var vm = this;
@@ -16,9 +16,10 @@
       title: 'Loc8r',
       strapline: 'Find places to work with wifi near you!'
     };
+    /*
     vm.sidebar = {
       content: "Looking for wifi and a seat? Loc8r helps you find places to work when out and about. Perhaps with coffee, cake or a pint? Let Loc8r help you find the place you're looking for."
-    };
+    };*/
     vm.message = "Checking your location";
 
     vm.getData = function (position) {
