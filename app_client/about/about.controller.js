@@ -1,7 +1,7 @@
 (function () {
 
   angular
-    .module('loc8rApp')
+    .module('feteApp')
     .controller('aboutCtrl', aboutCtrl);
 
   function aboutCtrl() {
