@@ -1,23 +1,35 @@
+//
+  File:  Fete/app_server/views/sign-up.jade
+  Joel Cruz, UMass Lowell Computer Science, jcruz@student.uml.edu
+  Copyright (c) 2016 by Joel Cruz.  All rights reserved.  
+  May be freely copied or excerpted for educational purposes with credit to the author.
+  updated by JC on April 1, 2016
+
 extends layout
+
 block append head 
   link(rel='stylesheet', href='/stylesheets/login.css')
+
+
 block content
-    #loginbox.mainbox.col-md-6.col-md-offset-3.col-sm-6.col-sm-offset-3
+    #loginbox.mainbox.col-md-6.col-md-offset-3.col-sm-6.col-sm-offset-3(ng-controller='loginCtrl as login')
       .panel.panel-default
         .panel-heading
           .panel-title.text-center #{panelTitle}
         .panel-body
-          form#form.form-horizontal(name='form', enctype='multipart/form-data', method='POST')
+          //Using novalidate on our form so that we disable the HTML5 validations.
+          form#form.form-horizontal(name='loginForm', enctype='multipart/form-data', method='POST', ng-model="loginForm", ng-submit='submitPost', novalidate)
             .input-group
               span.input-group-addon
                 i.glyphicon.glyphicon-user
-              input#user.form-control(type='text', name='user', value='', placeholder='UserNane')
+              input#user.form-control(type='text', name='username', value='', placeholder='UserNane', ng-model='login.username', required)
             .input-group
               span.input-group-addon
                 i.glyphicon.glyphicon-lock
-              input#password.form-control(type='password', name='password', placeholder='Password')
+              input#password.form-control(type='password', name='password', placeholder='Password', ng-model="login.password", required)
             .form-group
               .col-sm-12.controls
-                button.btn.btn-primary.pull-right(type='submit', href='#')
+                //disable the button if form is invalid(filled out wrong)
+                button.btn.btn-primary.pull-right(type='submit', ng-disabled="signupForm.$invalid")
                   i.glyphicon.glyphicon-log-in
                   |  Login

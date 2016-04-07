@@ -1,40 +1,83 @@
 //
   File:  Fete/app_server/views/sign-up.jade
   Joel Cruz, UMass Lowell Computer Science, jcruz@student.uml.edu
-  Copyright (c) 2016 by Joel Cruz.  All rights reserved.  May be freely copied or excerpted for educational purposes with credit to the author.
+  Copyright (c) 2016 by Joel Cruz.  All rights reserved.  
+  May be freely copied or excerpted for educational purposes with credit to the author.
   updated by JC on March 27, 2016
 
 extends layout
 block append head 
   link(rel='stylesheet', href='/stylesheets/signup.css')
+  //script(src='/angular/signupCtrl.js')
+
 block content
   #banner.page-header
-  .container
-    #loginbox.mainbox.col-md-6.col-md-offset-3.col-sm-6.col-sm-offset-3
+  //signup controller to handle user input and validation
+  //referring to signupCtrl as user in the code below
+  .container(ng-controller="signupCtrl as user")
+    #loginbox.mainbox.col-lg-6.col-md-offset-3.col-sm-6.col-sm-offset-3
       .panel.panel-default
         .panel-heading
-          .panel-title.text-center #{panelTitle}
+          .panel-title.text-center 
+            .title
+              | Sign-Up
+            p.below-title
+              *Please fill out all fields
         .panel-body
-          form#form.form-horizontal(name='form', enctype='multipart/form-data', method='POST')
-            .input-group
+          //Using novalidate on our form so that we disable the HTML5 validations.
+          form#form.form-horizontal(name='signupForm', ng-submit="submitPost" novalidate)
+            // 
+              Username
+              Use the Bootstrap provided classes (.has-error) to highlight the field as red if there is an error.
+              Can use ngClass to add the error class if the field is $invalid.
+            .input-group(ng-class="{ 'has-error' : signupForm.username.$invalid && !signupForm.username.$pristine }")
               span.input-group-addon
                 i.glyphicon.glyphicon-user
-              input#user.form-control(type='text', name='user', value='', placeholder='UserNane')
-            .input-group
+              input#user.form-control(type='text', name='username', placeholder='UserName', ng-model="user.username", ng-minlength="5", ng-maxlength="16", required)
+              //display errors once username field is touched
+              div.help-block(ng-messages="signupForm.username.$error", ng-if="signupForm.username.$touched")
+                p(ng-message="minlength")
+                  | Your username is too short. Minimum 8 characters
+                p(ng-message="maxlength")
+                  | Your username is too long. Maximum 16 characters
+                p(ng-message="required")
+                  | Your username is required.
+            //Email
+            .input-group(ng-class="{ 'has-error' : signupForm.email.$invalid && !signupForm.email.$pristine}")
               span.input-group-addon
                 i.glyphicon.glyphicon-envelope
-              input#email.form-control(type='email', name='email', placeholder='name@example.com')
-            .input-group
+              input#email.form-control(type='email', name='email', placeholder='name@example.com', ng-model="user.email", required)
+              div.help-block(ng-messages="signupForm.email.$error", ng-if="signupForm.email.$touched")
+                p(ng-message="required")
+                  | This field is required.
+                p(ng-message="email")
+                  | This needs to be a valid email.
+            //Password
+            .input-group(ng-class="{ 'has-error' : signupForm.password.$invalid && !signupForm.password.$pristine}")
               span.input-group-addon
                 i.glyphicon.glyphicon-lock
-              input#password.form-control(type='password', name='comfirmPassword', placeholder='Confirm Password')
-            .input-group
+              input#password.form-control(type='password', name='password', placeholder='Password', ng-model="user.password", ng-minlength="8", ng-maxlength="25", required)
+              div.help-block(ng-messages="signupForm.password.$error", ng-if="signupForm.password.$touched")
+                p(ng-message="minlength")
+                  | Your password is too short. Minimum 8 characters.
+                p(ng-message="maxlength")
+                  | Your password is too long. Maximum 25 characters
+                p(ng-message="required")
+                  | Your password is required.
+            //Password Confirmation
+            .input-group(ng-class="{ 'has-error' : signupForm.confirmPassword.$invalid && !signupForm.password.$pristine}")
               span.input-group-addon
                 i.glyphicon.glyphicon-lock
-              input#password.form-control(type='password', name='password', placeholder='Password')
+              input#password.form-control(type='password', name='confirmPassword', placeholder='Confirm Password', ng-model="user.confirmPassword", required, compare-to="user.password")
+              div.help-block(ng-messages="signupForm.confirmPassword.$error", ng-if="signupForm.confirmPassword.$touched")
+                p(ng-message="required")
+                  | Password confirmation required.
+                p(ng-message="pattern")
+                  | Did not match password.
             .form-group
               .col-md-8.controls
-                button.btn.btn-primary.pull-right(type='submit', href='#')
+                //disable the button if form is invalid(filled out wrong)
+                button.btn.btn-primary.pull-right(type='submit', ng-disabled="signupForm.$invalid")
                   i.glyphicon.glyphicon-log-in
                   |  SignUp
               .col-md-8

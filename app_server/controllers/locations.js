@@ -4,9 +4,8 @@
   Copyright (c) 2016 by Joel Cruz.  All rights reserved.  May be freely copied or excerpted for educational purposes with credit to the author.
   updated by JC on March 27, 2016
 */
-
-/* Get home page */
-module.exports.home = function(req, res) {
+//renders homes page
+var renderHome = function(req, res) {
     res.render('home', {
         title: 'Fete',
         subTitle: 'for the Party YOU want',
@@ -17,14 +16,22 @@ module.exports.home = function(req, res) {
         eventDate: 'Jun 27, 2016'
     });
 };
-/* Get sign-up page */
-module.exports.signup = function(req, res) {
+/* Get home page */
+module.exports.home = function(req, res) {
+    renderHome(req, res);
+};
+//renders the signup page
+var renderSignUP = function(req, res) {
     res.render('sign-up', {
         title: 'Sign-Up', //Tab title
         pageTitle: 'Get Up-to-Date info on upcomming Parties!',
         background: '/images/signup_backgroundV2.jpg',
         legend: 'Join Fete Today'
     });
+};
+/* Get sign-up page */
+module.exports.signup = function(req, res) {
+    renderSignUP(req, res);
 };
 /* Get login page */
 module.exports.login = function(req, res) {
@@ -71,24 +78,15 @@ module.exports.event = function(req, res) {
     });
 };
 
+var renderFollowers = function(req, res) {
+    res.render('followers', {
+        title: 'Followers'
+    });
+}
+
 /* GET Followers page */
 module.exports.followers = function(req, res) {
-    res.render('followers', {
-        title: 'Followers',
-        username: 'Jessica',
-        profilePicture: 'https://farm7.staticflickr.com/6163/6195546981_200e87ddaf_b.jpg',
-        profilePicture2: '/images/user-image-1.jpeg',
-        profilePicture3: '/images/male_model.jpeg',
-        profilePicture4: '/images/backend_donkey.jpg',
-        profilePicture5: '/images/user-image-2.jpg',
-        profilePicture6: '/images/user-image-3.jpeg',
-        profilePicture7: '/images/user-image-4.jpg',
-        location: 'SAN ANTONIO, TX',
-        eventTime: '11:00 PM',
-        eventDate: '4/20/2016',
-        details: 'Come if you want, but bring a bottle',
-        flyer: '/images/august20lawrence.jpg'
-    });
+    renderFollowers(req, res);
 };
 
 /* GET Followers page */

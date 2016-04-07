@@ -1,7 +1,14 @@
+//
+  File:  Fete/app_server/views/profile.jade
+  Joel Cruz, UMass Lowell Computer Science, jcruz@student.uml.edu
+  Copyright (c) 2016 by Joel Cruz.  All rights reserved.  May be freely copied or excerpted for educational purposes with credit to the author.
+  updated by JC on March 27, 2016
+
 extends layout
 block append head
   link(rel='stylesheet', href='/stylesheets/profile.css')
   script(src='/javascripts/profile.js')
+
 //Got it from
 //http://bootsnipp.com/snippets/featured/flat-user-profile-interface-ui
 block content
@@ -10,7 +17,7 @@ block content
     .row.user-menu-container.square
       .col-md-7.user-details
         .row.purplebg.white
-          .col-md-6.col-sm-3.no-pad
+          .col-md-6.col-xs-12.no-pad
             .user-pad
               div#profileClip
                 h3 #{username}
@@ -24,7 +31,7 @@ block content
                 span.btn-label
                   span.glyphicon.glyphicon-pencil
                 | Update
-          .col-md-6.no-pad
+          .col-md-6.col-xs-12.no-pad
             .user-image
               img.img-responsive.thumbnail(src='#{profilePicture}')
         .row.overview.lightpurplebg
@@ -37,7 +44,7 @@ block content
           .col-md-4.col-xs-4.user-pad.text-center
             h3 ATTENDED
             h4.white #{attendedCount}
-      .col-md-1.user-menu-btns
+      .col-md-1.col-xs-2.user-menu-btns
         #responsive.btn-group-vertical.square
           a.btn.btn-block.btn-default.active(href='#')
             span.glyphicon.glyphicon-user

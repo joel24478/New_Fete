@@ -1,3 +1,15 @@
+/*
+  File:  Fete/sass/signup.scss
+  Joel Cruz, UMass Lowell Computer Science, jcruz@student.uml.edu
+  Copyright (c) 2016 by Joel Cruz.  All rights reserved.  May be freely copied or excerpted for educational purposes with credit to the author.
+  updated by JC on March 27, 2016
+*/
+/*
+  File:  Fete/sass/variables.js
+  Joel Cruz, UMass Lowell Computer Science, jcruz@student.uml.edu
+  Copyright (c) 2016 by Joel Cruz.  All rights reserved.  May be freely copied or excerpted for educational purposes with credit to the author.
+  updated by JC on March 27, 2016
+*/
 .submitBtn {
   background-color: #660BAB; }
 
@@ -6,6 +18,14 @@ legend {
 
 legend h1 {
   margin: 0 0 0 0; }
+
+.title {
+  font-size: 20pt; }
+
+.below-title {
+  font-style: italic;
+  font-size: 10pt;
+  margin-bottom: 0px; }
 
 .signupWrapper {
   width: 300;

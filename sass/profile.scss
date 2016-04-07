@@ -199,11 +199,12 @@ div.user-menu div.user-menu-content:not(.active) {
     }
     .user-pad h3 {
         font-weight: 400 !important;
-        font-size: 10pt;
+        font-size: 12pt;
         margin: 10px 0 0 10px !important;
     }
     .user-pad h4 {
-        font-size: 15pt !important;
+        font-size: 10pt !important;
+        margin-bottom: 10px;
     }
 }
 
@@ -308,6 +309,12 @@ div.user-menu div.user-menu-content:not(.active) {
 @media (max-width: 767px) {
     div .user-menu-container .thumbnail {
         max-height: 200px;
-        max-width: 200px;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .no-pad {
+        text-align: center;
     }
 }

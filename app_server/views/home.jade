@@ -18,11 +18,12 @@ block content
       .col-lg-8.col-sm-8.col-md-8.postPanel.panel.panel-defeault
         .panel-body#blackText
           .panel-textarea(rows='4')
-            textarea       
+            textarea  
+            //Hidden panel that appears when more info button is clicked     
         .panel-footer
           qbutton.btn.btn-default(type='button', data-toggle='collapse', href='#event-info') More Info
-          .panel-collapse.collapse#event-info
-            .row
+          .panel-body.panel-collapse.collapse#event-info
+            .row.hidden-pannel
               .col-md-3.col-sm-3
                 .input-group Location
                   input(type='text')
@@ -40,6 +41,7 @@ block content
               .col-md-2
                 button.btn.btn-default(type='submit') Post Event
       .col-lg-8.col-sm-12.col-md-12.scrollPanelLeft
+          .user-post  
             .panel-heading
               img.img-circle.pull-left(src='#{profilePicture}', alt='#{username}')
               h3 #{username}
@@ -61,7 +63,7 @@ block content
                   textarea
                   button.btn.btn-default(type='submit') Post comment
                   button.btn.btn-default(type='reset') Cancel
-
+          .user-post  
             .panel-heading
               img.img-circle.pull-left(src='#{profilePicture}', alt='#{username}')
               h3 #{username}
@@ -83,7 +85,7 @@ block content
                   textarea
                   button.btn.btn-default(type='submit') Post comment
                   button.btn.btn-default(type='reset') Cancel
-
+          .user-post
             .panel-heading
               img.img-circle.pull-left(src='#{profilePicture}', alt='#{username}')
               h3 #{username}

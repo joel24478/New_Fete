@@ -99,3 +99,12 @@ body {
 .scrollPanelLeft::-webkit-scrollbar,
 .scrollPanelRight::-webkit-scrollbar {
   display: none; }
+
+hidden-panel::after {
+  display: block;
+  bottom: 0;
+  position: absolute;
+  height: 100%; }
+
+div#event-info.panel-body.panel-collapse.collapse-in::after {
+  padding: 100px; }

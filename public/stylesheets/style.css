@@ -65,6 +65,9 @@ a {
 .nav-tabs > li > a:hover {
   color: #660BAB !important; }
 
+.navbar-default .navbar-nav > li > a:hover {
+  color: #000000; }
+
 .nav > li > a > p {
   margin-top: 0px; }
 
@@ -169,3 +172,11 @@ a {
   #login-dp .bottom {
     background-color: inherit;
     border-top: 0 none; } }
+
+@media (max-width: 768px) {
+  footer {
+    visibility: hidden; } }
+
+.help-block p {
+  font-size: 10pt;
+  margin-bottom: 5px; }

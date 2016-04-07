@@ -10,7 +10,14 @@
     width: 150px;
     height: 150px;
     border: 2px solid $primary-color;
-    margin-right: 10px;
+    margin-bottom: 50px;
+}
+
+@media (max-width: 767px) {
+    .img-circle {
+        width: 75px;
+        height: 75px;
+    }
 }
 
 .row {
@@ -34,4 +41,19 @@
     // width: 682.5px;
     // height: 271px;
     background-color: $primary-color;
+}
+
+//Centers the name above their profile picture
+.username-padding {
+    margin-bottom: 5px;
+    margin-right: 200px;
+    text-align: center;
+}
+
+@media(max-width:767px) {
+    .username-padding {
+        margin-bottom: 0px;
+        margin-right: 0px;
+        text-align: center;
+    }
 }

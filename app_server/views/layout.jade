@@ -5,7 +5,7 @@
   updated by JC on March 27, 2016
 
 doctype html
-html
+html(ng-app='feteModule')
   block head
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title= title
@@ -20,6 +20,10 @@ html
     script(src='/javascripts/mapHandler.js')
     script(src='/javascripts/postHandler.js')
     script(src="https://maps.googleapis.com/maps/api/js?callback=initMap", async defer)
+    //Angular
+    script(src='/angular/angular.min.js')
+    script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.js")
+    script(src='/angular/feteModule.js')
 
   body(background=background)
     //Nav-bar
@@ -56,8 +60,8 @@ html
             button.btn.btn-default.btn-search(type='submit') Search
           ul.nav.navbar-nav.navbar-right
             li
-              a.nav-links(href="/login")
-                p.navbar-text.md-font Already have an account?
+              a.nav-links(href="/signup")
+                p.navbar-text.md-font Join Fete Today!
             li.dropdown
               a.dropdown-toggle(href='#', data-toggle='dropdown')
                 b Login
@@ -103,29 +107,17 @@ html
         .container.text-center
           hr
           .row
-            .col-lg-12
-              .col-md-3
+            .col-lg-12.col-xs-4
+              .col-md-3.col-lg-6.col-xs-4
                 ul.nav.nav-pills.nav-stacked
                   li
                     a(href='#') About us
                   li
                     a(href='#') Blog
-              .col-md-3
+              .col-md-3.col-lg-6.col-xs-4
                 ul.nav.nav-pills.nav-stacked
                   li
                     a(href='#') Product for Mac
-                  li
-                    a(href='#') Product for Windows
-              .col-md-3
-                ul.nav.nav-pills.nav-stacked
-                  li
-                    a(href='#') Web analytics
-                  li
-                    a(href='#') Presentations
-              .col-md-3
-                ul.nav.nav-pills.nav-stacked
-                  li
-                    a(href='#') Product Help
                   li
                     a(href='#') Developer API
           hr
