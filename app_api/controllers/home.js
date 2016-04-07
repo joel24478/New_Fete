@@ -32,7 +32,7 @@ var getAuthor = function(req, res, callback) {
           return;
         }
         console.log(user);
-        callback(req, res, user.name);
+        callback(req, res, user);
       });
 
   } else {
@@ -46,18 +46,19 @@ var getAuthor = function(req, res, callback) {
 
 // Create an event
 module.exports.createEvent = function (req, res) {
- getAuthor(req, res, function (req, res, userName) {
-     if (req.params.Userid) {
+ getAuthor(req, res, function (req, res, userinfo) {
+     if (userinfo._id) {
         Loc
-          .findById(req.params.Userid)
+          .findById(userinfo._id)
           .select('Events')
           .exec(
             function(err, user) {
               if (err) {
+               console.log("createEvent home.js");  
                 sendJsonResponse(res, 400, err);
               } else {
                 console.log(" Got the userid")
-                doAddEvent(req, res, userName);
+                doAddEvent(req, res, user, userinfo.name);
               }
             }
         );

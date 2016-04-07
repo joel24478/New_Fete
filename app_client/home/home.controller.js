@@ -19,7 +19,7 @@
         StartTime : "",
         EndTime : "",
         Public : true,
-        coords : [0,0]
+        pos : [0,0]
     };
     vm.test = function() { 
      //console.log( "testing toggle switch" ); 
@@ -49,12 +49,15 @@
             StartTime : formData.StartTime,
             EndTime : formData.EndTime,
             Public : formData.Public,
-            coords : coords, 
+            coords : formData.pos, 
             EventPicture:""
             
-          }).error(function (data) {
+          })
+          .error(function (data) {
               vm.formError = "Your event has not been saved, please try again";
             });
+            
+            
           return false;
       //}, 2000);
     };
