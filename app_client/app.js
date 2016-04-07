@@ -18,7 +18,7 @@
         controller: 'homeCtrl',
         controllerAs: 'vm'
       })
-      .when('/about', {
+      .when('/', {
         templateUrl: 'about/about.view.html',
         controller: 'aboutCtrl',
         controllerAs: 'vm'

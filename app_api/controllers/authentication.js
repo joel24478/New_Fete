@@ -45,6 +45,13 @@ module.exports.register = function(req, res) {
   var user = new User({ 
 	name: req.body.name,
 	email: req.body.email,
+    About: "", 
+    Followers: 0,
+	Following: 0,
+    totalAttended: 0,
+    profilepic: "",
+    followersID: [], 
+    followingID: [],
 	currentPosition : [0,0]
   });
  

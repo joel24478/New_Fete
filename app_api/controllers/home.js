@@ -108,7 +108,37 @@ var doAddEvent = function(req, res, user, author) {
     });
   }
 };
-
+module.exports.getPublicEvents = function (req, res) {
+    //getAuthor(req, res, function (req, res, userinfo) {
+        var stream = Loc.find().stream();
+        var events = [];
+        
+        stream.on('data', function (doc) {
+        //console.log( doc); 
+            for (var i = 0; i < doc.Events.length; i++) {
+              //if( doc._id != userinfo._id) {
+              if( doc._id != req.params.Userid ) {
+                console.log("event found"); 
+                  var Event = doc.Events[i];
+                  // later on check if it is in a certain distance ; 
+                  if( Event.Public == true  ) {
+                    //console.log(Event.Public);                  
+                    events.push(Event); 
+                  } 
+              }
+            }
+            //console.log(Event);
+          // do something with the mongoose document
+        }).on('error', function (err) {
+            sendJsonResponse(res, 400, err);
+            return;
+              // handle the error
+        }).on('close', function () {
+        console.log( events); 
+        sendJsonResponse(res, 200, events);
+          // the stream is closed
+      });
+};
 //Get a specific event
 module.exports.getEvent = function (req, res) { 
 // get user, then find the event

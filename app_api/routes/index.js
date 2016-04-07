@@ -25,6 +25,7 @@ router.get('/test', ctrlAuth.test);
 router.get('/Home',ctrlHome.home); //this will be changed to get world's events
 router.get('/Home/:Userid/Event/:Eventid',ctrlHome.getEvent);
 router.post('/Home/:Userid', auth, ctrlHome.createEvent); 
+router.get('/Home/:Userid',  ctrlHome.getPublicEvents); 
 router.put('/Home/:Userid/Event/:Eventid', auth, ctrlHome.updateEvent);
 router.delete('/Home/:Userid/Event/:Eventid', auth, ctrlHome.deleteEvent);
 router.get('/Home/:Userid/Event/:Eventid/comments/:Commentid',ctrlHome.getComment);

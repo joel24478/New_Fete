@@ -29,7 +29,7 @@ if (req.params && req.params.Userid) {
           }
 		   var response = { 
 				user: { 
-					name: user.Name,
+					name: user.name,
 					profilePicture: user.profilepic,
 					followerCount: user.Followers,
 					followersID: user.followersID, 

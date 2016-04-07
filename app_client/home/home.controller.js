@@ -51,16 +51,28 @@
             Public : formData.Public,
             coords : formData.pos, 
             EventPicture:""
-            
           })
           .error(function (data) {
               vm.formError = "Your event has not been saved, please try again";
             });
             
-            
           return false;
       //}, 2000);
     };
+    vm.getData = function () {
+      vm.message = "Getting events";
+      console.log( vm.message); 
+      feteData.getPublicEvents().success(function(data) {
+          vm.locations = data;
+
+          console.log(vm.locations);
+        })
+        .error(function (e) {
+          vm.message = "Sorry, something's gone wrong, please try again later";
+        });
+    };
+    
+   vm.getData();
   
   }
 })();

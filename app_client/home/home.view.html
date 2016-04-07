@@ -4,6 +4,7 @@
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <script src="/javascripts/dateHandler.js"></script>
+
 <div id="post" style="margin-top:100px;" class="container">
   <div id="template">
     <!--<div class="row"> -->
@@ -66,37 +67,39 @@
       </div>
       <!--</div> -->
       <!-- posts --> 
-      <!-- <div class="col-lg-6 col-sm-12 col-md-6 scrollPanelLeft"> -->
-      <div class="row panel panel-default" style="margin-top:10px">
-        <div class="col-lg-1 col-md-1">
+       <!--<div class="col-lg-6 col-sm-12 col-md-6 scrollPanelLeft"> -->
+      <div class="row panel panel-default " style="margin-top:10px" ng-repeat="location in vm.locations">
+        <div class="col-lg-2 col-md-2">
           <div class="row">
             <div class="panel-heading"><img src="{{location.profilepicture}}" alt="undefined" class="img-circle pull-left"/>
             </div>
             <div class="row">
-              <a href="#/profile/{{ location._id }}">{{ location.auth }}</a>
+              <a href="#/profile/{{ location._id }}">{{ location.Author }}</a>
             </div>
             <div class="row">
               {{ location.PostDate }}
             </div>
           </div>
-          <div class="col-lg-8 col-md-8">
+         </div>
+         <div class="col-lg-4 col-md-4">
+          
             <div class="row">
-              <h2>  {{ location.Name }} </h2>
+              <h4>  {{ location.Name }} </h4>
             </div>
             <div class="row">
-              <h4> {{ location.EventDate }}</h4>
+              <h6> {{ location.Date }}</h6>
             </div>
             <div class="row">
-              <h4> {{ location.location }}</h4>
+              <h6> {{ location.Location }}</h6>
             </div>
-          </div>
-          <div class="col-lg-3 col-md-3">
+         </div>
+          <div class="col-lg-2 col-md-2">
             <!--Event picture-->
             <a href="#{{ location.EventPicture }}"></a>
           </div>
           <!-- add coords to map -->
-          <h5><span>Shared </span> - <span></span></h5>
-        </div>
+     
+        <!--</div>-->
         <div class="panel-body">
           <p></p>
         </div>
@@ -113,7 +116,9 @@
           </div>
         </div>
       </div>
-    </div>
+   </div>
+    
+    
     <!-- Map -->
     <script> 
     function initMap() {
@@ -155,5 +160,6 @@
     </div>
   </div>
 </div>
+
 <!-- put for loop here to add all events --> 
 <footer-generic></footer-generic>
