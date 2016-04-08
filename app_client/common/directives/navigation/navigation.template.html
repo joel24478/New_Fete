@@ -2,19 +2,25 @@
 <nav role="navigation" class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" data-toggle="collapse" data-target="#fete-navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/#home" class="navbar-brand">Fete</a>
+          <button type="button" data-toggle="collapse" data-target="#fete-navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a ng-show="navvm.isLoggedIn" href="/#home" class="navbar-brand">Fete</a>
         </div>
         <div id="fete-navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
            <!-- <li><a href="#">Request</a></li> --> 
             <li><a ng-show="navvm.isLoggedIn" href="#">Notifications</a></li>
+            <li><a ng-show="navvm.isLoggedIn" href="/profile">{{navvm.currentUser.name }} </a></li>
+            <li><a ng-show="navvm.isLoggedIn" href="/followers">Followers</a></li>
+            <li><a ng-show="navvm.isLoggedIn" href="" ng-click="navvm.logout()">Logout</a></li>
+             <li><a ng-hide="navvm.isLoggedIn" href="/signup" ng-click="navvm.logout()">Sign-up</a></li>
+            <li><a ng-hide="navvm.isLoggedIn" href="/login" ng-click="navvm.logout()">Login</a></li>
+            <!--
             <li ng-show="navvm.isLoggedIn" class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">{{navvm.currentUser.name }} <span class="caret"></span></a>
               <ul role="menu" class="dropdown-menu">
                 <li><a href="/profile">Profile</a></li>
                 <li><a href="/followers">Followers</a></li>
                 <li><a href="" ng-click="navvm.logout()">Logout</a></li>
               </ul>
-          </li>
+          </li> --> 
             <li><a  ng-hide="navvm.isLoggedIn"   href="/index">About</a></li>
           </ul>
           <form role="search" class="navbar-form navbar-left">

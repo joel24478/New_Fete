@@ -3,7 +3,7 @@
 	Created: Monday, March 28, 2016, 5:45:00 PM
 	File name: home.js 
 */
-
+var google = require('geocoder');
 var mongoose = require('mongoose');
 var Loc = mongoose.model('Profile');
 
@@ -71,10 +71,21 @@ module.exports.createEvent = function (req, res) {
 };
 // Sub function for adding an event
 var doAddEvent = function(req, res, user, author) {
+
   console.log(" API do add event");
-  //console.log(user);
+
   var User = req.body;
-  //console.log( user.Events ); 
+  var coords = [0,0];
+  
+  google.geocode(User.Location, function ( err, data ) {
+		console.log( Number(data.results[0].geometry.location.lat));
+		console.log( Number(data.results[0].geometry.location.lng ) );
+        coords[0] = Number(data.results[0].geometry.location.lat); 
+        coords[1] = Number(data.results[0].geometry.location.lng );
+        
+	// do something with data 
+	});
+  setTimeout(function(){
   if (!user) {
     sendJsonResponse(res, 404, "Userid not found");
   } else {
@@ -93,7 +104,7 @@ var doAddEvent = function(req, res, user, author) {
 	  StartTime: User.StartTime, 
 	  EndTime: User.EndTime, 
 	  Public: User.Public, 
-	  coords: User.coords 
+	  coords: coords
     });
     user.save(function(err, user) {
       var thisEvent;
@@ -107,6 +118,7 @@ var doAddEvent = function(req, res, user, author) {
       }
     });
   }
+  }, 2000);
 };
 module.exports.getPublicEvents = function (req, res) {
     //getAuthor(req, res, function (req, res, userinfo) {
@@ -128,7 +140,6 @@ module.exports.getPublicEvents = function (req, res) {
               }
             }
             //console.log(Event);
-          // do something with the mongoose document
         }).on('error', function (err) {
             sendJsonResponse(res, 400, err);
             return;

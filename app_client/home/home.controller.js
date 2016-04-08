@@ -1,3 +1,4 @@
+//var google = require('geocoder');
 (function () {
 
   angular
@@ -39,6 +40,7 @@
       }
     }; //end of vm.test 
     vm.doAddEvent = function( formData ) {
+    
     
        console.log(" doAddEvent"); 
           feteData.addEventByUserId({
