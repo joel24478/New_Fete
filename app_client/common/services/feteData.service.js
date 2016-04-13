@@ -6,6 +6,9 @@
 
   feteData.$inject = ['$http', 'authentication'];
   function feteData ($http, authentication) {
+  
+    var events = [] ;
+  
     var locationByCoords = function (lat, lng) {
       return $http.get('/api/locations?lng=' + lng + '&lat=' + lat + '&maxDistance=20');
     };
@@ -24,7 +27,8 @@
     };
     
     var GetMyEvents = function () {
-      return $http.get('/api/profile/'+ authentication.currentUser()._id);
+     events =  $http.get('/api/profile/'+ authentication.currentUser()._id);
+     return events; 
     };
     
     var getPublicEvents = function () {

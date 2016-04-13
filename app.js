@@ -32,6 +32,8 @@ app.set('view engine', 'jade');
 
 var appClientFiles = [
   'app_client/app.js',
+  'bower_components/angular-ui-event/dist/event.min.js',
+  'bower_components/angular-ui-map/src/map.js',
   'app_client/home/home.controller.js',
   'app_client/about/about.controller.js',
   'app_client/auth/login/login.controller.js',
