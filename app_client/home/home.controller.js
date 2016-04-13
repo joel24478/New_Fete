@@ -74,6 +74,12 @@
         });
     };
     
+   vm.deleteEvent = function(){ 
+   vm.message = " Event Deleted"; 
+   feteDate.deleteEvent() ; 
+   
+   } 
+   
    vm.getData();
   
   }

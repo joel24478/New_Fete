@@ -40,6 +40,10 @@
         }
       });
     };
+    
+    var deleteEvent = function( eventID ) { 
+        return $http.delete('/api/profile/'+ authentication.currentUser()._id +'/Event/' + eventID);
+    } 
 
     return {
       locationByCoords : locationByCoords,
@@ -47,7 +51,8 @@
       addReviewById : addReviewById,
       GetMyEvents : GetMyEvents,
       getPublicEvents : getPublicEvents,
-      addEventByUserId :  addEventByUserId
+      addEventByUserId :  addEventByUserId, 
+      deleteEvent : deleteEvent
     };
   }
 
