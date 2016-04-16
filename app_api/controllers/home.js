@@ -128,16 +128,16 @@ module.exports.getPublicEvents = function (req, res) {
         stream.on('data', function (doc) {
         //console.log( doc); 
             for (var i = 0; i < doc.Events.length; i++) {
-              //if( doc._id != userinfo._id) {
-              if( doc._id != req.params.Userid ) {
-                console.log("event found"); 
+              
+              //if( doc._id != req.params.Userid ) {
+                 
                   var Event = doc.Events[i];
                   // later on check if it is in a certain distance ; 
                   if( Event.Public == true  ) {
                     //console.log(Event.Public);                  
                     events.push(Event); 
                   } 
-              }
+              //}
             }
             //console.log(Event);
         }).on('error', function (err) {
@@ -145,7 +145,7 @@ module.exports.getPublicEvents = function (req, res) {
             return;
               // handle the error
         }).on('close', function () {
-        console.log( events); 
+        //console.log( events); 
         sendJsonResponse(res, 200, events);
           // the stream is closed
       });
