@@ -5,6 +5,9 @@
   updated by JC on March 27, 2016
 */
 
+// getting map to show your current position
+// https://developers.google.com/maps/documentation/javascript/examples/map-geolocation
+
 //Places information about maps
 
 // Note: This example requires that you consent to location sharing when
