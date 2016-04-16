@@ -145,6 +145,12 @@ module.exports.getPublicEvents = function (req, res) {
             return;
               // handle the error
         }).on('close', function () {
+         // organize array to show the newest post
+         // http://stackoverflow.com/questions/7555025/jquery-fastest-way-to-sort-an-array-by-timestamp
+        events.sort(function(x, y){
+            return x.PostDate - y.PostDate;
+        })
+          
         //console.log( events); 
         sendJsonResponse(res, 200, events);
           // the stream is closed
