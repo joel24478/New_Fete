@@ -4,8 +4,8 @@
     .module('feteApp')
     .controller('locationDetailCtrl', locationDetailCtrl);
 
-  locationDetailCtrl.$inject = ['$routeParams', '$location', '$modal', 'loc8rData', 'authentication'];
-  function locationDetailCtrl ($routeParams, $location, $modal, loc8rData, authentication) {
+  locationDetailCtrl.$inject = ['$routeParams', '$location', 'feteData', 'authentication'];
+  function locationDetailCtrl ($routeParams, $location, feteData, authentication) {
     var vm = this;
     vm.locationid = $routeParams.locationid;
 
@@ -13,7 +13,7 @@
 
     vm.currentPath = $location.path();
 
-    loc8rData.locationById(vm.locationid)
+    feteData.locationById(vm.locationid)
       .success(function(data) {
         vm.data = { location: data };
         vm.pageHeader = {
@@ -23,7 +23,7 @@
       .error(function (e) {
         console.log(e);
       });
-
+/*
     vm.popupReviewForm = function () {
       var modalInstance = $modal.open({
         templateUrl: '/reviewModal/reviewModal.view.html',
@@ -42,7 +42,7 @@
         vm.data.location.reviews.push(data);
       });
     };
-
+*/
   }
 
 })();

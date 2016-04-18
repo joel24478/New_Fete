@@ -4,32 +4,22 @@
   Copyright (c) 2016 by Joel Cruz.  All rights reserved.  May be freely copied or excerpted for educational purposes with credit to the author.
   updated by JC on March 27, 2016
 */
-
 // getting map to show your current position
 // https://developers.google.com/maps/documentation/javascript/examples/map-geolocation
 
-//Places information about maps
-
-// Note: This example requires that you consent to location sharing when
-      // prompted by your browser. If you see the error "The Geolocation service
-      // failed.", it means you probably did not give permission for the browser to
-      // locate you.
-
- //need a function to set more locations to map
- 
-var map;
-
-function setevents(map) { 
+ var map;
+//eventual split functions up to delete and add locations,
+//but for now just reload them as a brute force method. 
+function setevents( locations ) { 
     //http://stackoverflow.com/questions/3059044/google-maps-js-api-v3-simple-multiple-marker-example
-//console.log( map ); 
-    var locations = [
-      //['276 BROADWAY STREET, LOWELL, MA', -71.320167, 42.64389, 3],
-      ['30 University Ave Lowell Ma', -71.143692, 42.698564, 1]
-      //['15 Hurd st Lowell MA', -71.307279, 42.642733, 1]
+   locations = [
+   ['50 pawtucket st Lowell Ma', 42.6527101, -71.3188351, 2],
+   ['30 University Ave Lowell Ma', 42.6527466, -71.3255797, 2],
+   ['15 Hurd st Lowell MA', 42.6428657, -71.3080922, 1]
     ];
-
-     var infowindow = new google.maps.InfoWindow();
-     var marker, i;
+ 
+    var infowindow = new google.maps.InfoWindow();
+       var marker, i;
 
     for (i = 0; i < locations.length; i++) {  
       marker = new google.maps.Marker({
@@ -37,30 +27,42 @@ function setevents(map) {
         map: map
       });
 
-      infowindow.setContent(locations[i][0]);
-      infowindow.open(map, marker);
-
+      google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
     }
 } 
 function initMap() {
-     map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: -34.397, lng: 150.644},
-      zoom: 12
-    });
-    var infoWindow = new google.maps.InfoWindow({map: map});
-
-    // Try HTML5 geolocation.
+//need to add an infowindow for my position
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 14,
+      center: new google.maps.LatLng(-33.92, 151.25),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });    
+     
     if (navigator.geolocation) {
+    var locations;
       navigator.geolocation.getCurrentPosition(function(position) {
         var pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('My location');
+        
+        //infoWindow.setPosition(pos);
+        //infoWindow.setContent('My location');
+       
+        var marker = new google.maps.Marker({
+          position: pos,
+          map: map,
+          icon: 'https://help.blackberry.com/en/blackberry-z3/current/help/cag1383250505752_hiresdevice_en-us.png',
+          zIndex: 10, 
+          title: 'Hello World!'
+        });
         map.setCenter(pos);
-        setevents(map); 
+        setevents(locations); 
       }, function() {
         handleLocationError(true, infoWindow, map.getCenter());
       });
@@ -68,6 +70,7 @@ function initMap() {
       // Browser doesn't support Geolocation
       handleLocationError(false, infoWindow, map.getCenter());
     }
+    
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {

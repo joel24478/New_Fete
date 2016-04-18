@@ -10,7 +10,7 @@
     var events = [] ;
   
     var locationByCoords = function (lat, lng) {
-      return $http.get('/api/locations?lng=' + lng + '&lat=' + lat + '&maxDistance=20');
+      return $http.get('/api/locations?lng=' + lng + '&lat=' + lat + '&maxDistance='+ Distanceu7);
     };
     
     // userbyid

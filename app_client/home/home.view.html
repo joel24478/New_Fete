@@ -54,7 +54,7 @@
               <div class="col-md-6 col-sm-6">
                 <div class="row">
                   <div class="input-group" style="margin-top:25px;">
-                    <input type="checkbox" checked data-toggle="toggle" data-on="Public" data-off="Private" data-width="115" data-offstyle="warning"/>
+                    <input id="tf1" type="checkbox" checked data-toggle="toggle" data-on="Public" data-off="Private" data-width="115" data-offstyle="warning"/>
                   </div>
                 </div>
                 <div class="row">
@@ -78,7 +78,7 @@
               <a href="#/profile/{{ location._id }}">{{ location.Author }}</a>
             </div>
             <div class="row">
-              {{ location.PostDate }}
+              {{ location.PostDate.toString().split('T')[0] }}
             </div>
           </div>
          </div>
@@ -88,7 +88,7 @@
               <h4>  {{ location.Name }} </h4>
             </div>
             <div class="row">
-              <h6> {{ location.Date }}</h6>
+              <h6> {{ location.Date.toString().split('T')[0] }}</h6>
             </div>
             <div class="row">
               <h6> {{ location.Location }}</h6>
