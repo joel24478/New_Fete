@@ -26,7 +26,7 @@ EndTime: String,
 Public: {type: Boolean, required: true},
 coords: { type: [Number], index: '2dsphere'}
 });
-
+// always store coordinates longitude, latitude order. 
 // Schema for user 
 var usersSchema = new Schema({
 hash: String,
@@ -41,7 +41,8 @@ followersID: [String],
 followingID: [String],
 totalAttended: Number,
 profilepic: String, 
-currentposition: { type: [Number], index: '2dsphere'},
+//currentposition: { type: [Number], index: '2dsphere'},
+//currentposition: [Number],
 DateofCreation:{ type: Date, "default": Date.now},
 Events: [eventSchema]
 }) ;

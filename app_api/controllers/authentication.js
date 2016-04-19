@@ -51,8 +51,8 @@ module.exports.register = function(req, res) {
     totalAttended: 0,
     profilepic: "",
     followersID: [], 
-    followingID: [],
-	currentPosition : [0,0]
+    followingID: []
+	//currentPosition : [0,0]
   });
  
   //getLocation(); 

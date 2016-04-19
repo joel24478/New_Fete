@@ -13,6 +13,9 @@ var ctrlSignup = require('../controllers/signup');
 var ctrlHome = require('../controllers/home'); 
 var ctrlProfile = require('../controllers/profile');
 var ctrlAuth = require('../controllers/authentication');
+var ctrlDistance = require('../controllers/distance'); 
+
+router.get('/distance', ctrlDistance.locationsListByDistance);
 
 //authentication 
 router.post('/signup', ctrlAuth.register);
