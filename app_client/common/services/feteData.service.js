@@ -9,9 +9,9 @@
   
     var events = [] ;
   
-    var locationByCoords = function (lat, lng) {
-      return $http.get('/api/locations?lng=' + lng + '&lat=' + lat + '&maxDistance='+ Distanceu7);
-    };
+    var locationByCoords = function (lat, lng, Distance) { //pass public in the html param
+      return $http.get('/api/distance?lng=' + lng + '&lat=' + lat + '&maxDistance='+ Distance);
+    };//add userid to check if the user was invited to a public event
     
     // userbyid
     var locationById = function (locationid) {

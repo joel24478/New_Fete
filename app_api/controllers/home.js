@@ -80,8 +80,8 @@ var doAddEvent = function(req, res, user, author) {
   google.geocode(User.Location, function ( err, data ) {
 		console.log( Number(data.results[0].geometry.location.lat));
 		console.log( Number(data.results[0].geometry.location.lng ) );
-        coords[0] = Number(data.results[0].geometry.location.lat); 
-        coords[1] = Number(data.results[0].geometry.location.lng );
+        coords[1] = Number(data.results[0].geometry.location.lat); 
+        coords[0] = Number(data.results[0].geometry.location.lng );
         
 	// do something with data 
 	});

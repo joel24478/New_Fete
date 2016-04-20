@@ -50,7 +50,7 @@ function initMap() {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-        
+        $window.pos = pos; 
         //infoWindow.setPosition(pos);
         //infoWindow.setContent('My location');
        

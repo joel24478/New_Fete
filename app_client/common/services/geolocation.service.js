@@ -3,8 +3,10 @@
   angular
     .module('feteApp')
     .service('geolocation', geolocation);
-
-  function geolocation () {
+function hello(){ 
+return 'hello';
+} 
+  function geolocation() {
     var getPosition = function (cbSuccess, cbError, cbNoGeo) {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(cbSuccess, cbError);
