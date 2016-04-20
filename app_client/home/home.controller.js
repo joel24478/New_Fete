@@ -9,7 +9,6 @@
   homeCtrl.$inject = ['$scope', 'feteData', 'geolocation'];
   function homeCtrl ($scope, feteData, geolocation) {
   
-  
     // Nasty IE9 redirect hack (not recommended)
     if (window.location.pathname !== '/home') {
       window.location.href = '/#' + window.location.pathname;
@@ -68,30 +67,25 @@
           enableHighAccuracy: true
       };
 
-       navigator.geolocation.getCurrentPosition(function(pos) {
-         console.log(pos.coords.latitude); 
+      navigator.geolocation.getCurrentPosition(function(pos) {
+        
         feteData.locationByCoords( pos.coords.latitude, pos.coords.longitude,  10 ).success(function(data) {
           vm.locations = data;
-
           //console.log(vm.locations);
         })
         .error(function (e) {
           vm.message = "Sorry, something's gone wrong, please try again later";
         });                 
-        }, 
-        function(error) {                    
-            alert('Unable to get location: ' + error.message);
-        }, options);
-
+      }, 
+      function(error) {                    
+          alert('Unable to get location: ' + error.message);
+      }, options);
     };
     
    vm.deleteEvent = function(){ 
-   vm.message = " Event Deleted"; 
-   feteDate.deleteEvent() ; 
-   
+       vm.message = " Event Deleted"; 
+       feteDate.deleteEvent();   
    }
-
    vm.getData();
-  
   }
 })();

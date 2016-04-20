@@ -50,7 +50,7 @@ function initMap() {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-        $window.pos = pos; 
+        //$window.pos = pos; 
         //infoWindow.setPosition(pos);
         //infoWindow.setContent('My location');
        
@@ -61,6 +61,7 @@ function initMap() {
           zIndex: 10, 
           title: 'Hello World!'
         });
+        console.log( ' set pos '); 
         map.setCenter(pos);
         setevents(locations); 
       }, function() {
