@@ -6,9 +6,9 @@
     .module('feteApp')
     .controller('homeCtrl', homeCtrl);
 
-  homeCtrl.$inject = ['$scope', 'feteData', 'geolocation'];
-  function homeCtrl ($scope, feteData, geolocation) {
-  
+  homeCtrl.$inject = ['$scope', 'feteData', 'geolocation', '$window' ];
+  function homeCtrl ($scope, feteData, geolocation, $window ) {
+
     // Nasty IE9 redirect hack (not recommended)
     if (window.location.pathname !== '/home') {
       window.location.href = '/#' + window.location.pathname;
@@ -60,15 +60,11 @@
       //}, 2000);
     };
     vm.getData = function () {
-    
       vm.message = "Getting events";
-      console.log( vm.message); 
       var options = {
           enableHighAccuracy: true
       };
-
       navigator.geolocation.getCurrentPosition(function(pos) {
-        
         feteData.locationByCoords( pos.coords.latitude, pos.coords.longitude,  10 ).success(function(data) {
           vm.locations = data;
           //console.log(vm.locations);
