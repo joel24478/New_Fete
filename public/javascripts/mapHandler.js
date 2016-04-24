@@ -12,11 +12,12 @@
 //but for now just reload them as a brute force method. 
 function setevents( locations ) { 
     //http://stackoverflow.com/questions/3059044/google-maps-js-api-v3-simple-multiple-marker-example
-   locations = [
+  console.log( locations + " locations " ); 
+  /*  locations = [
    ['50 pawtucket st Lowell Ma', 42.6527101, -71.3188351, 2],
    ['30 University Ave Lowell Ma', 42.6527466, -71.3255797, 2],
    ['15 Hurd st Lowell MA', 42.6428657, -71.3080922, 1]
-    ];
+    ];*/ 
     if (navigator.geolocation) {
  
       navigator.geolocation.getCurrentPosition(function(position) {
