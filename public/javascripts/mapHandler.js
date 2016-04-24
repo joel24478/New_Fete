@@ -60,14 +60,14 @@ function setevents( locations ) {
 } 
 function initMap() {
 //need to add an infowindow for my position
-/*
+
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: 14,
       center: new google.maps.LatLng(-33.92, 151.25),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });    
     //setevents(locations);
-    setevents([]); */ 
+    setevents([]);  
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
