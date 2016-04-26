@@ -7,7 +7,6 @@
   created by AC on ‎Tuesday, ‎April ‎05, ‎2016, ‏‎11:43:59 AM.
 */
 
-
 //var google = require('geocoder');
 //http://stackoverflow.com/questions/33166268/retrieve-current-location-in-javascript-using-ng-map-angularjs-google-maps
 (function () {

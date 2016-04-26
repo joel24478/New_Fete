@@ -292,7 +292,8 @@ module.exports.updateEvent = function (req, res) {
   );
 //sendJsonResponse(res, 200, {"status" : "success"});
 };
-module.exports.deleteEvent = function (req, res) { 
+module.exports.deleteEvent = function (req, res) {
+// getAuthor(req, res, function (req, res, userinfo) {
 if (!req.params.Userid || !req.params.Eventid) {
     sendJsonResponse(res, 404, {
       "message": "Not found, Userid and Eventid are both required"
@@ -336,6 +337,7 @@ if (!req.params.Userid || !req.params.Eventid) {
       }
   );
 //sendJsonResponse(res, 200, {"status" : "success"});
+//});
 };
 
 module.exports.createComment = function (req, res) { 

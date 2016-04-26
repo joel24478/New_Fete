@@ -54,7 +54,10 @@
     
     var deleteEvent = function( eventID ) { 
         return $http.delete('/api/profile/'+ authentication.currentUser()._id +'/Event/' + eventID);
-    } 
+    headers: {
+          Authorization: 'Bearer '+ authentication.getToken()
+        }
+   } 
 
     return {
       locationByCoords : locationByCoords,
