@@ -9,13 +9,13 @@
 (function () {
 
   angular
-    .module('feteApp')
+    .module('feteApp', ['flow'])
     .controller('profileCtrl', profileCtrl);
 
-  profileCtrl.$inject = ['$scope' ,'feteData', 'geolocation'];
-  function profileCtrl($scope, feteData, geolocation) {
+  profileCtrl.$inject = ['$scope' ,'feteData', 'geolocation', '$window'];
+  function profileCtrl($scope, feteData, geolocation, $window) {
     var vm = this;
-    
+    //put post image method here
     
     vm.getData = function () {
       vm.message = "Getting events";
