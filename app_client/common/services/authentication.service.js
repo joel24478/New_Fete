@@ -1,5 +1,5 @@
 /*
-  File:  app_client/common/services/.controller.js
+  File:  app_client/common/services/authentication.service.js
   91.462 Project Milestone 
   Angel Calcano, UMass Lowell Computer Science, Angel_Calcano@cs.uml.edu
   created by Simon Homles

@@ -5,6 +5,7 @@
   Copyright (c) 2016 by Joel Cruz and Zheondre Calcano.  All rights reserved.  May be freely copied or excerpted for educational purposes with credit to the author.
   updated by JC on March 27, 2016
 */
+
 var request = require("request"); 
 var apiOptions = {
 server : "http://localhost:3000"

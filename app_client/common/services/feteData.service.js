@@ -1,3 +1,10 @@
+/*
+  File:  app_client/common/services/feteData.service.js
+  91.462 Project Milestone 
+  Angel Calcano, UMass Lowell Computer Science, Angel_Calcano@cs.uml.edu
+  created by Simon Homles
+  https://github.com/simonholmes/getting-MEAN/tree/chapter-11
+*/
 (function() {
 
   angular
