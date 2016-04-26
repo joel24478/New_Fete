@@ -1,29 +1,27 @@
 <navigation></navigation>
-
-<link rel="stylesheet" href="/stylesheets/login.css"/>
+<link rel="stylesheet" href="/stylesheets/login.css" />
 <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <div class="panel-title text-center"></div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title text-center"></div>
+        </div>
+        <div class="panel-body">
+            <div role="alert" ng-show="vm.formError" class="alert alert-danger">{{ vm.formError }}</div>
+            <form id="form" name="form" enctype="multipart/form-data" method="POST" ng-submit="vm.onSubmit()" class="form-horizontal">
+                <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input id="user" type="text" name="user" value="" placeholder="Email" ng-model="vm.credentials.email" class="form-control" />
+                </div>
+                <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input id="password" type="password" name="password" placeholder="Password" ng-model="vm.credentials.password" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12 controls">
+                        <button type="submit" href="#" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> Login</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="panel-body">
-     <div role="alert" ng-show="vm.formError" class="alert alert-danger">{{ vm.formError }}</div>
-      <form id="form" name="form" enctype="multipart/form-data" method="POST" ng-submit="vm.onSubmit()" class="form-horizontal">
-        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input id="user" type="text" name="user" value="" placeholder="Email" ng-model="vm.credentials.email" class="form-control"/>
-        </div>
-        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-          <input id="password" type="password" name="password" placeholder="Password" ng-model="vm.credentials.password" class="form-control"/>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-12 controls">
-            <button type="submit" href="#" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> Login</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
 </div>
-
-  <footer-generic></footer-generic>
+<footer-generic></footer-generic>
 </div>
