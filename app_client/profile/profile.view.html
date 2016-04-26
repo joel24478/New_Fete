@@ -1,3 +1,9 @@
+<!--
+  File:  Fete/sass/home.scss
+  Joel Cruz, UMass Lowell Computer Science, joel_cruz@student.uml.edu
+  Copyright (c) 2016 by Joel Cruz.  All rights reserved.  May be freely copied or excerpted for educational purposes with credit to the author.
+  updated by JC on March 27, 2016
+-->
 <navigation></navigation>
 <link rel="stylesheet" href="/stylesheets/home.css" />
 <link rel="stylesheet" href="/stylesheets/datepicker.css" />
@@ -51,16 +57,16 @@
     <div class="col-lg-4 col-md-8 col-sm-10 col-xs-10 user-menu user-pad" style=" padding-left:15px;">
         <!--Recent Interactions panel-->
         <div class="user-menu-content active">
-            <h5>Recent Interactions</h5>
+            <h3>Recent Interactions</h3>
             <ul class="user-menu-list">
                 <li>
-                    <h3><span class="glyphicon glyphicon-user purple"></span> Roselynn Smith followed you.</h3>
+                    <h5><span class="glyphicon glyphicon-user purple"></span> Roselynn Smith followed you.</h5>
                 </li>
                 <li>
-                    <h3><span class="glyphicon glyphicon-heart purple"></span> Jonathan Hawkins followed you.</h3>
+                    <h5><span class="glyphicon glyphicon-heart purple"></span> Jonathan Hawkins followed you.</h5>
                 </li>
                 <li>
-                    <h3><span class="glyphicon glyphicon-send purple"></span> Gracie Jenkins followed you.</h3>
+                    <h5><span class="glyphicon glyphicon-send purple"></span> Gracie Jenkins followed you.</h5>
                 </li>
                 <li>
                     <button type="button" href="#" class="btn btn-labeled btn-success"><span class="btn-label"><span class="glyphicon glyphicon-eye-open"></span></span>View all activity</button>
@@ -69,16 +75,16 @@
         </div>
         <!--inbox panel-->
         <div class="user-menu-content">
-            <h5>Your Inbox</h5>
+            <h3>Your Inbox</h3>
             <ul class="user-menu-list">
                 <li>
-                    <h3>From Roselyn Smith <small class="purple"><strong>NEW</strong><span class="glyphicon glyphicon-time"></span> 7:42 A.M.</small></h3>
+                    <h5>From Roselyn Smith <small class="purple"><strong>NEW</strong><span class="glyphicon glyphicon-time"></span> 7:42 A.M.</small></h5>
                 </li>
                 <li>
-                    <h3>From Jonathan Hawkins <small class="purple"><span class="glyphicon glyphicon-time"></span> 10:42 A.M.</small></h3>
+                    <h5>From Jonathan Hawkins <small class="purple"><span class="glyphicon glyphicon-time"></span> 10:42 A.M.</small></h5>
                 </li>
                 <li>
-                    <h3>From Georgia Jennings <small class="purple"><span class="glyphicon glyphicon-time"></span> 10:42 A.M.</small></h3>
+                    <h5>From Georgia Jennings <small class="purple"><span class="glyphicon glyphicon-time"></span> 10:42 A.M.</small></h5>
                 </li>
                 <li>
                     <button type="button" href="#" class="btn btn-labeled btn-info"><span class="btn-label"><span class="glyphicon glyphicon-envelope"></span></span>View All Messages</button>
@@ -134,42 +140,40 @@
     </div>
 </div>
 <!-- Create an Event -->
-<div id="postProfile" class="container">
-    <div id="template">
-        <div class="row panel panel-default">
-            <div class="col-lg-8 col-sm-8 col-md-8  col-lg-offset-2 col-md-offset-2 postPanel">
-                <div id="blackText" class="panel-body">
-                    <h3>Create an Event</h3>
-                    <div class="panel-content">
-                        <div rows="4" class="panel-textarea">
-                            <textarea></textarea>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="input-group">Location
-                                        <input type="text" />
-                                    </div>
+<div id="postProfile">
+    <div class="row panel panel-default">
+        <div class="col-lg-8 col-sm-8 col-md-8  col-lg-offset-2 col-md-offset-2 postPanel">
+            <div id="blackText" class="panel-body">
+                <h3>Create an Event</h3>
+                <div class="panel-content">
+                    <div rows="4" class="panel-textarea">
+                        <textarea></textarea>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="input-group">Location
+                                    <input type="text" />
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="input-group">Date
-                                        <input id="datePicker" type="text" />
-                                    </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="input-group">Date
+                                    <input id="datePicker" type="text" />
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="input-group">Time
-                                        <input type="text" />
-                                    </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="input-group">Time
+                                    <input type="text" />
                                 </div>
-                                <div class="col-md-1">
-                                    <div class="input-group">Public
-                                        <input type="checkbox" />
-                                    </div>
-                                    <div class="input-group">Private
-                                        <input type="checkbox" />
-                                    </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="input-group">Public
+                                    <input type="checkbox" />
                                 </div>
-                                <div class="col-md-2">
-                                    <button type="submit" class="btn btn-default">Post Event</button>
+                                <div class="input-group">Private
+                                    <input type="checkbox" />
                                 </div>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-default">Post Event</button>
                             </div>
                         </div>
                     </div>
@@ -179,8 +183,8 @@
     </div>
 </div>
 <!-- posts -->
-<div class="row panel panel-default" style="margin-top:10px">
-    <div class="col-lg-8 col-sm-12 col-md-12 col-lg-offset-2 col-md-offset-2">
+<div class="col-lg-8 col-sm-12 col-md-12 col-lg-offset-4 col-md-offset-4">
+    <div class="row panel panel-default" style="margin-top:10px">
         <div class="eventContainer">
             <div class="panel-heading"><img src="undefined" alt="undefined" class="img-circle pull-left" />
                 <h3></h3>

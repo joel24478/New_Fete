@@ -1,39 +1,39 @@
-    /*
+/*
   File:  Fete/sass/signup.scss
-  Joel Cruz, UMass Lowell Computer Science, jcruz@student.uml.edu
+  Joel Cruz, UMass Lowell Computer Science, joel_cruz@student.uml.edu
   Copyright (c) 2016 by Joel Cruz.  All rights reserved.  May be freely copied or excerpted for educational purposes with credit to the author.
-  updated by JC on March 27, 2016
+  updated by JC on April 26, 2016
 */
-    
-    @import "variables.scss";
-    body {
-        background-image: url("/images/signup_backgroundV2.jpg");
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-    }
-    
-    .submitBtn {
-        background-color: $primary-color;
-    }
-    
-    legend {
-        color: $primary-color;
-    }
-    
-    legend h1 {
-        margin: 0 0 0 0;
-    }
-    
-    fieldset {}
-    
-    .signupWrapper {
-        width: 300;
-        height: 600;
-    }
-    
-    #loginbox {
+
+@import "variables.scss";
+body {
+    background-image: url("/images/signup_backgroundV2.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.submitBtn {
+    background-color: $primary-color;
+}
+
+legend {
+    color: $primary-color;
+}
+
+legend h1 {
+    margin: 0 0 0 0;
+}
+
+fieldset {}
+
+.signupWrapper {
+    width: 300;
+    height: 600;
+}
+
+#loginbox {
     margin-top: 25%;
     margin-left: 10%;
     margin-right: 10%;

@@ -1,8 +1,8 @@
 /*
-  File:  Fete/sass/profiles.scss
-  Joel Cruz, UMass Lowell Computer Science, jcruz@student.uml.edu
+  File:  Fete/sass/profile.scss
+  Joel Cruz, UMass Lowell Computer Science, joel_cruz@student.uml.edu
   Copyright (c) 2016 by Joel Cruz.  All rights reserved.  May be freely copied or excerpted for educational purposes with credit to the author.
-  updated by JC on March 27, 2016
+  updated by JC on April 26, 2016
 */
 /*
   File:  Fete/sass/variables.js
@@ -225,6 +225,13 @@ div.user-menu div.user-menu-content:not(.active) {
 .btn {
   border-radius: 0px !important; }
 
+.eventContainer {
+  width: 520px;
+  height: 250px;
+  border-radius: 4px;
+  border: 1px solid #e1e8ed;
+  border-width: 5px; }
+
 /* -- media query for user profile
       All elemnents are stripped of their padding in moble
       as to give it a better feel and look-- */
@@ -261,7 +268,7 @@ div.user-menu div.user-menu-content:not(.active) {
 #postProfile {
   display: flex;
   overflow: hidden;
-  height: 400px;
+  height: 315px;
   position: relative;
   width: 100%;
   backface-visibility: hidden;
