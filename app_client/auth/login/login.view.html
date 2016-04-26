@@ -11,12 +11,17 @@
                 <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                     <input id="user" type="text" name="user" value="" placeholder="Email" ng-model="vm.credentials.email" class="form-control" />
                 </div>
-                <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                          <i class="glyphicon glyphicon-lock"></i>
+                      </span>
                     <input id="password" type="password" name="password" placeholder="Password" ng-model="vm.credentials.password" class="form-control" />
                 </div>
                 <div class="form-group">
                     <div class="col-sm-12 controls">
-                        <button type="submit" href="#" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> Login</button>
+                        <button type="submit" href="#" class="btn btn-primary pull-right">
+                            <i class="glyphicon glyphicon-log-in"></i>Login
+                        </button>
                     </div>
                 </div>
             </form>
@@ -24,4 +29,3 @@
     </div>
 </div>
 <footer-generic></footer-generic>
-</div>

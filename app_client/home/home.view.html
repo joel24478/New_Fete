@@ -5,23 +5,22 @@
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <script src="/javascripts/dateHandler.js"></script>
 <div id="post" style="margin-top:100px;" class="container">
-    <div id="template">
-        <!--<div class="row"> -->
-        <div class="col-lg-6 col-sm-12 col-md-6 postPanel">
+    <div class="row">
+        <div class="col-lg-6 col-sm-12 col-md-6 postPanel scrollPanelLeft">
             <!-- <div id="template">-->
             <!-- post area -->
             <div class="row panel panel-default ">
                 <form id="addEvent" name="addEvent" enctype="multipart/form-data" method="POST" ng-submit="vm.test()" class="panel-footer">
                     <div id="blackText" class="panel-body">
-                        <div class="input-group panel-textarea"> Name
+                        <h3>Post an Event</h3>
+                        <div class="input-group panel-textarea"> Title
                             <input type="text" required="required" ng-model="vm.formData.Name" value="Name" style="width:100%" />
                         </div>
                         <div rows="2" class="panel-textarea"> Description
                             <textarea required="required" ng-model="vm.formData.Description">Description </textarea>
                         </div>
                     </div>
-                    <!--<form id="addEvent" name="addReview" ng-submit="vm.onSubmit()" class="panel-footer">
-            -->
+                    <!--<form id="addEvent" name="addReview" ng-submit="vm.onSubmit()" class="panel-footer">-->
                     <qbutton type="button" data-toggle="collapse" href="#event-info" class="btn btn-default">More Info</qbutton>
                     <div id="event-info" class="panel-collapse collapse">
                         <div class="row">
@@ -64,9 +63,7 @@
                     </div>
                 </form>
             </div>
-            <!--</div> -->
             <!-- posts -->
-            <!-- <div class="col-lg-6 col-sm-12 col-md-6 scrollPanelLeft"> -->
             <div class="row panel panel-default" style="margin-top:10px">
                 <div class="col-lg-1 col-md-1">
                     <div class="row">
@@ -114,43 +111,43 @@
                 </div>
             </div>
         </div>
-        <!-- Map -->
-        <script>
-        function initMap() {
-            var mapDiv = document.getElementById('map');
-            var map = new google.maps.Map(mapDiv, {
-                center: {
-                    lat: 44.540,
-                    lng: -78.546
-                },
-                zoom: 8
-            });
-        }
-        </script>
-        <div class="col-lg-6 col-md-0 col-sm-0 scrollPanelRight">
-            <!-- that scroll bar needs to go from ZC 4.5.16 -->
-            <div class="panel with-nav-tabs panel-default">
-                <div class="panel-heading2">
-                    <ul id="tabs" class="nav nav-tabs">
-                        <li class="active"><a href="#mapByDistance" data-toggle="tab">Distance</a></li>
-                        <li><a href="#mapByTime" data-toggle="tab">Time</a></li>
-                    </ul>
-                </div>
-                <div class="panel-body">
-                    <div class="tab-content">
-                        <div id="mapByDistance" class="tab-pane fade in active">
-                            <div id="map"></div>
-                        </div>
-                        <div id="mapByTime" class="tab-pane fade">
-                            <div id="map"></div>
-                        </div>
+    </div>
+    <!-- Map -->
+    <script>
+    function initMap() {
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+            center: {
+                lat: 44.540,
+                lng: -78.546
+            },
+            zoom: 8
+        });
+    }
+    </script>
+    <div class="col-lg-6 col-md-0 col-sm-0 scrollPanelRight">
+        <!-- that scroll bar needs to go from ZC 4.5.16 -->
+        <div class="panel with-nav-tabs panel-default">
+            <div class="panel-heading2">
+                <ul id="tabs" class="nav nav-tabs">
+                    <li class="active"><a href="#mapByDistance" data-toggle="tab">Distance</a></li>
+                    <li><a href="#mapByTime" data-toggle="tab">Time</a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div id="mapByDistance" class="tab-pane fade in active">
+                        <div id="map"></div>
+                    </div>
+                    <div id="mapByTime" class="tab-pane fade">
+                        <div id="map"></div>
                     </div>
                 </div>
             </div>
-            <!-- </div>-->
-            <!-- </div> -->
         </div>
     </div>
+</div>
+</div>
 </div>
 <!-- put for loop here to add all events -->
 <footer-generic></footer-generic>

@@ -22,7 +22,7 @@ with negative margin and padding*/
 #post {
   display: flex;
   overflow: hidden;
-  height: 100vh;
+  height: 100%;
   position: relative;
   width: 100%;
   backface-visibility: hidden;
@@ -33,7 +33,6 @@ with negative margin and padding*/
 
 .postPanel {
   position: absolute;
-  left: 0px;
   top: 0px; }
 
 @media (max-width: 768px) {
@@ -79,15 +78,12 @@ body {
 
 .scrollPanelLeft {
   position: absolute;
-  left: 0px;
-  top: 240px;
   bottom: 0px;
   overflow-y: scroll; }
 
 .scrollPanelRight {
   position: absolute;
-  right: 0px;
-  overflow-y: scroll; }
+  right: 0px; }
 
 @media (max-width: 768px) {
   .scrollPanelRight {
