@@ -1,5 +1,8 @@
-var mongoose = require('mongoose');
-var Loc = mongoose.model('Profile');
+/* 
+  Created: Saturday, ‎April ‎23, ‎2016, ‏‎9:30:33 PM
+  File:  app_api/controllers/distance.js
+  91.462 Project Milestone 
+*/
 //https://www.geodatasource.com/developers/javascript
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //:::                                                                         :::
@@ -30,6 +33,9 @@ var Loc = mongoose.model('Profile');
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 //https://github.com/simonholmes/getting-MEAN/blob/chapter-11/app_api/controllers/locations.js
+
+var mongoose = require('mongoose');
+var Loc = mongoose.model('Profile');
 function distance(lat1, lon1, lat2, lon2, unit) {
 	var radlat1 = Math.PI * lat1/180
 	var radlat2 = Math.PI * lat2/180

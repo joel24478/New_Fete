@@ -1,7 +1,7 @@
 /* 
 	filename: validation.js
 	Author: Zheondre Calcano 
-	Created on:  March 26, ?2016 at 7:58 pm
+	Created on:  March 26, 2016 at 7:58 pm
 	Project: Fete
 	https://github.com/simonholmes/getting-MEAN/blob/chapter-11/app_api/config/passport.js
 */

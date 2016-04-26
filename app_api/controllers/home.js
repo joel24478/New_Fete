@@ -1,7 +1,11 @@
 /* 
-	Author: Zheondre Angel Calcano
-	Created: Monday, March 28, 2016, 5:45:00 PM
-	File name: home.js 
+  Author: Zheondre Angel Calcano
+  Created: Monday, March 28, 2016, 5:45:00 PM 
+  File:  app_api/controllers/home.js
+  91.462 Project Milestone 
+  Angel Calcano, UMass Lowell Computer Science, Angel_Calcano@cs.uml.edu
+  Copyright (c) 2016 by Angel Calcano.  All rights reserved.  May be freely 
+  copied or excerpted for educational purposes with credit to the author.
 */
 var google = require('geocoder');
 var mongoose = require('mongoose');

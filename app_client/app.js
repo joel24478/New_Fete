@@ -48,11 +48,6 @@
         controller: 'followingCtrl',
         controllerAs: 'vm'
       })
-      .when('/home/event', {
-        templateUrl: 'locationDetail/locationDetail.view.html',
-        controller: 'locationDetailCtrl',
-        controllerAs: 'vm'
-      })
       .otherwise({redirectTo: '/'});
      
     // use the HTML5 History API

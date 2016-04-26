@@ -1,11 +1,8 @@
 /* 
-	Author: Zheondre Angel Calcano
-	Created: Monday, March 28, 2016, 5:45:00 PM
-	File name: Authentication.js 
-*/
-
-/* 
-  Author: https://github.com/simonholmes/getting-MEAN/blob/chapter-11/app_api/controllers/authentication.js
+  Created: Monday, March 28, 2016, 5:45:00 PM
+  File name: app_api/controllers/authentication.js 
+  Author: Simon Homles
+  https://github.com/simonholmes/getting-MEAN/blob/chapter-11/app_api/controllers/authentication.js
 */
 
 // https://www.npmjs.com/package/geocoder

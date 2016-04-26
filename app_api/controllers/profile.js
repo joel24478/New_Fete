@@ -1,3 +1,11 @@
+/*
+  File:  app_api/controllers/profile.js
+  91.462 Project Milestone 
+  Angel Calcano, UMass Lowell Computer Science, Angel_Calcano@cs.uml.edu
+  Copyright (c) 2016 by Angel Calcano.  All rights reserved.  May be freely 
+  copied or excerpted for educational purposes with credit to the author.
+  created by AC. 
+*/
 var mongoose = require('mongoose');
 var Loc = mongoose.model('Profile');
 
