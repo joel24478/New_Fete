@@ -1,9 +1,19 @@
+<!--
+  File:  app_client/profile/profile.view.html
+  91.462 Project Milestone 
+  Angel Calcano, UMass Lowell Computer Science, Angel_Calcano@cs.uml.edu
+  Copyright (c) 2016 by Angel Calcano.  All rights reserved.  May be freely 
+  copied or excerpted for educational purposes with credit to the author.
+  created by AC on Wednesday, ‎April ‎06, ‎2016, ‏‎10:30:53 PM .
+-->
+
 <navigation></navigation>
-<link rel="stylesheet" href="/stylesheets/home.css" />
-<link rel="stylesheet" href="/stylesheets/datepicker.css" />
-<link rel="stylesheet" href="/stylesheets/profile.css" />
-<script src="/javascripts/profile.js"></script>
-<script src="/javascripts/dateHandler.js"></script>
+
+<link rel="stylesheet" href="/stylesheets/home.css"/>
+<link rel="stylesheet" href="/stylesheets/datepicker.css"/>
+<link rel="stylesheet" href="/stylesheets/profile.css"/>
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <!--Got it from-->
 <!--http://bootsnipp.com/snippets/featured/flat-user-profile-interface-ui-->
 <div id="banner" class="page-header"></div>
@@ -24,6 +34,7 @@
                 <div class="user-image"><img src="undefined" class="img-responsive thumbnail" /></div>
             </div>
         </div>
+<!-- <<<<<<< HEAD --> 
         <div class="row overview lightpurplebg">
             <div class="col-md-4 col-xs-4 user-pad text-center">
                 <h3>FOLLOWERS</h3>
@@ -33,10 +44,16 @@
                 <h3>FOLLOWING</h3>
                 <h4 class="white">{{vm.user.followingCount}}</h4>
             </div>
+            <!--
             <div class="col-md-4 col-xs-4 user-pad text-center">
                 <h3>ATTENDED</h3>
                 <h4 class="white">{{vm.user.attendedCount}}</h4>
-            </div>
+            </div> --> 
+<!--======= --> 
+        <div class="col-md-4 col-xs-4 user-pad text-center">
+          <h3>ATTENDED</h3>
+          <h4 class="white">{{vm.user.Attended}}</h4>
+<!-->>>>>>> zb --> 
         </div>
     </div>
     <div class="col-md-1 user-menu-btns">
@@ -77,164 +94,155 @@
                 </li>
             </ul>
         </div>
-        <div class="user-menu-content">
-            <h5>Trending</h5>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="view">
-                        <div class="caption">
-                            <p> </p><a href="" rel="tooltip" title="Appreciate"><span class="glyphicon glyphicon-heart"></span></a><a href="" rel="tooltip" title="View"><span class="glyphicon glyphicon-search"></span></a>
-                        </div><img src="undefined" class="trendPicture img-responsive" />
-                    </div>
-                    <div class="info">
-                        <p style="text-overflow: ellipsis" class="small">An Awesome Title</p>
-                        <p class="small purple text-right"><span class="glyphicon glyphicon-time"></span> Posted Today | 10:42 A.M.</p>
-                    </div>
-                    <div class="stats turqbg"><span class="glyphicon glyphicon-heart"><strong>47</strong></span><span class="glyphicon glyphicon-eye-open pull-right"><strong>137</strong></span></div>
-                </div>
-                <div class="col-md-6">
-                    <div class="view">
-                        <div class="caption">
-                            <p>47LabsDesign</p><a href="" rel="tooltip" title="Appreciate"><span class="glyphicon glyphicon-heart"></span></a><a href="" rel="tooltip" title="View"><span class="glyphicon glyphicon-time"></span></a>
-                        </div><img src="undefined" class="trendPicture img-responsive" />
-                    </div>
-                    <div class="info">
-                        <p style="text-overflow: ellipsis" class="small">An Awesome Title</p>
-                        <p class="small purple text-right"><span class="glyphicon glyphicon-time"></span> Posted Today | 10:42 A.M.</p>
-                    </div>
-                    <div class="stats turqbg"><span class="glyphicon glyphicon-heart"><strong>47</strong></span><span class="glyphicon glyphicon-eye-open pull-right"><strong>137</strong></span></div>
-                </div>
-            </div>
-        </div>
-        <div class="user-menu-content">
-            <h2 class="text-center">YOUR EVENT</h2>
-            <div class="share-links">
-                <center>
-                    <button type="button" href="#" style="margin-bottom: 15px;" class="btn btn-lg btn-labeled btn-info"><span class="btn-label"><span class="glyphicon glyphicon-calendar"></span></span>CREATE AN EVENT</button>
-                </center>
-                <center>
-                    <button type="button" href="#" style="margin-bottom: 15px;" class="btn btn-lg btn-labeled btn-info"><span class="btn-label"><span class="glyphicon glyphicon-calendar"></span></span>ONGOING EVENTS</button>
-                </center>
-                <center>
-                    <button type="button" href="#" class="btn btn-lg btn-labeled btn-info"><span class="btn-label"><span class="glyphicon glyphicon-hourglass"></span></span>
-                    </button>
-                </center>
-            </div>
-        </div>
+      </div>
     </div>
-</div>
-<!-- post area -->
-<div id="post" class="container">
-    <div id="template">
-        <div class="row panel panel-default">
-            <div class="col-lg-8 col-sm-8 col-md-8  col-lg-offset-2 col-md-offset-2 postPanel">
-                <div id="blackText" class="panel-body">
-                    <div class="panel-content">
-                        <div rows="4" class="panel-textarea">
-                            <textarea></textarea>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="input-group">Location
-                                        <input type="text" />
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="input-group">Date
-                                        <input id="datePicker" type="text" />
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="input-group">Time
-                                        <input type="text" />
-                                    </div>
-                                </div>
-                                <div class="col-md-1">
-                                    <div class="input-group">Public
-                                        <input type="checkbox" />
-                                    </div>
-                                    <div class="input-group">Private
-                                        <input type="checkbox" />
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <button type="submit" class="btn btn-default">Post Event</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  </div>
+
+<!-- post area --> 
+<div id="post" style="margin-top:25px;" class=" container">
+  <div id="template">
+    <!--<div class="row"> -->
+    <div class="col-lg-8 col-sm-8 col-md-8  col-lg-offset-2 col-md-offset-2 postPanel">
+      <!-- <div id="template">-->
+      <!-- post area --> 
+      <div class="row panel panel-default ">
+        <form id="addEvent" name="addEvent" enctype="multipart/form-data" method="POST" ng-submit="vm.test()" class="panel-footer">
+          <div id="blackText" class="panel-body">
+            <div class="input-group panel-textarea"> Name
+              <input type="text" required="required" ng-model="vm.formData.Name" value="Name" style="width:100%"/>
             </div>
-        </div>
-        <!--
-<div class="row">
-<div class="col-lg-8 col-sm-8 col-md-8 postPanel panel panel-defeault">
-        <div id="blackText" class="panel-body">
-          <div rows="4" class="panel-textarea">
-            <textarea>      </textarea>
+            <div rows="2" class="panel-textarea"> Description
+              <textarea required="required" ng-model="vm.formData.Description">Description </textarea>
+            </div>
           </div>
-        </div>
-        <div class="panel-footer">
+          <!--<form id="addEvent" name="addReview" ng-submit="vm.onSubmit()" class="panel-footer">
+            -->      
           <qbutton type="button" data-toggle="collapse" href="#event-info" class="btn btn-default">More Info</qbutton>
           <div id="event-info" class="panel-collapse collapse">
             <div class="row">
               <div class="col-md-3 col-sm-3">
-                <div class="input-group">Location
-                  <input type="text"/>
+                <div class="row">
+                  <div class="input-group">Location
+                    <input type="text" required="required" data-ng-model="vm.formData.Location" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-group">Date  
+                    <input  type="date" required="required" ng-model="vm.formData.Date" />
+                  </div>
                 </div>
               </div>
+              <!-- need start and end time -->
               <div class="col-md-3 col-sm-3">
-                <div class="input-group">Date  
-                  <input id="datePicker" type="text"/>
+                <div class="row">
+                  <div class="input-group">Start Time
+                    <input type="text"  required="required" ng-model="vm.formData.StartTime"  />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-group">End Time  
+                    <input type="text"   required="required" ng-model="vm.formData.EndTime" />
+                  </div>
                 </div>
               </div>
-              <div class="col-md-3 col-sm-3">
-                <div class="input-group">Time
-                  <input type="text"/>
+              <div class="col-md-6 col-sm-6">
+                <div class="row">
+                  <div class="input-group" style="margin-top:25px;">
+                    <input type="checkbox" checked data-toggle="toggle" data-on="Public" data-off="Private" data-width="115" data-offstyle="warning"/>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-2 col-sm-2">
-                <div class="input-group">Public  
-                  <input type="checkbox"/>
+                <div class="row">
+                  <button type="submit" class="btn btn-default">Post Event</button>
                 </div>
-              </div>
-              <div class="input-group">Private 
-                <input type="checkbox"/>
-              </div>
-              <div class="col-md-2">
-                <button type="submit" class="btn btn-default">Post Event</button>
               </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
-</div> 
--->
-        <!-- posts -->
-        <div class="row panel panel-default" style="margin-top:10px">
-            <div class="col-lg-8 col-sm-12 col-md-12 col-lg-offset-2 col-md-offset-2 scrollPanelLeft postPanel">
-                <div class="eventContainer">
-                    <div class="panel-heading"><img src="undefined" alt="undefined" class="img-circle pull-left" />
-                        <h3></h3>
-                        <h5><span>Shared </span> - <span></span></h5>
+      <!--</div> -->
+      <!-- posts --> 
+      <!-- <div class="col-lg-6 col-sm-12 col-md-6 scrollPanelLeft"> -->
+      <div class="row panel panel-default " style="margin-top:10px" ng-repeat="location in vm.locations" >
+        <div class="row">
+            <div class="col-lg-2 col-md-2">
+                <div class="col-lg-1 col-md-1">
+                    <div class="panel-heading">
+                        <img src="{{location.profilepicture}}" alt="undefined" class="img-circle pull-left"/>
                     </div>
-                    <div class="panel-body">
-                        <p></p>
+                </div>
+                <div class="col-lg-1 col-md-1">
+                    <div class="row">
+                     <h4> <a href="#/profile/{{ location.userid }}">{{ vm.user.name }}</a></h4>
                     </div>
-                    <div class="panel-footer">
-                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
-                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-share-alt"></span></button>
-                        <button type="button" data-toggle="collapse" href="#collapseTextArea" class="btn btn-default">Add a Comment</button>
-                        <div id="collapseTextArea" class="panel-collapse collapse">
-                            <div rows="4" class="panel-textarea">
-                                <textarea></textarea>
-                                <button type="submit" class="btn btn-default">Post comment</button>
-                                <button type="reset" class="btn btn-default">Cancel</button>
-                            </div>
-                        </div>
+                    <div class="row">
+                     {{ location.postDate }} 
                     </div>
                 </div>
             </div>
+            <div class="col-lg-2 col-md-2  col-lg-offset-10 col-md-offset-10">
+                <!-- put menue tab for edit and delete post here -->
+            </div>
         </div>
+        <div class="row">
+           <div class="col-lg-6 col-md-6  col-lg-offset-3 col-md-offset-3">
+         
+           <div>  <a href="#/profile/{{ location.userid }}/Event/{{ location.id }}"> {{ location.name }}</a> </div> 
+           <div>  {{ location.date }} </div> 
+         <div>{{ location.location }} </div>
+         
+          </div>
+        </div> 
+        <div class="row">
+
+                <div class="col-lg-8 col-md-8  col-lg-offset-2 col-md-offset-2">
+                    <!--Event picture-->
+                    <a href="#{{ location.EventPicture }}"></a>
+                  </div>
+        </div> 
+        
+        <div class="panel-body">
+          <p></p>
+        </div>
+        <div class="panel-footer">
+          <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+          <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-share-alt"></span></button>
+          <button type="button" data-toggle="collapse" href="#collapseTextArea" class="btn btn-default">Add a Comment</button>
+          <div id="collapseTextArea" class="panel-collapse collapse">
+            <div rows="4" class="panel-textarea">
+              <textarea></textarea>
+              <button type="submit" class="btn btn-default">Post comment</button>
+              <button type="reset" class="btn btn-default">Cancel</button>
+            </div>
+          </div>
+        </div>
+     
+        </div>
+        <!--
+        <div class="panel-body">
+          <p></p>
+        </div>
+        <div class="panel-footer">
+          <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+          <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-share-alt"></span></button>
+          <button type="button" data-toggle="collapse" href="#collapseTextArea" class="btn btn-default">Add a Comment</button>
+          <div id="collapseTextArea" class="panel-collapse collapse">
+            <div rows="4" class="panel-textarea">
+              <textarea></textarea>
+              <button type="submit" class="btn btn-default">Post comment</button>
+              <button type="reset" class="btn btn-default">Cancel</button>
+            </div>
+          </div>
+        </div>
+        -->
+      </div>
+    </div> 
+      <!-- </div> -->
     </div>
+
+  </div>
+
 </div>
+
+
+
 <footer-generic></footer-generic>

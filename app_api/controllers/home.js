@@ -1,9 +1,13 @@
 /* 
-	Author: Zheondre Angel Calcano
-	Created: Monday, March 28, 2016, 5:45:00 PM
-	File name: home.js 
+  Author: Zheondre Angel Calcano
+  Created: Monday, March 28, 2016, 5:45:00 PM 
+  File:  app_api/controllers/home.js
+  91.462 Project Milestone 
+  Angel Calcano, UMass Lowell Computer Science, Angel_Calcano@cs.uml.edu
+  Copyright (c) 2016 by Angel Calcano.  All rights reserved.  May be freely 
+  copied or excerpted for educational purposes with credit to the author.
 */
-
+var google = require('geocoder');
 var mongoose = require('mongoose');
 var Loc = mongoose.model('Profile');
 
@@ -71,10 +75,21 @@ module.exports.createEvent = function (req, res) {
 };
 // Sub function for adding an event
 var doAddEvent = function(req, res, user, author) {
+
   console.log(" API do add event");
-  //console.log(user);
+
   var User = req.body;
-  //console.log( user.Events ); 
+  var coords = [0,0];
+  
+  google.geocode(User.Location, function ( err, data ) {
+		console.log( Number(data.results[0].geometry.location.lat));
+		console.log( Number(data.results[0].geometry.location.lng ) );
+        coords[1] = Number(data.results[0].geometry.location.lat); 
+        coords[0] = Number(data.results[0].geometry.location.lng );
+        
+	// do something with data 
+	});
+  setTimeout(function(){
   if (!user) {
     sendJsonResponse(res, 404, "Userid not found");
   } else {
@@ -93,7 +108,7 @@ var doAddEvent = function(req, res, user, author) {
 	  StartTime: User.StartTime, 
 	  EndTime: User.EndTime, 
 	  Public: User.Public, 
-	  coords: User.coords 
+	  coords: coords
     });
     user.save(function(err, user) {
       var thisEvent;
@@ -107,8 +122,44 @@ var doAddEvent = function(req, res, user, author) {
       }
     });
   }
+  }, 2000);
 };
-
+module.exports.getPublicEvents = function (req, res) {
+    //getAuthor(req, res, function (req, res, userinfo) {
+        var stream = Loc.find().stream();
+        var events = [];
+        
+        stream.on('data', function (doc) {
+        //console.log( doc); 
+            for (var i = 0; i < doc.Events.length; i++) {
+              
+              //if( doc._id != req.params.Userid ) {
+                 
+                  var Event = doc.Events[i];
+                  // later on check if it is in a certain distance ; 
+                  if( Event.Public == true  ) {
+                    //console.log(Event.Public);                  
+                    events.push(Event); 
+                  } 
+              //}
+            }
+            //console.log(Event);
+        }).on('error', function (err) {
+            sendJsonResponse(res, 400, err);
+            return;
+              // handle the error
+        }).on('close', function () {
+         // organize array to show the newest post
+         // http://stackoverflow.com/questions/7555025/jquery-fastest-way-to-sort-an-array-by-timestamp
+        events.sort(function(x, y){
+            return y.PostDate - x.PostDate;
+        })
+          
+        //console.log( events); 
+        sendJsonResponse(res, 200, events);
+          // the stream is closed
+      });
+};
 //Get a specific event
 module.exports.getEvent = function (req, res) { 
 // get user, then find the event
@@ -241,7 +292,8 @@ module.exports.updateEvent = function (req, res) {
   );
 //sendJsonResponse(res, 200, {"status" : "success"});
 };
-module.exports.deleteEvent = function (req, res) { 
+module.exports.deleteEvent = function (req, res) {
+// getAuthor(req, res, function (req, res, userinfo) {
 if (!req.params.Userid || !req.params.Eventid) {
     sendJsonResponse(res, 404, {
       "message": "Not found, Userid and Eventid are both required"
@@ -285,6 +337,7 @@ if (!req.params.Userid || !req.params.Eventid) {
       }
   );
 //sendJsonResponse(res, 200, {"status" : "success"});
+//});
 };
 
 module.exports.createComment = function (req, res) { 

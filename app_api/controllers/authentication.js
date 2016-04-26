@@ -1,11 +1,8 @@
 /* 
-	Author: Zheondre Angel Calcano
-	Created: Monday, March 28, 2016, 5:45:00 PM
-	File name: Authentication.js 
-*/
-
-/* 
-  Author: https://github.com/simonholmes/getting-MEAN/blob/chapter-11/app_api/controllers/authentication.js
+  Created: Monday, March 28, 2016, 5:45:00 PM
+  File name: app_api/controllers/authentication.js 
+  Author: Simon Homles
+  https://github.com/simonholmes/getting-MEAN/blob/chapter-11/app_api/controllers/authentication.js
 */
 
 // https://www.npmjs.com/package/geocoder
@@ -45,7 +42,14 @@ module.exports.register = function(req, res) {
   var user = new User({ 
 	name: req.body.name,
 	email: req.body.email,
-	currentPosition : [0,0]
+    About: "", 
+    Followers: 0,
+	Following: 0,
+    totalAttended: 0,
+    profilepic: "",
+    followersID: [], 
+    followingID: []
+	//currentPosition : [0,0]
   });
  
   //getLocation(); 

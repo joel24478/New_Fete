@@ -1,9 +1,18 @@
+<!--
+  File:  app_client/home/home.view.html
+  91.462 Project Milestone 
+  Angel Calcano, UMass Lowell Computer Science, Angel_Calcano@cs.uml.edu
+  Copyright (c) 2016 by Angel Calcano.  All rights reserved.  May be freely 
+  copied or excerpted for educational purposes with credit to the author.
+  created by AC on Wednesday, April 06, 2016.
+-->
 <navigation></navigation>
 <link rel="stylesheet" href="/stylesheets/home.css" />
 <link rel="stylesheet" href="/stylesheets/datepicker.css" />
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <script src="/javascripts/dateHandler.js"></script>
+
 <div id="post" style="margin-top:100px;" class="container">
     <div id="template">
         <!--<div class="row"> -->
@@ -100,57 +109,103 @@
                 <div class="panel-body">
                     <p></p>
                 </div>
-                <div class="panel-footer">
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-share-alt"></span></button>
-                    <button type="button" data-toggle="collapse" href="#collapseTextArea" class="btn btn-default">Add a Comment</button>
-                    <div id="collapseTextArea" class="panel-collapse collapse">
-                        <div rows="4" class="panel-textarea">
-                            <textarea></textarea>
-                            <button type="submit" class="btn btn-default">Post comment</button>
-                            <button type="reset" class="btn btn-default">Cancel</button>
-                        </div>
-                    </div>
+              </div>
+              <div class="col-md-6 col-sm-6">
+                <div class="row">
+                  <div class="input-group" style="margin-top:25px;">
+                    <input id="tf1" type="checkbox" checked data-toggle="toggle" data-on="Public" data-off="Private" data-width="115" data-offstyle="warning"/>
+                  </div>
                 </div>
+                <div class="row">
+                  <button type="submit" class="btn btn-default" ng-click="setevents( vm.locations )" >Post Event</button>
+                </div>
+              </div>
             </div>
+          </div>
+        </form>
+      </div>
+      <!--</div> -->
+      <!-- posts --> 
+       <!--<div class="col-lg-6 col-sm-12 col-md-6 scrollPanelLeft"> -->
+       <div style="overflow-y: scroll; height:450px;">
+      <div class="row panel panel-default " style="margin-top:10px" ng-repeat="location in vm.locations">
+        <div class="col-lg-2 col-md-2">
+          <div class="row">
+            <div class="panel-heading"><img src="{{location.profilepicture}}" alt="undefined" class="img-circle pull-left"/>
+            </div>
+            <div class="row">
+              <a href="#/profile/{{ location._id }}">{{ location.Author }}</a>
+            </div>
+            <div class="row">
+              {{ location.PostDate.toString().split('T')[0] }}
+            </div>
+          </div>
+         </div>
+         <div class="col-lg-4 col-md-4">
+          
+            <div class="row">
+              <h4>  {{ location.Name }} </h4>
+            </div>
+            <div class="row">
+              <h6> {{ location.Date.toString().split('T')[0] }}</h6>
+            </div>
+            <div class="row">
+              <h6> {{ location.Location }}</h6>
+            </div>
+         </div>
+          <div class="col-lg-2 col-md-2">
+            <!--Event picture-->
+            <a href="#{{ location.EventPicture }}"></a>
+          </div>
+          <!-- add coords to map -->
+     
+        <!--</div>-->
+        <div class="panel-body">
+          <p></p>
         </div>
-        <!-- Map -->
-        <script>
-        function initMap() {
-            var mapDiv = document.getElementById('map');
-            var map = new google.maps.Map(mapDiv, {
-                center: {
-                    lat: 44.540,
-                    lng: -78.546
-                },
-                zoom: 8
-            });
-        }
-        </script>
-        <div class="col-lg-6 col-md-0 col-sm-0 scrollPanelRight">
-            <!-- that scroll bar needs to go from ZC 4.5.16 -->
-            <div class="panel with-nav-tabs panel-default">
-                <div class="panel-heading2">
-                    <ul id="tabs" class="nav nav-tabs">
-                        <li class="active"><a href="#mapByDistance" data-toggle="tab">Distance</a></li>
-                        <li><a href="#mapByTime" data-toggle="tab">Time</a></li>
-                    </ul>
-                </div>
-                <div class="panel-body">
-                    <div class="tab-content">
-                        <div id="mapByDistance" class="tab-pane fade in active">
-                            <div id="map"></div>
-                        </div>
-                        <div id="mapByTime" class="tab-pane fade">
-                            <div id="map"></div>
-                        </div>
-                    </div>
-                </div>
+        <div class="panel-footer">
+          <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+          <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-share-alt"></span></button>
+          <button type="button" data-toggle="collapse" href="#collapseTextArea" class="btn btn-default">Add a Comment</button>
+          <div id="collapseTextArea" class="panel-collapse collapse">
+            <div rows="4" class="panel-textarea">
+              <textarea></textarea>
+              <button type="submit" class="btn btn-default">Post comment</button>
+              <button type="reset" class="btn btn-default">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+   </div>
+   <!--post-->
+</div>   
+    <map></map>  
+    <!-- Map -->
+    
+    <div class="col-lg-6 col-md-0 col-sm-0 scrollPanelRight">
+      <!-- that scroll bar needs to go from ZC 4.5.16 --> 
+      <div class="panel with-nav-tabs panel-default">
+        <div class="panel-heading2">
+          <ul id="tabs" class="nav nav-tabs">
+            <li class="active"><a href="#mapByDistance" data-toggle="tab">Distance</a></li>
+            <li><a href="#mapByTime" data-toggle="tab">Time</a></li>
+          </ul>
+        </div>
+        <div class="panel-body">
+          <div class="tab-content">
+            <div id="mapByDistance" class="tab-pane fade in active">
+              <div id="map"></div>
+            </div>
+            <div id="mapByTime" class="tab-pane fade">
+              <div id="map"></div>
             </div>
             <!-- </div>-->
             <!-- </div> -->
         </div>
+
+      </div>      
     </div>
+    
+  </div>
 </div>
-<!-- put for loop here to add all events -->
 <footer-generic></footer-generic>

@@ -1,5 +1,12 @@
 //API INDEX
-
+/* 
+  Author: Zheondre Angel Calcano
+  File:  app_api/routes/index.js
+  91.462 Project Milestone 
+  Angel Calcano, UMass Lowell Computer Science, Angel_Calcano@cs.uml.edu
+  Copyright (c) 2016 by Angel Calcano.  All rights reserved.  May be freely 
+  copied or excerpted for educational purposes with credit to the author.
+*/
 var express = require('express');
 var router = express.Router();
 
@@ -13,6 +20,9 @@ var ctrlSignup = require('../controllers/signup');
 var ctrlHome = require('../controllers/home'); 
 var ctrlProfile = require('../controllers/profile');
 var ctrlAuth = require('../controllers/authentication');
+var ctrlDistance = require('../controllers/distance'); 
+
+router.get('/distance', ctrlDistance.locationsListByDistance);
 
 //authentication 
 router.post('/signup', ctrlAuth.register);
@@ -25,6 +35,7 @@ router.get('/test', ctrlAuth.test);
 router.get('/Home',ctrlHome.home); //this will be changed to get world's events
 router.get('/Home/:Userid/Event/:Eventid',ctrlHome.getEvent);
 router.post('/Home/:Userid', auth, ctrlHome.createEvent); 
+router.get('/Home/:Userid',  ctrlHome.getPublicEvents); 
 router.put('/Home/:Userid/Event/:Eventid', auth, ctrlHome.updateEvent);
 router.delete('/Home/:Userid/Event/:Eventid', auth, ctrlHome.deleteEvent);
 router.get('/Home/:Userid/Event/:Eventid/comments/:Commentid',ctrlHome.getComment);

@@ -1,3 +1,11 @@
+/*
+  File:  app_server/controllers/loginSignup.js
+  91.462 Project Milestone 
+  Angel Calcano, UMass Lowell Computer Science, Angel_Calcano@cs.uml.edu
+  created by Simon Homles
+  https://github.com/simonholmes/getting-MEAN/tree/chapter-11
+*/
+
 var request = require("request"); 
 var apiOptions = {
 server : "http://localhost:3000"

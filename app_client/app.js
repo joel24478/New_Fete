@@ -1,6 +1,6 @@
 /*
 	File:  app_client/app.js
-	COMP 4620 Project: Fete
+	COMP 462 Project: Fete
 	Angel Calcano, UMass Lowell Computer Science, Angel_Calcano@cs.uml.edu
 	Copyright (c) 2016 by Angel Calcano.  All rights reserved.  May be freely 
 	copied or excerpted for educational purposes with credit to the author.
@@ -18,7 +18,7 @@
         controller: 'homeCtrl',
         controllerAs: 'vm'
       })
-      .when('/about', {
+      .when('/', {
         templateUrl: 'about/about.view.html',
         controller: 'aboutCtrl',
         controllerAs: 'vm'
@@ -41,6 +41,11 @@
       .when('/profile', {
         templateUrl: 'profile/profile.view.html',
         controller: 'profileCtrl',
+        controllerAs: 'vm'
+      })
+      .when('/following', {
+        templateUrl: 'following/following.view.html',
+        controller: 'followingCtrl',
         controllerAs: 'vm'
       })
       .otherwise({redirectTo: '/'});
