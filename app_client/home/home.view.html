@@ -1,10 +1,8 @@
 <!--
-  File:  app_client/home/home.view.html
-  91.462 Project Milestone 
-  Angel Calcano, UMass Lowell Computer Science, Angel_Calcano@cs.uml.edu
-  Copyright (c) 2016 by Angel Calcano.  All rights reserved.  May be freely 
-  copied or excerpted for educational purposes with credit to the author.
-  created by AC on Wednesday, April 06, 2016.
+  File:  Fete/sass/home.scss
+  Joel Cruz, UMass Lowell Computer Science, joel_cruz@student.uml.edu
+  Copyright (c) 2016 by Joel Cruz.  All rights reserved.  May be freely copied or excerpted for educational purposes with credit to the author.
+  updated by JC on March 27, 2016
 -->
 <navigation></navigation>
 <link rel="stylesheet" href="/stylesheets/home.css" />
@@ -12,200 +10,155 @@
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <script src="/javascripts/dateHandler.js"></script>
-
-<div id="post" style="margin-top:100px;" class="container">
-    <div id="template">
-        <!--<div class="row"> -->
-        <div class="col-lg-6 col-sm-12 col-md-6 postPanel">
-            <!-- <div id="template">-->
-            <!-- post area -->
-            <div class="row panel panel-default ">
-                <form id="addEvent" name="addEvent" enctype="multipart/form-data" method="POST" ng-submit="vm.test()" class="panel-footer">
-                    <div id="blackText" class="panel-body">
-                        <div class="input-group panel-textarea"> Name
-                            <input type="text" required="required" ng-model="vm.formData.Name" value="Name" style="width:100%" />
-                        </div>
-                        <div rows="2" class="panel-textarea"> Description
-                            <textarea required="required" ng-model="vm.formData.Description">Description </textarea>
-                        </div>
+<!--Container for the whole left side-->
+<div id="post" style="margin-top:100px; padding-left: 0;" class="container col-lg-6 col-sm-12 col-md-6">
+    <div class="col-lg-6 col-sm-12 col-md-6 postPanel scrollPanelLeft">
+        <!-- Create An Event -->
+        <div class="row panel panel-default ">
+            <form id="addEvent" name="addEvent" enctype="multipart/form-data" method="POST" ng-submit="vm.test()" class="panel-footer">
+                <div id="blackText" class="panel-body" style="background:whitesmoke;">
+                    <h3>Post an Event</h3>
+                    <div class="input-group panel-textarea"> Title
+                        <input type="text" required="required" ng-model="vm.formData.Name" value="Name" style="width:100%" />
                     </div>
-                    <!--<form id="addEvent" name="addReview" ng-submit="vm.onSubmit()" class="panel-footer">
-            -->
-                    <qbutton type="button" data-toggle="collapse" href="#event-info" class="btn btn-default">More Info</qbutton>
-                    <div id="event-info" class="panel-collapse collapse">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3">
-                                <div class="row">
-                                    <div class="input-group">Location
-                                        <input type="text" required="required" data-ng-model="vm.formData.Location" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-group">Date
-                                        <input type="date" required="required" ng-model="vm.formData.Date" />
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- need start and end time -->
-                            <div class="col-md-3 col-sm-3">
-                                <div class="row">
-                                    <div class="input-group">Start Time
-                                        <input type="text" required="required" ng-model="vm.formData.StartTime" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-group">End Time
-                                        <input type="text" required="required" ng-model="vm.formData.EndTime" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6">
-                                <div class="row">
-                                    <div class="input-group" style="margin-top:25px;">
-                                        <input type="checkbox" checked data-toggle="toggle" data-on="Public" data-off="Private" data-width="115" data-offstyle="warning" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <button type="submit" class="btn btn-default">Post Event</button>
-                                </div>
-                            </div>
-                        </div>
+                    <div rows="2" class="panel-textarea"> Description
+                        <textarea required="required" ng-model="vm.formData.Description">Description </textarea>
                     </div>
-                </form>
-            </div>
-            <!--</div> -->
-            <!-- posts -->
-            <!-- <div class="col-lg-6 col-sm-12 col-md-6 scrollPanelLeft"> -->
-            <div class="row panel panel-default" style="margin-top:10px">
-                <div class="col-lg-1 col-md-1">
+                </div>
+                <button type="button" data-toggle="collapse" href="#event-info" class="btn btn-default">More Info</button>
+                <div id="event-info" class="panel-collapse collapse">
                     <div class="row">
-                        <div class="panel-heading"><img src="{{location.profilepicture}}" alt="undefined" class="img-circle pull-left" />
+                        <div class="col-md-3 col-sm-3">
+                            <div class="row">
+                                <div class="input-group">Location
+                                    <input type="text" required="required" data-ng-model="vm.formData.Location" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-group">Date
+                                    <input type="date" required="required" ng-model="vm.formData.Date" />
+                                </div>
+                            </div>
                         </div>
-                        <div class="row">
-                            <a href="#/profile/{{ location._id }}">{{ location.auth }}</a>
+                        <!-- need start and end time -->
+                        <div class="col-md-3 col-sm-3">
+                            <div class="row">
+                                <div class="input-group">Start Time
+                                    <input type="text" required="required" ng-model="vm.formData.StartTime" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-group">End Time
+                                    <input type="text" required="required" ng-model="vm.formData.EndTime" />
+                                </div>
+                            </div>
                         </div>
-                        <div class="row">
-                            {{ location.PostDate }}
+                        <div class="col-md-6 col-sm-6">
+                            <div class="row">
+                                <div class="input-group" style="margin-top:25px;">
+                                    <input type="checkbox" checked data-toggle="toggle" data-on="Public" data-off="Private" data-width="115" data-offstyle="warning" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button type="submit" class="btn btn-default" ng-click="setevents( vm.locations )">Post Event</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-8 col-md-8">
+                </div>
+            </form>
+        </div>
+        <!-- posts -->
+        <div class="row">
+            <!--Padding left and right to 0 for alignment with "Create An Event panel-->
+            <div class="col-lg-12 container" style="margin-top:10px; padding-left:0px; padding-right:0px;" ng-repeat="location in vm.locations">
+                <div class="panel panel-default">
+                    <div class="panel-header">
                         <div class="row">
-                            <h2>  {{ location.Name }} </h2>
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
+                                <div class="row">
+                                    <div style="font-style: italic; font-size: 8pt">
+                                        {{ location.PostDate.toString().split('T')[0] }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!--This is the user image-->
+                                    <img src="{{location.profilepicture}}" alt="undefined" class="img-circle pull-left" />
+                                </div>
+                                <div class="row">
+                                    <!--Authors name-->
+                                    <div style="font-size: 12pt;">
+                                        <a href="#/profile/{{ location.userid }}">{{ location.Author }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8">
+                                <div class="row">
+                                    <a href="#/profile/{{ location.userid }}/Event/{{ location.id }}">
+                                        <div style="font-size: 160%;">
+                                            <!--Event Name-->
+                                            {{ location.Name }}
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="row">
+                                    on {{ location.Date.toString().split('T')[0] }}
+                                </div>
+                                <div class="row">
+                                    @ {{ location.Location }}
+                                </div>
+                            </div>
                         </div>
-                        <div class="row">
-                            <h4> {{ location.EventDate }}</h4>
-                        </div>
-                        <div class="row">
-                            <h4> {{ location.location }}</h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3">
-                        <!--Event picture-->
-                        <a href="#{{ location.EventPicture }}"></a>
                     </div>
                     <!-- add coords to map -->
-                    <h5><span>Shared </span> - <span></span></h5>
+                    <div class="panel-body">
+                        <p>{{location.Description}}</p>
+                    </div>
+                    <div class="panel-footer">
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-share-alt"></span>
+                        </button>
+                        <button type="button" data-toggle="collapse" href="#collapseTextArea" class="btn btn-default">Add a Comment</button>
+                        <div id="collapseTextArea" class="panel-collapse collapse">
+                            <div rows="4" class="panel-textarea">
+                                <textarea></textarea>
+                                <button type="submit" class="btn btn-default">Post comment</button>
+                                <button type="reset" class="btn btn-default">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <p></p>
-                </div>
-              </div>
-              <div class="col-md-6 col-sm-6">
-                <div class="row">
-                  <div class="input-group" style="margin-top:25px;">
-                    <input id="tf1" type="checkbox" checked data-toggle="toggle" data-on="Public" data-off="Private" data-width="115" data-offstyle="warning"/>
-                  </div>
-                </div>
-                <div class="row">
-                  <button type="submit" class="btn btn-default" ng-click="setevents( vm.locations )" >Post Event</button>
-                </div>
-              </div>
             </div>
-          </div>
-        </form>
-      </div>
-      <!--</div> -->
-      <!-- posts --> 
-       <!--<div class="col-lg-6 col-sm-12 col-md-6 scrollPanelLeft"> -->
-       <div style="overflow-y: scroll; height:450px;">
-      <div class="row panel panel-default " style="margin-top:10px" ng-repeat="location in vm.locations">
-        <div class="col-lg-2 col-md-2">
-          <div class="row">
-            <div class="panel-heading"><img src="{{location.profilepicture}}" alt="undefined" class="img-circle pull-left"/>
-            </div>
-            <div class="row">
-              <a href="#/profile/{{ location._id }}">{{ location.Author }}</a>
-            </div>
-            <div class="row">
-              {{ location.PostDate.toString().split('T')[0] }}
-            </div>
-          </div>
-         </div>
-         <div class="col-lg-4 col-md-4">
-          
-            <div class="row">
-              <h4>  {{ location.Name }} </h4>
-            </div>
-            <div class="row">
-              <h6> {{ location.Date.toString().split('T')[0] }}</h6>
-            </div>
-            <div class="row">
-              <h6> {{ location.Location }}</h6>
-            </div>
-         </div>
-          <div class="col-lg-2 col-md-2">
-            <!--Event picture-->
-            <a href="#{{ location.EventPicture }}"></a>
-          </div>
-          <!-- add coords to map -->
-     
-        <!--</div>-->
-        <div class="panel-body">
-          <p></p>
+            <!--end of repeated post-->
         </div>
-        <div class="panel-footer">
-          <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
-          <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-share-alt"></span></button>
-          <button type="button" data-toggle="collapse" href="#collapseTextArea" class="btn btn-default">Add a Comment</button>
-          <div id="collapseTextArea" class="panel-collapse collapse">
-            <div rows="4" class="panel-textarea">
-              <textarea></textarea>
-              <button type="submit" class="btn btn-default">Post comment</button>
-              <button type="reset" class="btn btn-default">Cancel</button>
-            </div>
-          </div>
-        </div>
-      </div>
-   </div>
-   <!--post-->
-</div>   
-    <map></map>  
-    <!-- Map -->
-    
-    <div class="col-lg-6 col-md-0 col-sm-0 scrollPanelRight">
-      <!-- that scroll bar needs to go from ZC 4.5.16 --> 
-      <div class="panel with-nav-tabs panel-default">
-        <div class="panel-heading2">
-          <ul id="tabs" class="nav nav-tabs">
-            <li class="active"><a href="#mapByDistance" data-toggle="tab">Distance</a></li>
-            <li><a href="#mapByTime" data-toggle="tab">Time</a></li>
-          </ul>
-        </div>
-        <div class="panel-body">
-          <div class="tab-content">
-            <div id="mapByDistance" class="tab-pane fade in active">
-              <div id="map"></div>
-            </div>
-            <div id="mapByTime" class="tab-pane fade">
-              <div id="map"></div>
-            </div>
-            <!-- </div>-->
-            <!-- </div> -->
-        </div>
-
-      </div>      
+        <!--end of container for post .row-->
     </div>
-    
-  </div>
+    <!---end of .scrollPanelLeft-->
+</div>
+<!--end of #post-->
+<!-- Map -->
+<!--Col set to 0 for sm and xs displays as to not show the map on mobile-->
+<div class="col-lg-6 col-md-0 col-sm-0 col-xs-0 scrollPanelRight" style="margin-top:100px">
+    <!-- that scroll bar needs to go from ZC 4.5.16 -->
+    <div class="panel with-nav-tabs panel-default">
+        <div class="panel-heading2">
+            <ul id="tabs" class="nav nav-tabs">
+                <li class="active"><a href="#mapByDistance" data-toggle="tab">Distance</a></li>
+                <li><a href="#mapByTime" data-toggle="tab">Time</a></li>
+            </ul>
+        </div>
+        <div class="panel-body">
+            <div class="tab-content">
+                <div id="mapByDistance" class="tab-pane fade in active">
+                    <div id="map"></div>
+                </div>
+                <div id="mapByTime" class="tab-pane fade">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <footer-generic></footer-generic>

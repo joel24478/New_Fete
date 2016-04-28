@@ -1,8 +1,8 @@
 /*
   File:  Fete/sass/style.scss
-  Joel Cruz, UMass Lowell Computer Science, jcruz@student.uml.edu
+  Joel Cruz, UMass Lowell Computer Science, joel_cruz@student.uml.edu
   Copyright (c) 2016 by Joel Cruz.  All rights reserved.  May be freely copied or excerpted for educational purposes with credit to the author.
-  updated by JC on March 27, 2016
+  updated by JC on April 26, 2016
 */
 
 @import "variables.scss";
@@ -82,8 +82,6 @@ a {
 .navbar-default .navbar-text {
     color: #FFF;
 }
-
-#search-bar {}
 
 .btn-default:active:focus {
     background-color: $primary-color;
@@ -201,6 +199,18 @@ a {
     background-color: #59b5fa;
 }
 
+.authorPost {
+    font-size: 12pt;
+    margin: 0 0 0style 0;
+    font-style: it
+}
+
+.eventTitle {
+    font-size: 24pt;
+    font-weight: 700;
+    margin: 0 0 0 0;
+}
+
 @media(max-width:768px) {
     #login-dp {
         background-color: inherit;
@@ -209,5 +219,8 @@ a {
     #login-dp .bottom {
         background-color: inherit;
         border-top: 0 none;
+    }
+    #loginbox {
+        margin-left: 0 !important;
     }
 }

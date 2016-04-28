@@ -1,8 +1,8 @@
 /*
-  File:  Fete/sass/profiles.scss
-  Joel Cruz, UMass Lowell Computer Science, jcruz@student.uml.edu
+  File:  Fete/sass/profile.scss
+  Joel Cruz, UMass Lowell Computer Science, joel_cruz@student.uml.edu
   Copyright (c) 2016 by Joel Cruz.  All rights reserved.  May be freely copied or excerpted for educational purposes with credit to the author.
-  updated by JC on March 27, 2016
+  updated by JC on April 26, 2016
 */
 
 @import "variables.scss";
@@ -44,6 +44,10 @@
 
 .lightpurple {
     color: $light-purple;
+}
+
+.whitesmoke {
+    background-color: whitesmoke;
 }
 
 .trendPicture {
@@ -193,20 +197,6 @@ div.user-menu div.user-menu-content:not(.active) {
     padding: 20px 25px;
 }
 
-@media (max-width: 767px) {
-    .user-pad {
-        padding: 0px 0px;
-    }
-    .user-pad h3 {
-        font-weight: 400 !important;
-        font-size: 10pt;
-        margin: 10px 0 0 10px !important;
-    }
-    .user-pad h4 {
-        font-size: 15pt !important;
-    }
-}
-
 .no-pad {
     padding-right: 0;
     padding-left: 0;
@@ -231,7 +221,7 @@ div.user-menu div.user-menu-content:not(.active) {
 
 .overview h4 {
     font-weight: bold!important;
-    font-size: 40px;
+    font-size: 20pt;
     margin-top: 0;
 }
 
@@ -296,18 +286,77 @@ div.user-menu div.user-menu-content:not(.active) {
     border-radius: 0px!important;
 }
 
+//the container for a post
+.eventContainer {
+    width: 80%;
+    border-radius: 4px;
+    border: 1px solid #e1e8ed;
+    border-width: 5px;
+    margin-left: 25px;
+}
 
-/* -- media query for user profile image -- */
+
+/* -- media query for user profile
+      All elemnents are stripped of their padding in moble
+      as to give it a better feel and look-- */
 
 @media (max-width: 767px) {
+    #banner {
+        margin-bottom: 0px;
+    }
+    .user-details {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
     .user-image {
         max-height: 400px;
     }
-}
-
-@media (max-width: 767px) {
-    div .user-menu-container .thumbnail {
+    .user-menu-btns {
+        padding-left: 0px;
+    }
+    div.user-menu-container .thumbnail {
         max-height: 200px;
-        max-width: 200px;
+        max-width: 100%;
+    }
+    div.user-menu-container {
+        margin-top: 0px;
+    }
+    .user-pad {
+        padding-right: 0px;
+        padding-left: 10px;
+    }
+    .user-pad h3 {
+        font-weight: 400 !important;
+        font-size: 10pt;
+        margin: 10px 0 0 10px !important;
+    }
+    .user-pad h4 {
+        font-size: 15pt !important;
+    }
+    div.user-menu-btns {
+        padding-left: 0px;
+    }
+    #postProfile {
+        padding-left: 0px;
+        padding-right: 15px;
+        height: 114% !important;
+        margin-left: 36px;
     }
 }
+
+#postProfile {
+    display: flex;
+    overflow: hidden;
+    height: 80%;
+    position: relative;
+    width: 80%;
+    backface-visibility: hidden;
+    will-change: overflow;
+}
+
+//giving a thicker border to text fields
+// .inputText {
+//     padding: 10px;
+//     border: solid 5px #c9c9c9;
+//     transition: border 0.3s;
+// }
