@@ -18,3 +18,8 @@
 
 body {
   background-image: url("/images/signup_backgroundV2.jpg"); }
+
+footer {
+  position: absolute;
+  top: 100%;
+  width: 100%; }

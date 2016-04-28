@@ -13,10 +13,14 @@
 .navbar-default {
   background-color: #660BAB; }
 
+html {
+  height: 100%; }
+
 body {
   background-position: 50% 10%;
   background-color: rgba(59, 2, 66, 0.03);
-  color: black; }
+  color: black;
+  height: 100%; }
 
 footer {
   background-color: #660BAB;

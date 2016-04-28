@@ -16,21 +16,35 @@
             </div>
             <div class="panel-body">
                 <form id="form" name="form" enctype="multipart/form-data" method="POST" ng-submit="vm.onSubmit()" class="form-horizontal">
-                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span>
                         <input id="user" type="text" name="user" value="" placeholder="UserName" ng-model="vm.credentials.name" class="form-control">
                     </div>
-                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-envelope"></i>
+                        </span>
                         <input id="email" type="email" name="email" placeholder="name@example.com" ng-model="vm.credentials.email" class="form-control">
                     </div>
-                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="password" type="password" name="comfirmPassword" placeholder="Confirm Password" ng-model="vm.credentials.confirmpw" class="form-control">
-                    </div>
-                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-lock"></i>
+                        </span>
                         <input id="password" type="password" name="password" placeholder="Password" ng-model="vm.credentials.password" class="form-control">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-lock"></i>
+                        </span>
+                        <input id="password" type="password" name="comfirmPassword" placeholder="Confirm Password" ng-model="vm.credentials.confirmpw" class="form-control" compare.confirmPassword="vm.credentials.password">
                     </div>
                     <div class="form-group">
                         <div class="col-md-8 controls">
-                            <button type="submit" href="SignUp" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> SignUp</button>
+                            <button type="submit" href="SignUp" class="btn btn-primary pull-right">
+                                <i class="glyphicon glyphicon-log-in"></i> SignUp
+                            </button>
                         </div>
                         <div class="col-md-8"><a href="/#login?page={{ vm.returnPage }}">Or Login</a></div>
                     </div>
