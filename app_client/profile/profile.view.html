@@ -36,9 +36,29 @@
             </div>
             <!--User picture-->
             <div class="col-md-6 no-pad">
+                <!-- 
                 <div class="user-image">
                     <img ng-src="{{vm.user.profilePicture}}" class="img-responsive thumbnail" />
-                </div>
+                </div> -->
+`               <div flow-init="{target: '/upload'}" flow-files-submitted="$flow.upload()"
+                flow-file-success="$file.msg = $message">         
+                  
+                  <div>
+                    <div class="img-responsive thumbnail" ng-hide="$flow.files.length">
+                      <img src="{{vm.user.profilePicture}}" />
+                    </div>
+                    <div class="img-responsive thumbnail" ng-show="$flow.files.length">
+                      <img flow-img="$flow.files[0]" />
+                    </div>
+                    <div>
+                    <!-- <button class="btn btn-label" flow-btn>Upload File</button> --> 
+                      <button class="btn btn-info"  ng-hide="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Select image</button>
+                      <button class="btn btn-info" ng-show="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}"><a href="#">Change image</a></button>
+                    </div>
+                  </div>
+            </div>
+
+                
             </div>
         </div>
         <div class="row overview lightpurplebg">
