@@ -27,3 +27,13 @@ legend h1 {
   margin-left: 25%;
   margin-bottom: 25%;
   margin-top: 10%; }
+
+body {
+  background-image: url("/images/signup_backgroundV2.jpg"); }
+
+.panel {
+  background-color: rgba(245, 245, 245, 0.35); }
+
+@media (max-width: 768px) {
+  .container {
+    margin-top: 100px; } }

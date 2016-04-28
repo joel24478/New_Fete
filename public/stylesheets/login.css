@@ -15,3 +15,6 @@
 .panel-body {
   padding-top: 30px;
   background-color: rgba(255, 255, 255, 0.3); }
+
+body {
+  background-image: url("/images/signup_backgroundV2.jpg"); }
