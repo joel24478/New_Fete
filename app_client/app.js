@@ -9,7 +9,7 @@
 //https://github.com/simonholmes/getting-MEAN/blob/chapter-09/app_client/app.js
 (function () {
 
-  angular.module('feteApp', ['ngRoute',  'ui.bootstrap']);
+  angular.module('feteApp', ['ngRoute',  'ui.bootstrap', 'flow']);
 
   function config ($routeProvider, $locationProvider) {
     $routeProvider

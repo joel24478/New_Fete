@@ -48,8 +48,7 @@ var appClientFiles = [
   'app_client/common/directives/navigation/navigation.controller.js',
   'app_client/common/directives/navigation/navigation.directive.js',
   'app_client/common/directives/footerGeneric/footerGeneric.directive.js',
-  'app_client/common/directives/pageHeader/pageHeader.directive.js',
-  'app_client/common/directives/ratingStars/ratingStars.directive.js'
+  'app_client/common/directives/pageHeader/pageHeader.directive.js'
 ];
 
 // uncomment after placing your favicon in /public

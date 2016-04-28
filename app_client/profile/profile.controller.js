@@ -9,7 +9,7 @@
 (function () {
 
   angular
-    .module('feteApp', ['flow'])
+    .module('feteApp')
     .controller('profileCtrl', profileCtrl);
 
   profileCtrl.$inject = ['$scope' ,'feteData', 'geolocation', '$window'];
@@ -29,8 +29,11 @@
           vm.message = "Sorry, something's gone wrong, please try again later";
         });
     };
-    
+   /*
+      
+
+
+    */
    vm.getData();
   }
-
 })();
