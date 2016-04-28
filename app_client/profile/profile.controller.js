@@ -27,6 +27,16 @@
             Public: true,
             pos: [0, 0]
         };
+
+        //when the postEvent button clicked
+        vm.changeButton = function() {
+            console.log("changing postEvent button");
+            //change text to submitted so user knows post was made
+            $("#postEvent").text("submitted");
+            //disable the button after clicked
+            $("#postEvent").attr('disabled', true);
+        };
+
         vm.test = function() {
             // ****need to grab true or false from toggle switch ******
             vm.formError = "";
@@ -37,6 +47,7 @@
             } else {
                 console.log("form is valid");
                 vm.doAddEvent(vm.formData);
+                vm.changeButton();
             }
         }; //end of vm.test 
         vm.doAddEvent = function(formData) {

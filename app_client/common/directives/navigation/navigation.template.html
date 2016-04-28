@@ -18,13 +18,13 @@
                 </li>
                 <!--dropdown menu-->
                 <li ng-show="navvm.isLoggedIn" class="dropdown">
-                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">{{navvm.currentUser.name }}
-                    <span class="caret"></span></a>
-                    <ul role="menu" class="dropdown-menu">
-                        <li><a href="/profile">Profile</a></li>
-                        <li><a href="/followers">Followers</a></li>
-                        <li><a href="#" ng-click="navvm.logout()">Logout</a></li>
-                    </ul>
+                    <a href="/profile">{{navvm.currentUser.name }}</a>
+                </li>
+                <li><a href="/following">Followers</a></li>
+                <li>
+                    <a href="#" ng-show="navvm.isLoggedIn" ng-click="navvm.logout()">
+                    Logout
+                    </a>
                 </li>
                 <!--about link-->
                 <li>
