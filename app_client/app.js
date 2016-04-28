@@ -9,7 +9,7 @@
 //https://github.com/simonholmes/getting-MEAN/blob/chapter-09/app_client/app.js
 (function () {
 
-  angular.module('feteApp', ['ngRoute',  'ui.bootstrap']);
+  angular.module('feteApp', ['ngRoute',  'ui.bootstrap', 'uiGmapgoogle-maps']);
 
   function config ($routeProvider, $locationProvider) {
     $routeProvider
@@ -23,7 +23,7 @@
         controller: 'aboutCtrl',
         controllerAs: 'vm'
       })
-      .when('/location/:locationid', {
+      .when('/event/:locationid', {
         templateUrl: 'locationDetail/locationDetail.view.html',
         controller: 'locationDetailCtrl',
         controllerAs: 'vm'

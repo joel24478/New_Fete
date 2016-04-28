@@ -9,6 +9,10 @@
 
 //var google = require('geocoder');
 //http://stackoverflow.com/questions/33166268/retrieve-current-location-in-javascript-using-ng-map-angularjs-google-maps
+
+// using the google map plugin with angular
+// http://stackoverflow.com/questions/25838452/angular-google-maps-center-zoom-multiple-markers
+
 (function() {
 
     angular
@@ -24,6 +28,9 @@
             window.location.href = '/#' + window.location.pathname;
         }
         var vm = this;
+        vm.googleMap = null; 
+        vm.mapMarkers = [];
+        vm.currentpos;
 
         vm.formData = {
             Name: "",
@@ -85,6 +92,7 @@
             navigator.geolocation.getCurrentPosition(function(pos) {
                     feteData.locationByCoords(pos.coords.latitude, pos.coords.longitude, 10).success(function(data) {
                             vm.locations = data;
+                            addMarkers( data ); 
                             //console.log(vm.locations);
                         })
                         .error(function(e) {
@@ -101,5 +109,94 @@
             feteDate.deleteEvent();
         }
         vm.getData();
+        
+        var onSuccess = function(position) {
+            vm.userLocation.coords.latitude = position.coords.latitude;
+            vm.userLocation.coords.longitude = position.coords.longitude;
+
+            initializeMap();
+        };
+
+        var onError = function(error) {
+            alert('code: ' + error.code + '\n' + 'message: ' + error.message);
+        };
+
+        vm.userLocation = {
+            id: "home",
+            title: "home",
+            coords: {
+                latitude: 33.636727,
+                longitude: -83.920702
+            },
+            options: {
+                animation: google.maps.Animation.BOUNCE
+            }
+        };
+
+        var addMarkers = function( events ) {
+        //add a custom  for user's position
+            var userLocation = new google.maps.Marker({
+                map: vm.googleMap,
+                icon: 'https://cdn0.iconfinder.com/data/icons/project-management-1-1/24/46-48.png',
+                position: new google.maps.LatLng(vm.userLocation.coords.latitude, vm.userLocation.coords.longitude),
+                //animation: vm.userLocation.options.animation,
+                title: vm.userLocation.title
+            });
+
+            vm.mapMarkers.push(userLocation);
+
+            angular.forEach(events, function(location, index) {
+           console.log( events ); 
+                var marker = new google.maps.Marker({
+                    map: vm.googleMap,
+                    position: new google.maps.LatLng(location.coords[1], location.coords[0]),
+                    title: location.Name
+                });
+                
+                google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
+                    return function() {
+                    //show name and address ? 
+                      infowindow.setContent(location.Name);
+                      infowindow.open(map, marker);
+                    }
+                  })(marker, i));  
+                
+                vm.mapMarkers.push(marker);
+            });
+
+            var bounds = new google.maps.LatLngBounds();
+
+            for (var i = 0; i < vm.mapMarkers.length; i++) {
+            
+                bounds.extend(vm.mapMarkers[i].getPosition());
+            }
+            vm.googleMap.setCenter(bounds.getCenter());
+            vm.googleMap.fitBounds(bounds);
+            //remove one zoom level to ensure no marker is on the edge.
+            vm.googleMap.setZoom(vm.googleMap.getZoom() - 1);
+
+            // set a minimum zoom
+            // if you got only 1 marker or all markers are on the same address map will be zoomed too much.
+            if (vm.googleMap.getZoom() > 15) {
+                vm.googleMap.setZoom(15);
+            }
+        }; 
+
+        var initializeMap = function() {
+            var mapOptions = {
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                zoom: 12,
+                center: new google.maps.LatLng(vm.userLocation.coords.latitude, vm.userLocation.coords.longitude)
+            };
+            var div = document.getElementById("map");
+            //var map = plugin.google.maps.Map.getMap(div, mapOptions);
+            vm.googleMap = new google.maps.Map(div, mapOptions);
+            addMarkers([]);
+
+            var width = screen.width;
+            var height = screen.height;
+        };
+
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
 })();
