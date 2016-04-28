@@ -17,7 +17,10 @@
 <div id="banner" class="page-header"></div>
 <!--The user box containing user information, picture and various tabs-->
 <div class="row user-menu-container square">
+
     <!--The users information including picture-->
+    <div flow-init="{target: '/upload'}" flow-files-submitted="$flow.upload()"
+                flow-file-success="$file.msg = $message">
     <div class="col-lg-7 col-md-12 col-xs-12 col-sm-12 user-details">
         <div class="row purplebg white">
             <div class="col-md-6 col-sm-3 no-pad">
@@ -26,12 +29,19 @@
                         <h3 id="username">{{vm.user.name}}</h3>
                         <h4 class="white"><span class="glyphicon glyphicon-globe"></span>{{vm.user.About}}</h4>
                     </div>
+                    <!--
                     <button type="button" href="#" class="btn btn-labeled btn-info">
                         <span class="btn-label">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </span>
                         Update
-                    </button>
+                    </button> --> 
+                    <div> </div> 
+                    <div>
+                    <!-- <button class="btn btn-label" flow-btn>Upload File</button> --> 
+                      <button class="btn btn-info"  ng-hide="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Update image</button>
+                      <button class="btn btn-info" ng-show="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}"><a href="#">Change image</a></button>
+                    </div>
                 </div>
             </div>
             <!--User picture-->
@@ -40,25 +50,15 @@
                 <div class="user-image">
                     <img ng-src="{{vm.user.profilePicture}}" class="img-responsive thumbnail" />
                 </div> -->
-`               <div flow-init="{target: '/upload'}" flow-files-submitted="$flow.upload()"
-                flow-file-success="$file.msg = $message">         
-                  
-                  <div>
+     
+                    <div class="user-image">
                     <div class="img-responsive thumbnail" ng-hide="$flow.files.length">
                       <img src="{{vm.user.profilePicture}}" />
                     </div>
                     <div class="img-responsive thumbnail" ng-show="$flow.files.length">
                       <img flow-img="$flow.files[0]" />
                     </div>
-                    <div>
-                    <!-- <button class="btn btn-label" flow-btn>Upload File</button> --> 
-                      <button class="btn btn-info"  ng-hide="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Select image</button>
-                      <button class="btn btn-info" ng-show="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}"><a href="#">Change image</a></button>
                     </div>
-                  </div>
-            </div>
-
-                
             </div>
         </div>
         <div class="row overview lightpurplebg">
@@ -75,6 +75,7 @@
                 <h4 class="white">{{vm.user.Attended}}</h4>
             </div>
         </div>
+    </div>
     </div>
     <!--The buttons for the tabs-->
     <div class="col-md-1 col-sm-2 col-xs-2 user-menu-btns">
