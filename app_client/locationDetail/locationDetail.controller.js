@@ -6,51 +6,73 @@
   copied or excerpted for educational purposes with credit to the author.
   created by AC on Wednesday, ‎April ‎06, ‎2016, ‏‎10:30:53 PM.
 */
-(function () {
+(function() {
 
-  angular
-    .module('feteApp')
-    .controller('locationDetailCtrl', locationDetailCtrl);
+    angular
+        .module('feteApp')
+        .controller('locationDetailCtrl', locationDetailCtrl);
 
-  locationDetailCtrl.$inject = ['$routeParams', '$location', 'feteData', 'authentication'];
-  function locationDetailCtrl ($routeParams, $location, feteData, authentication) {
-    var vm = this;
-    vm.locationid = $routeParams.locationid;
+    locationDetailCtrl.$inject = ['$routeParams', '$location', 'feteData', 'authentication'];
 
-    vm.isLoggedIn = authentication.isLoggedIn();
+    function locationDetailCtrl($routeParams, $location, feteData, authentication) {
+        var vm = this;
 
-    vm.currentPath = $location.path();
-
-    feteData.locationById(vm.locationid)
-      .success(function(data) {
-        vm.data = { location: data };
-        vm.pageHeader = {
-          title: vm.data.location.name
+        vm.formData = {
+            Name: "",
+            Description: "",
+            Location: "",
+            Date: "",
+            StartTime: "",
+            EndTime: "",
+            Public: true,
+            pos: [0, 0]
         };
-      })
-      .error(function (e) {
-        console.log(e);
-      });
-/*
-    vm.popupReviewForm = function () {
-      var modalInstance = $modal.open({
-        templateUrl: '/reviewModal/reviewModal.view.html',
-        controller: 'reviewModalCtrl as vm',
-        resolve : {
-          locationData : function () {
-            return {
-              locationid : vm.locationid,
-              locationName : vm.data.location.name
-            };
-          }
-        }
-      });
+        vm.test = function() {
+            // ****need to grab true or false from toggle switch ******
+            vm.formError = "";
+            console.log(vm.formData);
+            if (!vm.formData.Name || !vm.formData.Description || !vm.formData.Location || !vm.formData.Date || !vm.formData.StartTime || !vm.formData.EndTime) {
+                vm.formError = "All fields required, please try again";
+                return false;
+            } else {
+                console.log("form is valid");
+                vm.doAddEvent(vm.formData);
+            }
+        }; //end of vm.test 
+        vm.doAddEvent = function(formData) {
+            console.log(" doAddEvent");
+            feteData.addEventByUserId({
+                    Name: formData.Name,
+                    Description: formData.Description,
+                    Location: formData.Location,
+                    Date: formData.Date,
+                    StartTime: formData.StartTime,
+                    EndTime: formData.EndTime,
+                    Public: formData.Public,
+                    coords: formData.pos,
+                    EventPicture: ""
+                })
+                .error(function(data) {
+                    vm.formError = "Your event has not been saved, please try again";
+                });
+            return false;
+            //}, 2000);
+        };
 
-      modalInstance.result.then(function (data) {
-        vm.data.location.reviews.push(data);
-      });
-    };
-*/
-  }
+        vm.getData = function() {
+            vm.message = "Getting events";
+            feteData.GetMyEvents().success(function(data) {
+                    vm.locations = data.events;
+                    vm.user = data.user;
+                    console.log(vm.user);
+                    console.log(vm.locations);
+                })
+                .error(function(e) {
+                    vm.message = "Sorry, something's gone wrong, please try again later";
+                });
+        };
+
+        vm.getData();
+    }
 
 })();

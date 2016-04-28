@@ -8,13 +8,8 @@
 <link rel="stylesheet" href="/stylesheets/home.css" />
 <link rel="stylesheet" href="/stylesheets/datepicker.css" />
 <link rel="stylesheet" href="/stylesheets/profile.css" />
-<link rel="stylesheet" href="/stylesheets/bootstrap-clockpicker.min.css" />
 <script src="/javascripts/profile.js"></script>
-<script src="/javascripts/bootstrap-clockpicker.minjs"></script>
 <script src="/javascripts/dateHandler.js"></script>
-<script type="text/javascript">
-$('.clockpicker').clockpicker();
-</script>
 <!--Got it from-->
 <!--http://bootsnipp.com/snippets/featured/flat-user-profile-interface-ui-->
 <div id="banner" class="page-header"></div>
@@ -183,12 +178,12 @@ $('.clockpicker').clockpicker();
                         <div class="col-md-3 col-sm-3">
                             <div class="row">
                                 <div class="input-group">Start Time
-                                    <input type="text" required="required" ng-model="vm.formData.StartTime" />
+                                    <input type="time" class="form-control" required="required" ng-model="vm.formData.StartTime" />
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-group">End Time
-                                    <input type="text" required="required" ng-model="vm.formData.EndTime" />
+                                    <input type="time" class="form-control" required="required" ng-model="vm.formData.EndTime" />
                                 </div>
                             </div>
                         </div>
