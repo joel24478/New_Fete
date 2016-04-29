@@ -28,9 +28,23 @@
             window.location.href = '/#' + window.location.pathname;
         }
         var vm = this;
-        vm.googleMap = null; 
+        vm.googleMap = null;
         vm.mapMarkers = [];
         vm.currentpos;
+
+        vm.dateFixer = function(Date) {
+
+
+            date = Date;
+            console.log(date);
+            $scope.d = (date.split('-')[0]);
+            $scope.m = (date.split('-')[1]);
+            $scope.y = (date.split('-')[2]);
+            $scope.dd = (date.split('-')[3]);
+            console.log($scope.m + "-" + $scope.d + "-" + $scope.y);
+            return $scope.m + "-" + $scope.y + "-" + $scope.d;
+
+        }
 
         vm.formData = {
             Name: "",
@@ -92,7 +106,7 @@
             navigator.geolocation.getCurrentPosition(function(pos) {
                     feteData.locationByCoords(pos.coords.latitude, pos.coords.longitude, 10).success(function(data) {
                             vm.locations = data;
-                            addMarkers( data ); 
+                            addMarkers(data);
                             //console.log(vm.locations);
                         })
                         .error(function(e) {
@@ -109,7 +123,7 @@
             feteDate.deleteEvent();
         }
         vm.getData();
-        
+
         var onSuccess = function(position) {
             vm.userLocation.coords.latitude = position.coords.latitude;
             vm.userLocation.coords.longitude = position.coords.longitude;
@@ -133,8 +147,8 @@
             }
         };
 
-        var addMarkers = function( events ) {
-        //add a custom  for user's position
+        var addMarkers = function(events) {
+            //add a custom  for user's position
             var userLocation = new google.maps.Marker({
                 map: vm.googleMap,
                 icon: 'https://cdn0.iconfinder.com/data/icons/project-management-1-1/24/46-48.png',
@@ -146,28 +160,28 @@
             vm.mapMarkers.push(userLocation);
 
             angular.forEach(events, function(location, index) {
-           console.log( events ); 
+                console.log(events);
                 var marker = new google.maps.Marker({
                     map: vm.googleMap,
                     position: new google.maps.LatLng(location.coords[1], location.coords[0]),
                     title: location.Name
                 });
-                
+
                 google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
                     return function() {
-                    //show name and address ? 
-                      infowindow.setContent(location.Name);
-                      infowindow.open(map, marker);
+                        //show name and address ? 
+                        infowindow.setContent(location.Name);
+                        infowindow.open(map, marker);
                     }
-                  })(marker, i));  
-                
+                })(marker, i));
+
                 vm.mapMarkers.push(marker);
             });
 
             var bounds = new google.maps.LatLngBounds();
 
             for (var i = 0; i < vm.mapMarkers.length; i++) {
-            
+
                 bounds.extend(vm.mapMarkers[i].getPosition());
             }
             vm.googleMap.setCenter(bounds.getCenter());
@@ -180,7 +194,7 @@
             if (vm.googleMap.getZoom() > 15) {
                 vm.googleMap.setZoom(15);
             }
-        }; 
+        };
 
         var initializeMap = function() {
             var mapOptions = {

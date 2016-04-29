@@ -16,7 +16,19 @@
 
     function profileCtrl($scope, feteData, geolocation) {
         var vm = this;
+        vm.dateFixer = function(Date) {
 
+
+            date = Date;
+            console.log(date);
+            $scope.d = (date.split('-')[0]);
+            $scope.m = (date.split('-')[1]);
+            $scope.y = (date.split('-')[2]);
+            $scope.dd = (date.split('-')[3]);
+            console.log($scope.m + "-" + $scope.d + "-" + $scope.y);
+            return $scope.m + "-" + $scope.y + "-" + $scope.d;
+
+        }
         vm.formData = {
             Name: "",
             Description: "",
