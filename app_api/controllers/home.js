@@ -21,6 +21,7 @@ module.exports.home = function(req, res) {
         "status": "Welcome Home"
     });
 };
+// Get the author
 var getAuthor = function(req, res, callback) {
     console.log("Finding author with email " + req.payload.email);
     if (req.payload.email) {
@@ -128,6 +129,7 @@ var doAddEvent = function(req, res, user, author) {
         }
     }, 2000);
 };
+//Get all public events
 module.exports.getPublicEvents = function(req, res) {
     //getAuthor(req, res, function (req, res, userinfo) {
     var stream = Loc.find().stream();
@@ -230,7 +232,7 @@ module.exports.getEvent = function(req, res) {
         });
     }
 };
-
+// update Event
 module.exports.updateEvent = function(req, res) {
     //get the info then enter it 
     if (!req.params.Userid || !req.params.Eventid) {
@@ -296,6 +298,7 @@ module.exports.updateEvent = function(req, res) {
         );
     //sendJsonResponse(res, 200, {"status" : "success"});
 };
+// delete event 
 module.exports.deleteEvent = function(req, res) {
     // getAuthor(req, res, function (req, res, userinfo) {
     if (!req.params.Userid || !req.params.Eventid) {
