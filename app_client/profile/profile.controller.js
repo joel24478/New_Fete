@@ -16,9 +16,8 @@
 
     function profileCtrl($scope, feteData, geolocation) {
         var vm = this;
+        // Format the date
         vm.dateFixer = function(Date) {
-
-
             date = Date;
             console.log(date);
             $scope.d = (date.split('-')[0]);
@@ -27,7 +26,6 @@
             $scope.dd = (date.split('-')[3]);
             console.log($scope.m + "-" + $scope.d + "-" + $scope.y);
             return $scope.m + "-" + $scope.y + "-" + $scope.d;
-
         }
         vm.formData = {
             Name: "",
@@ -48,7 +46,7 @@
             //disable the button after clicked
             $("#postEvent").attr('disabled', true);
         };
-
+        // Grabs form data 
         vm.test = function() {
             // ****need to grab true or false from toggle switch ******
             vm.formError = "";
