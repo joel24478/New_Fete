@@ -1,3 +1,12 @@
+/*
+  File:  app_api/controllers/position.js
+  91.462 Project Milestone 
+  Angel Calcano, UMass Lowell Computer Science, Angel_Calcano@cs.uml.edu
+  Copyright (c) 2016 by Angel Calcano.  All rights reserved.  May be freely 
+  copied or excerpted for educational purposes with credit to the author.
+  created by AC. 
+*/
+
 var mongoose = require('mongoose');
 var Loc = mongoose.model('Profile');
 
@@ -5,6 +14,7 @@ var sendJsonResponse = function(res, status, content) {
 res.status(status);
 res.json(content);
 };
+//Build an array of Locations
 var buildLocationList = function(req, res, results, stats) {
   var events = [];
   results.forEach(function(doc) {
@@ -17,6 +27,7 @@ var buildLocationList = function(req, res, results, stats) {
   });
   return events;
 };
+// Get rads from distance and distance from rads
 var theEarth = (function() {
   var earthRadius = 6371; // km, miles is 3959
 
@@ -33,8 +44,7 @@ var theEarth = (function() {
     getRadsFromDistance: getRadsFromDistance
   };
 })();
-//get list of events 
-/* GET list of locations */
+//Get list of locations by distance 
 module.exports.locationsListByDistance = function(req, res) {
   var lng = parseFloat(req.query.lng);
   var lat = parseFloat(req.query.lat);
@@ -55,6 +65,7 @@ module.exports.locationsListByDistance = function(req, res) {
     });
     return;
   }
+  // GeoNear refused to work
   Loc.geoNear(point, geoOptions, function(err, results, stats) {
     var events;
     console.log('Geo Results', results);
