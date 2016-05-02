@@ -35,6 +35,7 @@ module.exports.getMyEvents = function(req, res) {
                         sendJsonResponse(res, 400, err);
                         return;
                     }
+                    // Put the user info into response, after put the events in an array and attatch it to the response
                     var response = {
                             user: {
                                 name: user.name,
