@@ -15,16 +15,16 @@
   function feteData ($http, authentication) {
   
     var events = [] ;
-  
+    // Get the locations based on your position
     var locationByCoords = function (lat, lng, Distance) { //pass public in the html param
       return $http.get('/api/distance?lng=' + lng + '&lat=' + lat + '&maxDistance='+ Distance);
     };//add userid to check if the user was invited to a public event
     
-    // userbyid
+    //  Pass down the location's ID 
     var locationById = function (locationid) {
       return $http.get('/api/locations/' + locationid);
     };
-
+    // Adding review by ID
     var addReviewById = function (locationid, data) {
       return $http.post('/api/locations/' + locationid + '/reviews', data, {
         headers: {
