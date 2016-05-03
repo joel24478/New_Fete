@@ -197,6 +197,7 @@ div.user-menu div.user-menu-content:not(.active) {
     padding: 20px 25px;
 }
 
+//removes padding except for the padding-top
 .no-pad {
     padding-right: 0;
     padding-left: 0;
@@ -353,10 +354,3 @@ div.user-menu div.user-menu-content:not(.active) {
     backface-visibility: hidden;
     will-change: overflow;
 }
-
-//giving a thicker border to text fields
-// .inputText {
-//     padding: 10px;
-//     border: solid 5px #c9c9c9;
-//     transition: border 0.3s;
-// }
