@@ -31,3 +31,10 @@
 body {
     background-image: url('/images/signup_backgroundV2.jpg');
 }
+
+//To place footer at the bottom of the page
+footer {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+}

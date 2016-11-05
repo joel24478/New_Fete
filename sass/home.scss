@@ -13,6 +13,13 @@
     margin-right: 10px;
 }
 
+//Footer comes out wrong since the positions are relative for everything else on the page
+footer {
+    position: absolute;
+    top: 130%;
+    width: 100%;
+}
+
 
 /*This is our main wrapping element, it's made 100vh high to ensure 
 it is always the correct size and then moved into place and padded 

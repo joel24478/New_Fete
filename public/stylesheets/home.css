@@ -16,6 +16,11 @@
   border: 2px solid #660BAB;
   margin-right: 10px; }
 
+footer {
+  position: absolute;
+  top: 130%;
+  width: 100%; }
+
 /*This is our main wrapping element, it's made 100vh high to ensure 
 it is always the correct size and then moved into place and padded 
 with negative margin and padding*/
